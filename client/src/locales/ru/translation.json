@@ -1,0 +1,1252 @@
+{
+  "backend": {
+    "ERR_AUTH_UNAUTHORIZED": "Доступ запрещен. Пожалуйста, войдите.",
+    "ERR_AUTH_INVALID_TOKEN": "Сессия истекла. Войдите снова.",
+    "ERR_AUTH_FORBIDDEN": "Доступ запрещен. Требуются права админа.",
+    "ERR_AUTH_MISSING_FIELDS": "Пожалуйста, заполните все поля.",
+    "ERR_AUTH_EMAIL_EXISTS": "Email уже зарегистрирован.",
+    "ERR_AUTH_REGISTER_FAILED": "Ошибка регистрации.",
+    "ERR_AUTH_INVALID_CREDENTIALS": "Неверный email или пароль.",
+    "ERR_AUTH_INVALID_PASSWORD": "Текущий пароль неверен.",
+    "ERR_DB_ERROR": "Ошибка базы данных.",
+    "ERR_USER_NOT_FOUND": "Пользователь не найден.",
+    "ERR_PROFILE_UPDATE_FAILED": "Не удалось обновить профиль.",
+    "ERR_PASSWORD_UPDATE_FAILED": "Не удалось сменить пароль.",
+    "ERR_NO_FILES": "Файлы не выбраны.",
+    "ERR_CURRENCY_REQUIRED": "Выберите валюту.",
+    "ERR_WALLET_EXISTS": "Этот кошелек уже существует.",
+    "ERR_WALLET_CREATE_FAILED": "Не удалось создать кошелек.",
+    "ERR_BANK_SAVE_FAILED": "Не удалось сохранить счет.",
+    "ERR_INVALID_DATA": "Неверные данные.",
+    "ERR_TRANSACTION_FAILED": "Ошибка транзакции.",
+    "ERR_ACCOUNT_NOT_FOUND": "Счет не найден.",
+    "ERR_INSUFFICIENT_BALANCE": "Недостаточно средств.",
+    "ERR_BALANCE_UPDATE_FAILED": "Не удалось обновить баланс.",
+    "ERR_EXCHANGE_FAILED": "Ошибка обмена.",
+    "ERR_USER_UPDATE_FAILED": "Не удалось обновить пользователя.",
+    "ERR_ACCOUNT_CREATE_FAILED": "Не удалось создать счет.",
+    "ERR_TRANSACTION_NOT_FOUND": "Транзакция не найдена.",
+    "ERR_STATUS_UPDATE_FAILED": "Не удалось обновить статус.",
+    "ERR_TRANSACTION_UPDATE_FAILED": "Не удалось обновить транзакцию.",
+    "ERR_TRANSACTION_CREATE_FAILED": "Не удалось создать транзакцию.",
+    "ERR_SETTINGS_UPDATE_FAILED": "Не удалось обновить настройки.",
+    "ERR_MESSAGE_SEND_FAILED": "Не удалось отправить сообщение.",
+    "ERR_MESSAGE_UPDATE_FAILED": "Не удалось обновить сообщение.",
+    "MSG_PROFILE_UPDATED": "Профиль успешно обновлен.",
+    "MSG_DOCS_UPLOADED": "Документы успешно загружены.",
+    "MSG_PASSWORD_UPDATED": "Пароль успешно изменен.",
+    "MSG_WALLET_CREATED": "Кошелек успешно создан.",
+    "MSG_BANK_SAVED": "Банковский счет сохранен.",
+    "MSG_TOPUP_SUBMITTED": "Запрос на пополнение отправлен.",
+    "MSG_TRANSFER_SUBMITTED": "Запрос на перевод отправлен.",
+    "MSG_EXCHANGE_SUCCESS": "Обмен выполнен успешно.",
+    "MSG_USER_UPDATED": "Пользователь обновлен.",
+    "MSG_ACCOUNT_CREATED": "Счет успешно создан.",
+    "MSG_BALANCE_UPDATED": "Баланс успешно обновлен.",
+    "MSG_DEPOSIT_APPROVED": "Депозит одобрен, баланс обновлен.",
+    "MSG_TRANSFER_APPROVED": "Перевод одобрен.",
+    "MSG_TRANSFER_DECLINED": "Перевод отклонен, средства возвращены.",
+    "MSG_DEPOSIT_DECLINED": "Депозит отклонен.",
+    "MSG_TRANSACTION_UPDATED": "Транзакция обновлена.",
+    "MSG_TRANSACTION_CREATED": "Транзакция создана.",
+    "MSG_TRANSACTION_CREATED_BALANCE_UPDATED": "Транзакция создана, баланс обновлен.",
+    "MSG_SETTINGS_UPDATED": "Настройки системы обновлены.",
+    "MSG_MESSAGE_READ": "Сообщение помечено как прочитанное.",
+    "MSG_METHOD_CRYPTO": "Криптовалюта",
+    "MSG_METHOD_BANK": "Банковский перевод",
+    "MSG_METHOD_CARD": "Карта",
+    "MSG_DEPOSIT_VIA": "Депозит через {{method}}",
+    "MSG_TRANSFER_TO": "Перевод {{beneficiary}}: {{desc}}",
+    "MSG_TRANSFER_TO_NETWORK": "Перевод в сеть: {{network}}",
+    "MSG_EXCHANGED_TO": "Обменяно в {{currency}}",
+    "MSG_EXCHANGED_FROM": "Обменяно из {{currency}}",
+    "MSG_ACCOUNT_OPENED": "Открыт счет: {{currency}}"
+  },
+  "common": {
+    "login": "Вход",
+    "register": "Регистрация",
+    "open_account": "Открыть счет",
+    "logout": "Выход",
+    "withdraw": "Вывод",
+    "deposit": "Депозит",
+    "exchange": "Обмен",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "loading": "Загрузка...",
+    "no_data": "Нет данных",
+    "yes": "Да",
+    "no": "Нет",
+    "verify": "Подтвердить",
+    "submit": "Отправить",
+    "dashboard": "Личный кабинет",
+    "status": "Статус",
+    "actions": "Действия",
+    "view": "Просмотр",
+    "close": "Закрыть",
+    "error": "Произошла ошибка",
+    "approve": "Одобрить",
+    "reject": "Отклонить",
+    "upload_file": "Загрузить файл",
+    "view_attachment": "Посмотреть вложение"
+  },
+  "email_verification": {
+    "banner": "Ваша почта не подтверждена. Пожалуйста, подтвердите её для безопасности вашего аккаунта.",
+    "button": "Подтвердить сейчас",
+    "modal_title": "Подтверждение почты",
+    "modal_subtitle": "Мы отправили 6-значный код на вашу почту. Пожалуйста, введите его ниже.",
+    "code_label": "Код подтверждения",
+    "resend": "Отправить код повторно",
+    "success": "Почта успешно подтверждена!",
+    "failed": "Ошибка подтверждения. Пожалуйста, проверьте код.",
+    "code_sent": "Новый код подтверждения был отправлен на вашу почту."
+  },
+  "contacts": {
+    "title": "Связаться с нами",
+    "subtitle": "У вас есть вопросы о платформе или о том, как начать работу с AlpenStark?",
+    "general_inquiries": "Общие вопросы",
+    "general_desc": "Хотите узнать больше об AlpenStark?",
+    "office": "Наш офис",
+    "email_label": "Email:"
+  },
+  "legal": {
+    "terms_title": "Условия и положения",
+    "privacy_title": "Политика конфиденциальности",
+    "cookies_title": "Политика использования Cookie",
+    "last_updated": "Последнее обновление: Март 2024"
+  },
+  "navbar": {
+    "crypto": "Крипто",
+    "digital_banking": "Цифровой банкинг",
+    "currency_exchange": "Обмен валют",
+    "about_us": "О нас"
+  },
+  "footer": {
+    "legal_info": "Юридическая информация",
+    "terms": "Условия",
+    "cookie_policy": "Политика Cookie",
+    "privacy_policy": "Конфиденциальность",
+    "contact_info": "Контактная информация",
+    "address": "Avenue Industrielle 12, 1227 Carouge GE, Швейцария",
+    "all_rights_reserved": "Все права защищены.",
+    "contacts": "Контакты"
+  },
+  "home": {
+    "hero": {
+      "title_1": "Ваши финансы,",
+      "title_2": "без границ.",
+      "subtitle": "Испытайте настоящую финансовую независимость. Ваши активы под защитой и оптимизированы, где бы вы ни находились."
+    },
+    "marquee": {
+      "transfers": "Весь мир",
+      "exchange": "Реальное время",
+      "assets": "Цифровые активы",
+      "wallets": "Защита",
+      "invoicing": "Инвойсы",
+      "banking": "Мультивалютность"
+    },
+    "solutions": {
+      "title_1": "Полные",
+      "title_2": "Финансовые решения",
+      "items": {
+        "iban": {
+          "title": "Выделенный IBAN",
+          "description": "Принимайте и отправляйте платежи под своим именем, используя персональные реквизиты счета.",
+          "button": "Создать счет"
+        },
+        "multi_currency": {
+          "title": "Мультивалютный счет",
+          "description": "Управляйте 30+ валютами с легкостью, упрощайте трансграничные платежи и снижайте комиссии.",
+          "button": "Начать"
+        },
+        "exchange": {
+          "title": "Обмен валют",
+          "description": "Конвертируйте валюты за считанные секунды по выгодным курсам с рыночными данными в реальном времени.",
+          "button": "Начать обмен"
+        },
+        "crypto": {
+          "title": "Купля-продажа крипто",
+          "description": "Обменивайте криптовалюты без усилий по привлекательным курсам и с защищенными транзакциями.",
+          "button": "Начать торговлю"
+        },
+        "cards": {
+          "title": "Виртуальные и физ. карты",
+          "description": "Создавайте виртуальные карты мгновенно и заказывайте физические карты для трат по всему миру.",
+          "button": "Заказать карту"
+        }
+      }
+    },
+    "platform": {
+      "title": "Продвинутая финансовая платформа",
+      "title_accent": "для глобальных переводов",
+      "description": "Используйте нашу современную банковскую инфраструктуру для легких трансграничных транзакций.",
+      "feature_1_title": "Переводы в 100+ стран",
+      "feature_1_desc": "Проводите международные платежи через сети SWIFT или внутренние системы расчетов.",
+      "feature_2_title": "Конвертация мировых валют",
+      "feature_2_desc": "Меняйте средства практически в любую основную мировую валюту.",
+      "feature_3_title": "Получение через SWIFT и крипто",
+      "feature_3_desc": "Принимайте входящие платежи в различных валютах, включая USD, EUR, GBP, USDC и BTC."
+    },
+    "convert_widget": {
+      "title": "Конвертируйте валюты и крипто",
+      "description": "Получайте выгодные курсы обмена для 20+ валют и популярных криптовалют.",
+      "rate_title": "Выгодные курсы обмена",
+      "rate_desc": "Доступ к топовым рыночным курсам с прозрачным ценообразованием.",
+      "instant_title": "Мгновенная конвертация",
+      "instant_desc": "Завершайте обмен за считанные мгновения с моментальным расчетом.",
+      "card_title": "Обмен валют",
+      "sell_label": "Вы продаете",
+      "buy_label": "Вы покупаете",
+      "rate_label": "Курс обмена",
+      "button": "Обменять сейчас"
+    },
+    "large_transfers": {
+      "title": "Крупные переводы с полной уверенностью",
+      "description": "Наш эффективный процесс снижает риски и гарантирует бесперебойное выполнение.",
+      "point_1": "Единая прозрачная наценка для всех валют.",
+      "point_2": "Рыночные курсы в реальном времени.",
+      "point_3": "Полная свобода без принудительных конвертаций.",
+      "point_4": "Все комиссии видны заранее."
+    },
+    "security": {
+      "title": "Надежная и защищенная инфраструктура для",
+      "title_accent": "ваших транзакций",
+      "subtitle": "Ваша защита — наш приоритет",
+      "feature_1_title": "Безопасность корпоративного уровня",
+      "feature_1_desc": "Ваши транзакции защищены профессиональным шифрованием.",
+      "feature_2_title": "Безопасный доступ",
+      "feature_2_desc": "Многоуровневая верификация и стандартная двухфакторная аутентификация.",
+      "feature_3_title": "Защищенные счета",
+      "feature_3_desc": "Ваши средства никогда не передаются взаймы и не инвестируются."
+    },
+    "trust": {
+      "title_1": "Выбор более чем",
+      "title_2": "100,000 клиентов",
+      "title_3": "за надежный сервис.",
+      "subtitle": "Начать работу с персональным счетом должно быть просто. Мы это гарантируем.",
+      "button": "Создать аккаунт"
+    }
+  },
+  "auth": {
+    "login_title": "Вход в кабинет",
+    "register_title": "Создать аккаунт",
+    "email": "Email",
+    "password": "Пароль",
+    "login_button": "Войти в личный кабинет",
+    "register_button": "Зарегистрироваться",
+    "no_account": "Нет аккаунта?",
+    "already_have_account": "Уже есть аккаунт?",
+    "invalid_credentials": "Неверные данные или ошибка сервера",
+    "full_name": "Полное имя",
+    "phone": "Номер телефона",
+    "dob": "Дата рождения",
+    "address": "Адрес",
+    "city": "Город",
+    "state": "Штат/Область",
+    "zip": "Почтовый индекс",
+    "country": "Страна",
+    "step_account": "Данные аккаунта",
+    "step_personal": "Личная информация",
+    "first_name": "Имя",
+    "last_name": "Фамилия",
+    "region": "Регион",
+    "postal_code": "Индекс",
+    "back": "Назад",
+    "next": "Далее",
+    "fill_required": "Пожалуйста, заполните все обязательные поля",
+    "register_error": "Ошибка при регистрации",
+    "sign_in": "Войти"
+  },
+  "dashboard": {
+    "welcome": "Добро пожаловать, {{name}}",
+    "total_balance_in": "Общий баланс в",
+    "bank_accounts": "Банковские счета",
+    "cryptocurrency": "Криптовалюта",
+    "recent_activity": "Последняя активность",
+    "no_transactions": "Нет недавних транзакций",
+    "quick_links": "Быстрые ссылки",
+    "add_bank": "Добавить банк",
+    "create_crypto_wallet": "Создать криптокошелек",
+    "buy_crypto": "Купить крипто",
+    "currency_exchange_title": "Обмен валют",
+    "cryptocurrency_exchange_title": "Обмен криптовалют",
+    "table": {
+      "name": "Название",
+      "price": "Цена (USD)",
+      "change_24h": "Изм. за 24ч",
+      "change_percent": "% Изм.",
+      "buy": "Купить",
+      "sell": "Продать"
+    },
+    "account_overview": {
+      "title": "Текущие счета",
+      "available_funds": "Доступные средства в",
+      "new_transfer": "Новый перевод",
+      "table": {
+        "account": "Счет",
+        "balance": "Баланс счета",
+        "reserved": "Зарезервировано",
+        "available": "Доступно",
+        "currency": "Валюта"
+      }
+    },
+    "account_statement": {
+      "title": "Выписка по счету",
+      "filter": {
+        "date_from": "Дата с",
+        "date_to": "Дата по",
+        "account": "Счет",
+        "button": "Фильтр"
+      },
+      "info": {
+        "account_number": "Номер счета:",
+        "currency": "Валюта:",
+        "period": "Период:",
+        "debit_turnover": "Дебетовый оборот:",
+        "credit_turnover": "Кредитовый оборот:"
+      },
+      "no_transactions": "Транзакций за выбранный период не найдено."
+    },
+    "top_up": {
+      "title": "Пополнение счета",
+      "steps": {
+        "enter_details": "Детали",
+        "payment_info": "Оплата",
+        "confirmation": "Подтверждение"
+      },
+      "subtitle_details": "Введите детали пополнения",
+      "subtitle_crypto": "Реквизиты для крипто-платежа",
+      "subtitle_bank": "Реквизиты для банковского перевода",
+      "select_type": "Выберите тип счета",
+      "fiat_account": "ФИАТНЫЙ СЧЕТ",
+      "crypto_account": "КРИПТОВАЛЮТНЫЙ СЧЕТ",
+      "no_wallets_error": "У вас еще нет криптокошельков.",
+      "select_account_label": "Выберите счет",
+      "amount_label": "Сумма",
+      "currency_label": "Валюта",
+      "payment_method_label": "Метод оплаты",
+      "bank_transfer": "Банковский перевод",
+      "card_payment": "Кредитная или дебетовая карта",
+      "crypto_instruction": "Переведите {{amount}} {{currency}} на следующий адрес:",
+      "blockchain_network": "Сеть блокчейн",
+      "address": "Адрес",
+      "bank_instruction": "Переведите {{amount}} {{currency}} по следующим реквизитам:",
+      "beneficiary": "Получатель",
+      "iban": "IBAN",
+      "bic_swift": "BIC/SWIFT",
+      "reference": "Назначение",
+      "card_instruction": "Наша служба поддержки рассмотрит ваш запрос и свяжется с вами в течение 24 часов с инструкциями по оплате.",
+      "card_request_summary": "Вы запросили пополнение счета на {{amount}} {{currency}} с использованием {{method}}.",
+      "redirecting": "Перенаправление на защищенный шлюз...",
+      "amount_to_deposit": "Сумма к зачислению: {{amount}} {{currency}}",
+      "confirm_checkbox": "Я подтверждаю, что перевел средства",
+      "confirm_button": "Подтвердить",
+      "terms_agreement": "Отправляя средства, вы соглашаетесь с Условиями соглашения.",
+      "success_title": "Успешно!",
+      "success_subtitle": "Транзакция в обработке",
+      "success_desc": "Мы ожидаем подтверждения платежа.",
+      "view_accounts": "Мои счета",
+      "errors": {
+        "enter_amount_account": "Введите сумму и выберите счет",
+        "amount_gt_zero": "Сумма должна быть больше 0",
+        "confirm_transfer": "Пожалуйста, подтвердите перевод.",
+        "failed": "Ошибка пополнения"
+      }
+    },
+    "bank_transfer": {
+      "title": "Банковский перевод",
+      "steps": {
+        "enter_data": "Данные",
+        "confirmation": "Подтверждение",
+        "result": "Результат"
+      },
+      "details_subtitle": "Детали перевода",
+      "beneficiary_name": "Имя получателя",
+      "swift_bic": "Код SWIFT / BIC",
+      "beneficiary_account": "Счет получателя",
+      "payer_account": "Счет плательщика",
+      "amount": "Сумма",
+      "currency": "Валюта",
+      "available": "Доступно",
+      "purpose": "Назначение платежа",
+      "comment": "Комментарий",
+      "review_instruction": "Пожалуйста, проверьте данные перед подтверждением.",
+      "completed_title": "Перевод успешно инициирован.",
+      "errors": {
+        "fill_required": "Заполните все обязательные поля",
+        "failed": "Ошибка перевода"
+      }
+    },
+    "loan": {
+      "title": "Получить кредит",
+      "promo": {
+        "title": "Подайте заявку на персональный кредит.",
+        "subtitle": "Ставки от 3.6% годовых.",
+        "desc": "Эта ставка доступна для кредитов от $2,500 до $35,000.",
+        "benefit_1": "Получите бесплатное персональное предложение",
+        "benefit_2": "Получите деньги в течение дня!"
+      },
+      "calculator_title": "Наш кредитный калькулятор",
+      "how_much_borrow": "Сколько вы хотите занять?",
+      "representative_apr": "Примерно {{apr}}% годовых",
+      "how_long_repay": "На какой срок?",
+      "years": "лет",
+      "months": "месяцев",
+      "example": {
+        "title": "Пример расчета",
+        "borrowing": "Сумма кредита",
+        "over": "Срок",
+        "monthly_repayment": "Ежемесячный платеж",
+        "total_repayment": "Общая сумма к возврату"
+      },
+      "tell_us_more": "Расскажите нам больше о себе",
+      "your_applications": "Ваши заявки",
+      "occupation_label": "Ваша профессия?",
+      "income_label": "Ежемесячный доход",
+      "income_placeholder": "Введите сумму",
+      "quote_button": "Получить предложение",
+      "upload_title": "Загрузите выписку из банка за последние 3 месяца",
+      "drag_drop": "Перетащите файлы сюда или нажмите для выбора",
+      "accepted_formats": "Форматы: PDF, JPG, PNG, GIF (макс 5МБ)",
+      "max_files": "Максимум 3 файла",
+      "notification_success": "Спасибо! Ваш запрос отправлен.",
+      "years_short": "г",
+      "months_short": "мес",
+      "success_modal": {
+        "title": "Заявка успешно отправлена",
+        "subtitle": "Ваша заявка на кредит была отправлена и находится на рассмотрении. Вы получите результат в течение 24 часов.",
+        "id_label": "ID заявки:",
+        "whats_next": "Что происходит дальше?",
+        "step_1": "Наша команда рассмотрит вашу заявку и документы",
+        "step_2": "Вы получите решение в течение 24 часов",
+        "step_3": "При одобрении средства будут доступны вскоре после этого",
+        "close": "Закрыть"
+      }
+    },
+    "verification": {
+      "title": "Верификация личности",
+      "subtitle": "Для соблюдения регуляторных требований нам необходимо подтвердить вашу личность.",
+      "id_verification": "Верификация документов",
+      "bank_verification": "Верификация банковского счета",
+      "doc_type_label": "Тип документа",
+      "passport": "Паспорт",
+      "id_card": "ID-карта",
+      "bank_statement": "Выписка по счету",
+      "upload_instruction_passport": "Загрузите чёткое фото главной страницы паспорта.",
+      "upload_instruction_id": "Загрузите чёткое фото ID-карты с обеих сторон.",
+      "bank_instruction": "Загрузите выписки за последние 3 месяца.",
+      "status": {
+        "verified": "Подтвержден",
+        "approved": "Одобрен",
+        "pending": "На проверке",
+        "rejected": "Отклонен",
+        "not_started": "Не начато"
+      },
+      "alerts": {
+        "pending": "Документ успешно загружен и ожидает проверки.",
+        "verified": "Ваша личность успешно подтверждена.",
+        "rejected": "Документ отклонен. Пожалуйста, загрузите более чёткое фото."
+      },
+      "upload_box": {
+        "uploading": "Загрузка...",
+        "upload_doc": "Загрузить фото {{type}}",
+        "click_select": "или нажмите для выбора файла",
+        "select_button": "Выбрать файл"
+      },
+      "notification": {
+        "success": "Файл успешно загружен",
+        "failed": "Ошибка загрузки"
+      }
+    },
+    "settings": {
+      "title": "Настройки профиля",
+      "personal_info": "Личная информация",
+      "address_info": "Адресная информация",
+      "notifications": "Настройки уведомлений",
+      "show_notifications": "Показывать уведомления о новых сообщениях от AlpenStark",
+      "notification_desc": "Вы будете получать браузерные и системные уведомления.",
+      "notification": {
+        "success": "Профиль успешно обновлен",
+        "failed": "Ошибка обновления"
+      },
+      "change_password": "Сменить пароль",
+      "current_password": "Текущий пароль",
+      "new_password": "Новый пароль",
+      "confirm_new_password": "Подтвердите новый пароль",
+      "errors": {
+        "fill_all": "Пожалуйста, заполните все поля",
+        "passwords_mismatch": "Новые пароли не совпадают",
+        "password_too_short": "Пароль должен быть не менее 6 символов",
+        "password_failed": "Не удалось сменить пароль"
+      },
+      "password_success": "Пароль успешно изменен"
+    },
+    "messages": {
+      "title": "Сообщения",
+      "tabs": {
+        "list": "Сообщения",
+        "new": "Новое сообщение"
+      },
+      "no_messages": "Сообщений не найдено",
+      "new_badge": "Новое",
+      "subject_label": "Тема",
+      "content_label": "Текст сообщения",
+      "send_button": "Отправить сообщение",
+      "success_send": "Сообщение успешно отправлено!",
+      "errors": {
+        "load_failed": "Не удалось загрузить сообщения.",
+        "fill_all": "Пожалуйста, заполните все поля.",
+        "send_failed": "Не удалось отправить сообщение."
+      },
+      "dialog": {
+        "reply": "Ответить",
+        "close": "Закрыть"
+      }
+    },
+    "withdraw_accounts": {
+      "title": "Счета для вывода",
+      "subtitle": "Добавьте данные внешних банковских счетов для удобного вывода средств.",
+      "table": {
+        "bank_name": "Название банка",
+        "swift_bic": "SWIFT/BIC",
+        "account_number": "Номер счета",
+        "type": "Тип"
+      },
+      "add_button": "Добавить банковский счет",
+      "modal_title": "Добавить банковский счет",
+      "account_type": "Тип счета",
+      "personal": "Личный",
+      "business": "Бизнес",
+      "bank_name_label": "Название банка",
+      "swift_bic_label": "SWIFT/BIC",
+      "account_number_label": "Номер счета",
+      "confirm_checkbox": "Я подтверждаю верность введенных данных",
+      "notification": {
+        "success": "Счет успешно сохранен",
+        "failed": "Не удалось сохранить счет"
+      }
+    },
+    "list_transfers": {
+      "title": "Список переводов",
+      "tabs": {
+        "all": "Все",
+        "completed": "Завершено",
+        "processing": "В обработке",
+        "declined": "Отклонено"
+      },
+      "showing_period": "Показаны переводы с {{from}} по {{to}}",
+      "no_transactions": "Транзакций по выбранным критериям не найдено"
+    },
+    "crypto_wallets": {
+      "title": "Криптовалютные кошельки",
+      "add_button": "Добавить кошелек",
+      "no_wallets": "У вас еще нет криптокошельков.",
+      "table": {
+        "crypto": "Криптовалюта",
+        "blockchain": "Блокчейн",
+        "balance": "Доступный баланс",
+        "actions": "Действия"
+      },
+      "modal": {
+        "title": "Создать новый криптокошелек",
+        "network_label": "Сеть блокчейн *",
+        "crypto_label": "Криптовалюта *",
+        "create_button": "Создать"
+      },
+      "notification": {
+        "success": "Криптокошелек успешно создан",
+        "failed": "Не удалось создать кошелек."
+      },
+      "landing": {
+        "hero_title": "Криптовалюта — просто и безопасно",
+        "hero_subtitle": "Мгновенные переводы и банковская защита ваших средств",
+        "create_first": "Создать Первый Кошелек",
+        "benefits_title": "Преимущества Криптовалюты",
+        "benefit_1_title": "Молниеносные Транзакции",
+        "benefit_1_desc": "Отправляйте и получайте средства по всему миру за считанные минуты, без ожидания в часы работы традиционных банков или периодов проверки.",
+        "benefit_2_title": "Повышенная Безопасность",
+        "benefit_2_desc": "Технология блокчейн обеспечивает непревзойденную безопасность и прозрачность для всех транзакций.",
+        "benefit_3_title": "Глобальный Охват",
+        "benefit_3_desc": "Совершайте транзакции через границы с легкостью, минуя традиционных финансовых посредников и задержки.",
+        "benefit_4_title": "Низкие Комиссии",
+        "benefit_4_desc": "Пользуйтесь значительно более низкими комиссиями за транзакции по сравнению с традиционными банковскими услугами, особенно для международных переводов."
+      }
+    },
+    "crypto_transfer": {
+      "title": "Перевод криптовалюты",
+      "steps": {
+        "details": "Детали",
+        "confirm": "Подтверждение",
+        "result": "Результат"
+      },
+      "from_wallet": "Перевод с кошелька",
+      "available": "Доступно",
+      "to_address": "Адрес получателя",
+      "amount": "Сумма",
+      "network": "Сеть",
+      "review_instruction": "Пожалуйста, проверьте данные перед подтверждением.",
+      "from": "От:",
+      "wallet": "Кошелек",
+      "to_address_label": "Адрес получателя:",
+      "network_label": "Сеть:",
+      "amount_label": "Сумма:",
+      "success_title": "Перевод успешен",
+      "success_desc": "Ваши средства отправлены на указанный адрес.",
+      "another_transfer": "Сделать еще один перевод",
+      "confirm_transfer_button": "Подтвердить перевод",
+      "errors": {
+        "fill_all": "Пожалуйста, заполните все поля",
+        "amount_gt_zero": "Сумма должна быть больше 0",
+        "insufficient_balance": "Недостаточно средств",
+        "failed": "Ошибка перевода"
+      },
+      "networks": {
+        "bitcoin": "Bitcoin",
+        "ethereum": "Ethereum (ERC20)",
+        "bsc": "Binance Smart Chain (BEP20)",
+        "solana": "Solana",
+        "tron": "Tron (TRC20)"
+      }
+    },
+    "currency_exchange": {
+      "title": "Обмен валют",
+      "you_sell": "Вы продаете",
+      "you_buy": "Вы покупаете",
+      "amount_label": "Сумма",
+      "from_account": "Со счета",
+      "to_currency": "В валюту",
+      "insufficient_balance": "На счете {{currency}} недостаточно средств.",
+      "placeholder_amount": "0.00",
+      "exchange_button": "Обменять",
+      "success_msg": "Обмен успешно инициирован",
+      "errors": {
+        "failed": "Ошибка обмена"
+      }
+    },
+    "crypto_transactions": {
+      "title": "Крипто-транзакции",
+      "filter": {
+        "date_from": "Дата с",
+        "date_to": "Дата по",
+        "button": "Фильтр"
+      },
+      "no_transactions": "Криптовалютных транзакций не найдено.",
+      "table": {
+        "date": "Дата",
+        "account": "Счет",
+        "description": "Описание",
+        "status": "Статус",
+        "amount": "Сумма"
+      }
+    },
+    "invoices": {
+      "title": "Инвойсы",
+      "no_invoices": "У вас пока нет инвойсов.",
+      "table": {
+        "invoice_num": "Инвойс #",
+        "date": "Дата",
+        "amount": "Сумма",
+        "status": "Статус"
+      }
+    },
+    "sidebar": {
+      "main_page": "Главная страница",
+      "accounts": "Счета",
+      "account_overview": "Обзор счетов",
+      "account_statement": "Выписка по счету",
+      "withdraw_accounts": "Счета для вывода",
+      "account_top_up": "Пополнение счета",
+      "transfers": "Переводы",
+      "bank_transfer": "Банковский перевод",
+      "list_transfers": "Список переводов",
+      "cryptocurrency": "Криптовалюта",
+      "wallets": "Кошельки",
+      "transfer": "Перевод",
+      "transactions": "Транзакции",
+      "currency_exchange": "Обмен валют",
+      "invoices": "Инвойсы",
+      "get_loan": "Получить кредит",
+      "settings": "Настройки",
+      "profile_settings": "Настройки профиля",
+      "verification": "Верификация",
+      "security": "Безопасность",
+      "messages": "Сообщения",
+      "logout": "Выход"
+    }
+  },
+  "admin": {
+    "panel_title": "Админ-панель",
+    "sidebar": {
+      "dashboard": "Дашборд",
+      "users": "Пользователи",
+      "transactions": "Транзакции",
+      "messages": "Сообщения",
+      "settings": "Настройки",
+      "loans": "Кредиты",
+      "backup": "Бэкап",
+      "logout": "Выход"
+    },
+    "loans": {
+      "title": "Заявки на кредит",
+      "no_loans": "Заявок на кредит не найдено",
+      "approve": "Одобрить",
+      "reject": "Отклонить",
+      "details_title": "Детали кредита",
+      "user": "Пользователь",
+      "application_date": "Дата подачи",
+      "amount": "Сумма",
+      "term": "Срок",
+      "occupation": "Профессия",
+      "monthly_income": "Ежемесячный доход",
+      "years": "лет",
+      "months": "мес",
+      "documents": "Документы",
+      "doc": "Док",
+      "no_documents": "Документы не загружены"
+    },
+    "backup": {
+      "title": "Резервное копирование и восстановление",
+      "export_title": "Экспорт базы данных",
+      "export_description": "Скачать текущую версию базы данных SQLite. Это включает в себя всех пользователей, аккаунты, транзакции и настройки.",
+      "export_button": "Скачать бэкап (.sqlite)",
+      "import_title": "Импорт базы данных",
+      "import_description": "Загрузить файл базы данных SQLite для восстановления данных.",
+      "import_warning": "ВНИМАНИЕ: Импорт базы данных полностью перезапишет все текущие данные. Это действие необратимо.",
+      "import_button": "Выбрать и импортировать файл",
+      "confirm_title": "Подтвердите импорт",
+      "confirm_text": "Вы уверены, что хотите импортировать эту базу данных? Все текущие данные будут удалены и заменены данными из загруженного файла.",
+      "confirm_button": "Да, импортировать и перезаписать",
+      "notification": {
+        "export_success": "База данных успешно экспортирована.",
+        "export_error": "Ошибка при экспорте базы данных.",
+        "import_success": "База данных успешно импортирована. Перезагрузка...",
+        "import_error": "Ошибка при импорте базы данных. Убедитесь, что файл валиден."
+      }
+    },
+    "dashboard": {
+      "overview": "Обзор дашборда",
+      "total_users": "Всего пользователей",
+      "pending_transactions": "Транзакции в ожидании",
+      "total_fiat": "Общий фиатный баланс системы"
+    },
+    "departments": {
+      "manage": "Управление отделами",
+      "all": "Все клиенты",
+      "new_name": "Название нового отдела"
+    },
+    "users": {
+      "management": "Управление пользователями",
+      "table": {
+        "id": "ID",
+        "name": "Имя",
+        "email": "Email",
+        "department": "Отдел",
+        "role": "Роль",
+        "verified": "Вериф.",
+        "actions": "Действия"
+      },
+      "edit": "Правка",
+      "message": "Сообщение",
+      "no_users": "Пользователи не найдены",
+      "roles": {
+        "user": "Пользователь",
+        "admin": "Админ"
+      },
+      "dialog": {
+        "title": "Отправить сообщение пользователю {{name}}",
+        "subject": "Тема",
+        "message": "Сообщение",
+        "cancel": "Отмена",
+        "send": "Отправить",
+        "sending": "Отправка...",
+        "success": "Сообщение успешно отправлено",
+        "failed": "Не удалось отправить сообщение"
+      }
+    },
+    "transactions": {
+      "management": "Управление транзакциями",
+      "tabs": {
+        "all": "Все транзакции",
+        "pending": "В ожидании",
+        "completed": "Завершено"
+      },
+      "table": {
+        "id": "ID",
+        "user": "Пользователь",
+        "account": "Счет",
+        "type": "Тип",
+        "amount": "Сумма",
+        "currency": "Валюта",
+        "status": "Статус",
+        "date": "Дата",
+        "actions": "Действия"
+      },
+      "approve": "Одобрить",
+      "decline": "Отклонить",
+      "edit": "Правка",
+      "no_transactions": "Транзакции не найдены",
+      "dialog": {
+        "title": "Правка деталей транзакции",
+        "sender": "Адрес отправителя (От)",
+        "recipient": "Адрес получателя (Кому)",
+        "amount": "Сумма",
+        "fee": "Комиссия / Налог",
+        "description": "Описание",
+        "impact_title": "Расчет изменения баланса:",
+        "impact_desc_deposit": "Для депозитов только сумма добавляется к балансу.",
+        "impact_desc_transfer": "Для переводов и сумма, и комиссия вычитаются из баланса.",
+        "note": "Примечание: изменение суммы или комиссии автоматически скорректирует баланс пользователя.",
+        "save": "Сохранить изменения",
+        "cancel": "Отмена"
+      },
+      "confirm_status": "Вы уверены, что хотите пометить транзакцию как {{status}}?",
+      "notification": {
+        "status_success": "Статус транзакции обновлен",
+        "status_error": "Ошибка обновления статуса",
+        "update_success": "Транзакция обновлена",
+        "update_error": "Ошибка обновления транзакции"
+      }
+    },
+    "settings": {
+      "title": "Системные настройки",
+      "crypto_wallets": "Адреса криптокошельков",
+      "bank_details": "Банковские реквизиты (для ФИАТ пополнения)",
+      "beneficiary": "Имя получателя",
+      "iban": "IBAN",
+      "bic_swift": "BIC / SWIFT",
+      "general_contacts": "Общая контактная информация",
+      "contact_email": "Email службы поддержки",
+      "contact_address": "Физический адрес компании",
+      "save_all": "Сохранить все настройки",
+      "notification": {
+        "success": "Настройки успешно обновлены",
+        "error": "Ошибка обновления настроек"
+      }
+    },
+    "user_detail": {
+      "title": "Правка пользователя: {{name}}",
+      "profile_data": "Данные профиля",
+      "role_label": "Роль",
+      "verified_status": "Статус верификации (Switch)",
+      "verification_status_label": "Статус верификации (Select)",
+      "verification_doc": "Документ верификации ({{type}}):",
+      "view_doc": "Просмотр док. {{index}}",
+      "save_profile": "Сохранить профиль",
+      "accounts_title": "Счета",
+      "account_info": "{{currency}} счет ({{type}})",
+      "account_number": "Номер: {{num}}",
+      "balance": "Баланс: ",
+      "deposit_withdraw": "Депозит / Вывод",
+      "no_accounts": "Счета не найдены.",
+      "add_account": "Добавить новый счет",
+      "type_label": "Тип",
+      "currency_placeholder": "Валюта (напр. USD, BTC)",
+      "initial_balance": "Начальный баланс",
+      "create_account": "Создать счет",
+      "prompts": {
+        "amount": "Введите сумму (положительная — зачислить, отрицательная — списать):",
+        "description": "Введите описание транзакции:",
+        "incoming": "Входящий перевод",
+        "outgoing": "Исходящий перевод"
+      },
+      "notification": {
+        "user_not_found": "Пользователь не найден",
+        "user_saved": "Пользователь сохранен",
+        "user_save_error": "Ошибка сохранения пользователя",
+        "balance_updated": "Баланс успешно обновлен",
+        "transaction_created": "Транзакция создана и ожидает подтверждения",
+        "balance_error": "Ошибка обновления баланса",
+        "account_created": "Счет успешно создан",
+        "account_error": "Ошибка создания счета"
+      }
+    },
+    "messages": {
+      "title": "Сообщения пользователей",
+      "no_messages": "Сообщений от пользователей пока нет.",
+      "reply_button": "Ответить пользователю",
+      "view_profile": "Профиль",
+      "admin_label": "Админ (для {{name}})",
+      "dialog": {
+        "title": "Отправить сообщение пользователю {{name}}",
+        "subject": "Тема",
+        "message": "Сообщение",
+        "cancel": "Отмена",
+        "send": "Отправить",
+        "failed": "Не удалось отправить ответ"
+      }
+    }
+  },
+  "countries": {
+    "Afghanistan": "Афганистан",
+    "Albania": "Албания",
+    "Algeria": "Алжир",
+    "Andorra": "Андорра",
+    "Angola": "Ангола",
+    "Antigua and Barbuda": "Антигуа и Барбуда",
+    "Argentina": "Аргентина",
+    "Armenia": "Армения",
+    "Australia": "Австралия",
+    "Austria": "Австрия",
+    "Azerbaijan": "Азербайджан",
+    "Bahamas": "Багамские острова",
+    "Bahrain": "Бахрейн",
+    "Bangladesh": "Бангладеш",
+    "Barbados": "Барбадос",
+    "Belarus": "Беларусь",
+    "Belgium": "Бельгия",
+    "Belize": "Белиз",
+    "Benin": "Бенин",
+    "Bhutan": "Бутан",
+    "Bolivia": "Боливия",
+    "Bosnia and Herzegovina": "Босния и Герцеговина",
+    "Botswana": "Ботсвана",
+    "Brazil": "Бразилия",
+    "Brunei": "Бруней",
+    "Bulgaria": "Болгария",
+    "Burkina Faso": "Буркина-Фасо",
+    "Burundi": "Бурунди",
+    "Cabo Verde": "Кабо-Верде",
+    "Cambodia": "Камбоджа",
+    "Cameroon": "Камерун",
+    "Canada": "Канада",
+    "Central African Republic": "ЦАР",
+    "Chad": "Чад",
+    "Chile": "Чили",
+    "China": "Китай",
+    "Colombia": "Колумбия",
+    "Comoros": "Коморские острова",
+    "Congo (Congo-Brazzaville)": "Конго",
+    "Costa Rica": "Коста-Рика",
+    "Croatia": "Хорватия",
+    "Cuba": "Куба",
+    "Cyprus": "Кипр",
+    "Czechia (Czech Republic)": "Чехия",
+    "Democratic Republic of the Congo": "ДР Конго",
+    "Denmark": "Дания",
+    "Djibouti": "Джибути",
+    "Dominica": "Доминика",
+    "Dominican Republic": "Доминиканская Республика",
+    "Ecuador": "Эквадор",
+    "Egypt": "Египет",
+    "El Salvador": "Сальвадор",
+    "Equatorial Guinea": "Экваториальная Гвинея",
+    "Eritrea": "Эритрея",
+    "Estonia": "Эстония",
+    "Eswatini": "Эсватини",
+    "Ethiopia": "Эфиопия",
+    "Fiji": "Фиджи",
+    "Finland": "Финляндия",
+    "France": "Франция",
+    "Gabon": "Габон",
+    "Gambia": "Гамбия",
+    "Georgia": "Грузия",
+    "Germany": "Германия",
+    "Ghana": "Гана",
+    "Greece": "Греция",
+    "Grenada": "Гренада",
+    "Guatemala": "Гватемала",
+    "Guinea": "Гвинея",
+    "Guinea-Bissau": "Гвинея-Бисау",
+    "Guyana": "Гайана",
+    "Haiti": "Гаити",
+    "Holy See": "Ватикан",
+    "Honduras": "Гондурас",
+    "Hungary": "Венгрия",
+    "Iceland": "Исландия",
+    "India": "Индия",
+    "Indonesia": "Индонезия",
+    "Iran": "Иран",
+    "Iraq": "Ирак",
+    "Ireland": "Ирландия",
+    "Israel": "Израиль",
+    "Italy": "Италия",
+    "Ivory Coast": "Кот-д'Ивуар",
+    "Jamaica": "Ямайка",
+    "Japan": "Япония",
+    "Jordan": "Иордания",
+    "Kazakhstan": "Казахстан",
+    "Kenya": "Кения",
+    "Kiribati": "Кирибати",
+    "Kuwait": "Кувейт",
+    "Kyrgyzstan": "Кыргызстан",
+    "Laos": "Лаос",
+    "Latvia": "Латвия",
+    "Lebanon": "Ливан",
+    "Lesotho": "Лесото",
+    "Liberia": "Либерия",
+    "Libya": "Ливия",
+    "Liechtenstein": "Лихтенштейн",
+    "Lithuania": "Литва",
+    "Luxembourg": "Люксембург",
+    "Madagascar": "Мадагаскар",
+    "Malawi": "Малави",
+    "Malaysia": "Малайзия",
+    "Maldives": "Мальдивы",
+    "Mali": "Мали",
+    "Malta": "Мальта",
+    "Marshall Islands": "Маршалловы Острова",
+    "Mauritania": "Мавритания",
+    "Mauritius": "Маврикий",
+    "Mexico": "Мексика",
+    "Micronesia": "Микронезия",
+    "Moldova": "Молдова",
+    "Monaco": "Монако",
+    "Mongolia": "Монголия",
+    "Montenegro": "Черногория",
+    "Morocco": "Марокко",
+    "Mozambique": "Мозамбик",
+    "Myanmar (formerly Burma)": "Мьянма",
+    "Namibia": "Намибия",
+    "Nauru": "Науру",
+    "Nepal": "Непал",
+    "Netherlands": "Нидерланды",
+    "New Zealand": "Новая Зеландия",
+    "Nicaragua": "Никарагуа",
+    "Niger": "Нигер",
+    "Nigeria": "Нигерия",
+    "North Korea": "Северная Корея",
+    "North Macedonia": "Северная Македония",
+    "Norway": "Норвегия",
+    "Oman": "Оман",
+    "Pakistan": "Пакистан",
+    "Palau": "Палау",
+    "Palestine State": "Палестина",
+    "Panama": "Панама",
+    "Papua New Guinea": "Папуа-Новая Гвинея",
+    "Paraguay": "Парагвай",
+    "Peru": "Перу",
+    "Philippines": "Филиппины",
+    "Poland": "Польша",
+    "Portugal": "Португалия",
+    "Qatar": "Катар",
+    "Romania": "Румыния",
+    "Russia": "Россия",
+    "Rwanda": "Руанда",
+    "Saint Kitts and Nevis": "Сент-Китс и Невис",
+    "Saint Lucia": "Сент-Люсия",
+    "Saint Vincent and the Grenadines": "Сент-Винсент и Гренадины",
+    "Samoa": "Самоа",
+    "San Marino": "Сан-Марино",
+    "Sao Tome and Principe": "Сан-Томе и Принсипи",
+    "Saudi Arabia": "Саудовская Аравия",
+    "Senegal": "Сенегал",
+    "Serbia": "Сербия",
+    "Seychelles": "Сейшельские острова",
+    "Sierra Leone": "Сьерра-Леоне",
+    "Singapore": "Сингапур",
+    "Slovakia": "Словакия",
+    "Slovenia": "Словения",
+    "Solomon Islands": "Соломоновы Острова",
+    "Somalia": "Сомали",
+    "South Africa": "ЮАР",
+    "South Korea": "Южная Корея",
+    "South Sudan": "Южный Судан",
+    "Spain": "Испания",
+    "Sri Lanka": "Шри-Ланка",
+    "Sudan": "Судан",
+    "Suriname": "Суринам",
+    "Sweden": "Швеция",
+    "Switzerland": "Швейцария",
+    "Syria": "Сирия",
+    "Tajikistan": "Таджикистан",
+    "Tanzania": "Танзания",
+    "Thailand": "Таиланд",
+    "Timor-Leste": "Тимор-Лешти",
+    "Togo": "Того",
+    "Tonga": "Тонга",
+    "Trinidad and Tobago": "Тринидад и Тобаго",
+    "Tunisia": "Тунис",
+    "Turkey": "Турция",
+    "Turkmenistan": "Туркменистан",
+    "Tuvalu": "Тувалу",
+    "Uganda": "Уганда",
+    "Ukraine": "Украина",
+    "United Arab Emirates": "ОАЭ",
+    "United Kingdom": "Великобритания",
+    "United States of America": "США",
+    "Uruguay": "Уругвай",
+    "Uzbekistan": "Узбекистан",
+    "Vanuatu": "Вануату",
+    "Venezuela": "Венесуэла",
+    "Vietnam": "Вьетнам",
+    "Yemen": "Йемен",
+    "Zambia": "Замбия",
+    "Zimbabwe": "Зимбабве"
+  },
+  "transactions": {
+    "types": {
+      "deposit": "Депозит",
+      "transfer": "Перевод",
+      "exchange": "Обмен",
+      "withdrawal": "Вывод",
+      "withdraw": "Вывод",
+      "account_opening": "Открытие счета"
+    },
+    "status": {
+      "processing": "В обработке",
+      "completed": "Завершено",
+      "declined": "Отклонено",
+      "failed": "Ошибка"
+    },
+    "details": {
+      "title": "Детали транзакции",
+      "amount": "Сумма",
+      "fee": "Комиссия",
+      "date": "Дата",
+      "status": "Статус",
+      "description": "Описание",
+      "id": "ID транзакции",
+      "outgoing": "Исходящий",
+      "incoming": "Входящий",
+      "from": "От",
+      "to": "Кому",
+      "total_payment": "Итого к оплате",
+      "purpose": "Назначение платежа",
+      "internal_account": "Внутренний счет",
+      "not_specified": "Не указано"
+    }
+  },
+  "crypto": {
+    "hero": {
+      "subtitle": "Ежедневный объем торгов криптой $1 млрд+",
+      "title": "Торгуйте цифровыми активами с лицензированным швейцарским банком",
+      "description": "Ведущее швейцарское криптовалютное учреждение с профессиональным уровнем защиты. Начните торговать с полным соблюдением нормативных требований и поддержкой экспертов.",
+      "button": "Стать клиентом"
+    },
+    "features": {
+      "title": "Торгуйте криптовалютой с полной уверенностью",
+      "item1": "Легко обменивайте Bitcoin, Ethereum, стейблкоины и фиатные валюты.",
+      "item2": "Торгуйте эффективно с прозрачными и выгодными комиссиями.",
+      "item3": "Просматривайте свои активы и торгуйте в любое время, днем и ночью.",
+      "item4": "Профессиональные средства защиты с соблюдением швейцарских стандартов."
+    },
+    "why": {
+      "title": "Почему выбирают AlpenStark?",
+      "description": "AlpenStark предоставляет профессиональные услуги для инвесторов, ориентированных на долгосрочное накопление капитала. Наша платформа объединяет передовые технологии и индивидуальное обслуживание клиентов.",
+      "button": "Открыть счет"
+    },
+    "stats": {
+      "item1": "Работаем с 2007 года",
+      "item2": "Персональное управление счетом и советы экспертов",
+      "item3": "Обслуживаем клиентов в более чем 150 странах",
+      "item4": "Более $1 млрд активов под управлением",
+      "item5": "Швейцарская лицензия и надежная регуляторная база",
+      "item6": "Обработано транзакций на сумму более $327 млрд"
+    }
+  },
+  "digitalBanking": {
+    "hero": {
+      "badge": "Более 100 000 довольных пользователей",
+      "title": "Управляйте финансами в удобное время",
+      "description": "Возьмите под полный контроль свою финансовую жизнь. Получите доступ к своим средствам безопасно и удобно в любое время и из любого места.",
+      "button": "Регистрация",
+      "feature1Title": "БЕЗОПАСНО",
+      "feature1Desc": "Ваши данные и приватность под защитой",
+      "feature2Title": "УДОБНО",
+      "feature2Desc": "Круглосуточный доступ по всему миру"
+    },
+    "section1": {
+      "title": "Управляйте своими деньгами легко и точно",
+      "description": "Следите за своим финансовым здоровьем и отслеживайте активность счетов, карт и инвестиций через нашу цифровую платформу. Проверяйте баланс, просматривайте транзакции, обрабатывайте платежи, открывайте срочные вклады и многое другое."
+    },
+    "section2": {
+      "title": "Полная прозрачность транзакций",
+      "description": "Получите доступ к полным данным о каждом совершенном платеже. Скачивайте квитанции, отменяйте ожидающие переводы или используйте детали платежа повторно. Наслаждайтесь полным контролем над своими операциями."
+    },
+    "section3": {
+      "title": "Быстрая и интеллектуальная обработка платежей",
+      "description": "Отправляйте платежи в более чем 1200 учреждений или переводите средства между своими счетами, в банки Швейцарии и за границу. Быстрые, надежные и защищенные переводы круглосуточно.",
+      "button": "Начать"
+    },
+    "faq": {
+      "title": "Часто задаваемые вопросы",
+      "subtitle": "Ищете ответы? Обратитесь к нам, но сначала проверьте ответы ниже — возможно, ваш вопрос уже разобран.",
+      "q1": "Какие функции предлагает онлайн-банкинг?",
+      "a1": "Онлайн-банкинг позволяет проверять баланс, историю транзакций, переводить средства, оплачивать счета, создавать регулярные платежи, управлять срочными вкладами, экспортировать выписки, редактировать профиль и обращаться в поддержку. Все инструменты для полного контроля в одном месте.",
+      "q2": "Обязательна ли регистрация?",
+      "a2": "Определенно. Регистрация в онлайн-банкинге дает круглосуточный доступ к счетам, передовые параметры безопасности и возможность распоряжаться деньгами, когда вам удобно. Это бесплатно и занимает пару минут.",
+      "q3": "Что делать, если я не помню пароль?",
+      "a3": "Просто нажмите «Забыли пароль» на экране входа. Безопасная ссылка для сброса будет отправлена на ваш email. Следуйте инструкциям для создания нового пароля.",
+      "q4": "Насколько безопасен онлайн-банкинг?",
+      "a4": "Очень безопасен. Наш онлайн-банкинг использует защиту институционального уровня: 256-битное SSL-шифрование, многофакторный вход и постоянный мониторинг мошенничества. Ваша информация защищена по стандартам ведущих швейцарских банков.",
+      "q5": "Какие типы переводов доступны?",
+      "a5": "Моментальные переводы между своими счетами, переводы на другие швейцарские и международные счета, настройка регулярных и планирование будущих платежей. Каждый перевод защищен и подтверждается в реальном времени.",
+      "q6": "Могу ли я общаться в чате с поддержкой?",
+      "a6": "Абсолютно. После входа в систему вы можете написать нашей службе поддержки через защищенный чат. В рабочее время доступна онлайн-помощь.",
+      "q7": "Поддерживается ли оплата счетов?",
+      "a7": "Да, вы можете оплатить любой швейцарский или международный счет прямо из онлайн-банкинга. Запланируйте разовые или автоматические платежи и отслеживайте их историю.",
+      "q8": "Могу ли я отслеживать статус платежей по счетам?",
+      "a8": "Конечно. Контролируйте все платежи в режиме реального времени — смотрите ожидающие, завершенные и находящиеся в обработке транзакции, а также детали подтверждения. Вы также будете получать уведомления."
+    }
+  },
+  "currencyExchange": {
+    "hero": {
+      "badge": "Отлично 4.5 из 5 Trustpilot",
+      "title": "Интеллектуальная конвертация валют",
+      "description": "Легко конвертируйте валюты с привлекательными курсами и мгновенным исполнением. Получите доступ к 20+ валютам и цифровым активам через единый безопасный интерфейс.",
+      "widget": {
+        "sell": "Вы продаете",
+        "rate": "Курс",
+        "buy": "Вы получаете",
+        "button": "Открыть счет",
+        "adding": "Мы постоянно добавляем новые валюты в список"
+      }
+    },
+    "section1": {
+      "title": "Международный охват валют",
+      "description": "Получите доступ к мировым финансовым рынкам через нашу полнофункциональную платформу обмена валют. Торгуйте 20+ валютами и ведущими криптовалютами с защитой корпоративного уровня.",
+      "button": "Открыть счет"
+    },
+    "section2": {
+      "title": "Шаги для конвертации",
+      "step1": "Выберите исходную и целевую валюты из нашего широкого выбора",
+      "step2": "Укажите сумму, которую хотите конвертировать",
+      "step3": "Проверьте обменный курс и сводку по транзакции",
+      "step4": "Подтвердите конвертацию и получите средства мгновенно"
+    },
+    "section3": {
+      "title": "Рыночные курсы в реальном времени",
+      "description": "Наслаждайтесь прозрачным ценообразованием с рыночными курсами, обновляющимися каждую секунду. Наша мощная торговая инфраструктура обеспечивает наиболее выгодные обменные курсы.",
+      "button": "Начать торговлю"
+    },
+    "faq": {
+      "title": "Часто задаваемые вопросы",
+      "q1": "Как часто обновляются курсы обмена?",
+      "a1": "Наша платформа предоставляет обменные курсы в реальном времени, которые постоянно обновляются в часы работы рынка. Это гарантирует оптимальное ценообразование.",
+      "q2": "Какие комиссии применяются к конвертации валют?",
+      "a2": "Мы предлагаем прозрачную структуру комиссий с конкурентоспособными спредами, включенными в наши обменные курсы. Все комиссии отображаются заранее.",
+      "q3": "Как быстро завершаются конвертации?",
+      "a3": "Все конвертации валют выполняются на нашей платформе мгновенно. Ваши средства становятся доступны сразу после подтверждения.",
+      "q4": "Применяются ли лимиты на сумму обмена?",
+      "a4": "Лимиты на конвертацию зависят от уровня верификации вашего аккаунта и выбранной валютной пары. Более высокие уровни верификации открывают увеличенные лимиты."
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "Среднее время ответа 9.5 минут",
+      "title": "О нас",
+      "description": "Финансовые услуги являются основой любого предприятия. Они должны работать безупречно для поддержания ваших операций. Мы стремимся быть вашим надежным партнером. Наши технологии обеспечивают интуитивно понятные инструменты, подкрепленные внимательной поддержкой."
+    },
+    "quote": {
+      "text": "\"Традиционные банки часто подводят предпринимателей. Мы создали AlpenStark, чтобы восполнить этот пробел с помощью персонализированного обслуживания и передовых решений.\"",
+      "author": "Основатель"
+    },
+    "story": {
+      "title": "Наша история",
+      "p1": "Проработав 15 лет в традиционной банковской сфере, я своими глазами увидел, как крупные банки раз за разом подводили независимых предпринимателей, фрилансеров и развивающиеся компании. Снова и снова способные люди получали отказ или терялись в бюрократии просто потому, что не соответствовали узким требованиям классического банкинга.",
+      "p2": "Именно поэтому я создал AlpenStark — чтобы построить финансовый институт, который искренне поддерживает людей с реальными целями. Мы разработали платформу для тех, кому нужен банкинг, подстраивающийся под их нужды, а не наоборот. Объединив современные технологии с настоящей человеческой поддержкой, мы устранили препятствия. Сегодня я горд тем, что мы обслуживаем более 100 000 клиентов по всему миру. Каждый клиент важен, и ваши достижения — это наши достижения."
+    },
+    "contact": {
+      "title": "Поговорите с живым человеком",
+      "description": "Наши специалисты поддержки готовы ответить на любые ваши вопросы. Будь то техническая проблема или короткий вопрос, мы предоставляем тот уровень сервиса, который хотели бы получать сами!",
+      "formTitle": "Отправьте нам сообщение",
+      "formDescription": "Заполните форму ниже или напишите нам на support@alpenstark.com. Наша команда ответит вам максимально быстро.",
+      "firstName": "Имя *",
+      "lastName": "Фамилия *",
+      "email": "Email *",
+      "message": "Сообщение",
+      "button": "Отправить",
+      "success": "Ваше сообщение успешно отправлено!",
+      "error": "Произошла ошибка при отправке. Пожалуйста, попробуйте снова."
+    }
+  }
+}

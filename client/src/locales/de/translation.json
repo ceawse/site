@@ -1,0 +1,1201 @@
+{
+  "common": {
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "open_account": "Konto eröffnen",
+    "logout": "Abmelden",
+    "withdraw": "Abheben",
+    "deposit": "Einzahlen",
+    "exchange": "Umtauschen",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "loading": "Laden...",
+    "no_data": "Keine Daten verfügbar",
+    "yes": "Ja",
+    "no": "Nein",
+    "dashboard": "Dashboard",
+    "upload_file": "Datei hochladen",
+    "view_attachment": "Anhang anzeigen"
+  },
+  "legal": {
+    "terms_title": "AGB",
+    "privacy_title": "Datenschutz",
+    "cookies_title": "Cookie-Richtlinie",
+    "last_updated": "Zuletzt aktualisiert: März 2024"
+  },
+  "navbar": {
+    "crypto": "Krypto",
+    "digital_banking": "Digitales Banking",
+    "currency_exchange": "Währungsumtausch",
+    "about_us": "Über uns"
+  },
+  "footer": {
+    "legal_info": "Rechtliche Informationen",
+    "terms": "AGB",
+    "cookie_policy": "Cookie-Richtlinie",
+    "privacy_policy": "Datenschutz",
+    "contact_info": "Kontaktinformationen",
+    "address": "Avenue Industrielle 12, 1227 Carouge GE, Schweiz",
+    "all_rights_reserved": "Alle Rechte vorbehalten.",
+    "contacts": "Kontakte"
+  },
+  "home": {
+    "hero": {
+      "title_1": "Ihre Finanzen,",
+      "title_2": "Grenzenlos.",
+      "subtitle": "Erleben Sie wahre finanzielle Unabhängigkeit. Ihre Vermögenswerte, gesichert und optimiert, wohin Ihre Reise auch führt."
+    },
+    "marquee": {
+      "transfers": "Weltweite Überweisungen",
+      "exchange": "Echtzeit-Umtausch",
+      "assets": "Digitale Vermögenswerte",
+      "wallets": "Geschützte Wallets",
+      "invoicing": "Intelligente Rechnungsstellung",
+      "banking": "Multiwährungs-Banking"
+    },
+    "solutions": {
+      "title_1": "Komplette",
+      "title_2": "Finanzlösungen",
+      "items": {
+        "iban": {
+          "title": "Dedizierte IBAN",
+          "description": "Akzeptieren und senden Sie Zahlungen unter Ihrer Geschäftsidentität, profitieren Sie von schneller Verarbeitung mit personalisierten Kontodaten.",
+          "button": "Bankkonto erstellen"
+        },
+        "multi_currency": {
+          "title": "Multiwährungskonto",
+          "description": "Verwalten Sie über 30 Währungen mit Leichtigkeit, vereinfachen Sie grenzüberschreitende Zahlungen und senken Sie Umtauschgebühren – alles in einer einheitlichen Oberfläche.",
+          "button": "Jetzt starten"
+        },
+        "exchange": {
+          "title": "Währungsumtausch",
+          "description": "Tauschen Sie Währungen in Sekundenschnelle zu günstigen Kursen mit Live-Marktdaten um. Greifen Sie auf über 30 internationale Währungen zu.",
+          "button": "Umtausch starten"
+        },
+        "crypto": {
+          "title": "Krypto kaufen & verkaufen",
+          "description": "Tauschen Sie Kryptowährungen mühelos mit attraktiven Kursen und geschützten Transaktionen um.",
+          "button": "Handel starten"
+        },
+        "cards": {
+          "title": "Virtuelle und physische Karten",
+          "description": "Erstellen Sie sofort virtuelle Karten für Online-Einkäufe und fordern Sie physische Karten für weltweite Ausgaben an.",
+          "button": "Karte bestellen"
+        }
+      }
+    },
+    "platform": {
+      "title": "Fortschrittliche Finanzplattform",
+      "title_accent": "für globale Überweisungen",
+      "description": "Nutzen Sie unsere anspruchsvolle Banking-Infrastruktur, um grenzüberschreitende Transaktionen mühelos abzuwickeln und Ihre komplexen Währungs- und Digital-Asset-Bedürfnisse zu erfüllen.",
+      "feature_1_title": "Geld in 100+ Länder senden",
+      "feature_1_desc": "Wickeln Sie internationale Zahlungen über SWIFT-Netzwerke oder nationale Clearingsysteme ab, unterstützt durch unser robustes Netzwerk.",
+      "feature_2_title": "Weltweite Währungen umtauschen",
+      "feature_2_desc": "Tauschen Sie Ihr Guthaben in fast jede wichtige globale Währung um. Verbindung zu SWIFT-Schienen und lokalen Zahlungsnetzwerken.",
+      "feature_3_title": "Geld über SWIFT und Krypto erhalten",
+      "feature_3_desc": "Akzeptieren Sie eingehende Zahlungen in mehreren Währungen, einschließlich USD, EUR, GBP, USDC und BTC."
+    },
+    "convert_widget": {
+      "title": "Währungen und Krypto umtauschen",
+      "description": "Erhalten Sie günstige Wechselkurse für über 20 Währungen und beliebte Kryptowährungen. Unsere robuste Handelsplattform garantiert optimalen Wert.",
+      "rate_title": "Günstige Wechselkurse",
+      "rate_desc": "Greifen Sie auf Top-Marktkurse mit transparenten Preisen und ohne versteckte Gebühren zu.",
+      "instant_title": "Sofortige Umrechnungen",
+      "instant_desc": "Schließen Sie Währungsumrechnungen in Momenten mit sofortiger Abrechnung ab.",
+      "card_title": "Währungsumtausch",
+      "sell_label": "Sie verkaufen",
+      "buy_label": "Sie kaufen",
+      "rate_label": "Wechselkurs",
+      "button": "Jetzt umtauschen"
+    },
+    "large_transfers": {
+      "title": "Große Überweisungen mit absoluter Sicherheit abwickeln",
+      "description": "Unser effizienter Prozess reduziert Reibung und Risiko und garantiert eine reibungslose Ausführung.",
+      "point_1": "Genießen Sie einen klaren Aufschlagsatz für alle Währungen.",
+      "point_2": "Nutzen Sie Echtzeit-Marktkurse, um Ihre Währungsumrechnungen zeitlich abzustimmen.",
+      "point_3": "Erleben Sie volle Freiheit ohne erzwungene Umrechnungen.",
+      "point_4": "Jede Gebühr wird im Voraus angezeigt, bevor Sie fortfahren."
+    },
+    "security": {
+      "title": "Zuverlässige und geschützte Infrastruktur für",
+      "title_accent": "Ihre Transaktionen",
+      "subtitle": "Ihr Schutz ist unser oberstes Gebot",
+      "feature_1_title": "Sicherheit auf Unternehmensebene",
+      "feature_1_desc": "Ihre Transaktionen sind durch professionelle Verschlüsselung und Sicherheitsmaßnahmen geschützt.",
+      "feature_2_title": "Sicherer Zugang",
+      "feature_2_desc": "Fortschrittliche mehrstufige Verifizierung schützt alle Ihre sensiblen Daten, mit Zwei-Faktor-Authentifizierung als Standard.",
+      "feature_3_title": "Geschützte Konten",
+      "feature_3_desc": "Ihre Gelder werden niemals verliehen oder investiert – sie bleiben jederzeit vollständig verfügbar."
+    },
+    "trust": {
+      "title_1": "Gewählt von mehr als",
+      "title_2": "100.000 Kunden",
+      "title_3": "für zuverlässigen Service.",
+      "subtitle": "Der Einstieg mit Ihrem persönlichen Konto sollte einfach sein. Wir stellen sicher, dass er es ist.",
+      "button": "Konto erstellen"
+    }
+  },
+  "auth": {
+    "login_title": "In Ihr Konto einloggen",
+    "register_title": "Konto erstellen",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "login_button": "Zum Dashboard anmelden",
+    "register_button": "Registrieren",
+    "no_account": "Haben Sie noch kein Konto?",
+    "already_have_account": "Haben Sie bereits ein Konto?",
+    "invalid_credentials": "Ungültige Zugangsdaten oder Serverfehler",
+    "full_name": "Vollständiger Name",
+    "phone": "Telefonnummer",
+    "dob": "Geburtsdatum",
+    "address": "Adresse",
+    "city": "Stadt",
+    "state": "Bundesland / Region",
+    "zip": "Postleitzahl",
+    "country": "Land",
+    "step_account": "Kontodaten",
+    "step_personal": "Persönliche Informationen",
+    "first_name": "Vorname",
+    "last_name": "Nachname",
+    "region": "Bundesland / Region",
+    "postal_code": "Postleitzahl",
+    "back": "Zurück",
+    "next": "Weiter",
+    "fill_required": "Bitte füllen Sie alle Pflichtfelder aus",
+    "register_error": "Fehler bei der Registrierung des Kontos",
+    "sign_in": "Einloggen"
+  },
+  "dashboard": {
+    "welcome": "Willkommen, {{name}}",
+    "total_balance_in": "Gesamtguthaben in",
+    "bank_accounts": "Bankkonten",
+    "cryptocurrency": "Kryptowährung",
+    "recent_activity": "Letzte Aktivitäten",
+    "no_transactions": "Keine letzten Transaktionen",
+    "quick_links": "Quick-Links",
+    "add_bank": "Ihre Bank hinzufügen",
+    "create_crypto_wallet": "Krypto-Wallet erstellen",
+    "buy_crypto": "Krypto kaufen",
+    "currency_exchange_title": "Währungsumtausch",
+    "cryptocurrency_exchange_title": "Kryptowährungsumtausch",
+    "table": {
+      "name": "Name",
+      "price": "Preis (USD)",
+      "change_24h": "24h Änderung",
+      "change_percent": "% Änderung",
+      "buy": "Kaufen",
+      "sell": "Verkaufen"
+    },
+    "account_overview": {
+      "title": "Girokonten",
+      "available_funds": "Verfügbare Mittel in",
+      "new_transfer": "Neue Überweisung",
+      "table": {
+        "account": "Konto",
+        "balance": "Kontostand",
+        "reserved": "Reserviert",
+        "available": "Verfügbare Mittel",
+        "currency": "Währung"
+      }
+    },
+    "account_statement": {
+      "title": "Kontoauszug",
+      "filter": {
+        "date_from": "Datum von",
+        "date_to": "Datum bis",
+        "account": "Konto",
+        "button": "Filtern"
+      },
+      "info": {
+        "account_number": "Kontonummer:",
+        "currency": "Währung:",
+        "period": "Zeitraum:",
+        "debit_turnover": "Soll-Umsatz:",
+        "credit_turnover": "Haben-Umsatz:"
+      },
+      "no_transactions": "Keine Transaktionen für den ausgewählten Zeitraum und das Konto gefunden."
+    },
+    "top_up": {
+      "title": "Konto aufladen",
+      "steps": {
+        "enter_details": "Details eingeben",
+        "payment_info": "Zahlungsinformationen",
+        "confirmation": "Bestätigung"
+      },
+      "subtitle_details": "Aufladedetails eingeben",
+      "subtitle_crypto": "Zahlungsdetails Kryptowährung",
+      "subtitle_bank": "Zahlungsdetails Banküberweisung",
+      "select_type": "Kontotyp zum Aufladen auswählen",
+      "fiat_account": "FIAT-KONTO",
+      "crypto_account": "KRYPTO-KONTO",
+      "no_wallets_error": "Sie haben noch keine Krypto-Wallets. Bitte erstellen Sie zuerst eine im Bereich Wallets.",
+      "select_account_label": "Konto zum Aufladen auswählen",
+      "amount_label": "Betrag",
+      "currency_label": "Währung",
+      "payment_method_label": "Zahlungsmethode",
+      "bank_transfer": "Banküberweisung",
+      "card_payment": "Kredit- oder Debitkarte",
+      "crypto_instruction": "Bitte überweisen Sie {{amount}} {{currency}} an eine der folgenden Adressen:",
+      "blockchain_network": "Blockchain-Netzwerk",
+      "address": "Adresse",
+      "bank_instruction": "Bitte überweisen Sie {{amount}} {{currency}} an die folgenden Bankdaten:",
+      "beneficiary": "Begünstigter",
+      "iban": "IBAN",
+      "bic_swift": "BIC/SWIFT",
+      "reference": "Referenz",
+      "card_instruction": "Unser Support-Team wird Ihre Anfrage prüfen und Sie innerhalb von 24 Stunden mit Zahlungsanweisungen kontaktieren.",
+      "card_request_summary": "Sie haben eine Kontoeinzahlung in Höhe von {{amount}} {{currency}} mit {{method}} angefordert.",
+      "redirecting": "Weiterleitung zum sicheren Kartenzahlungs-Gateway...",
+      "amount_to_deposit": "Einzuzahlender Betrag: {{amount}} {{currency}}",
+      "confirm_checkbox": "Ich bestätige, dass ich die Gelder überwiesen habe",
+      "confirm_button": "Bestätigen",
+      "terms_agreement": "Mit dem Absenden der Gelder erklären Sie sich mit unseren Nutzungsbedingungen einverstanden.",
+      "success_title": "Erfolg!",
+      "success_subtitle": "Transaktion in Bearbeitung",
+      "success_desc": "Wir warten auf die Zahlungsbestätigung. Sie sehen die Transaktion in Ihrem Kontoauszug, sobald sie bestätigt wurde.",
+      "view_accounts": "Meine Konten anzeigen",
+      "errors": {
+        "enter_amount_account": "Bitte Betrag eingeben und Konto auswählen",
+        "amount_gt_zero": "Betrag muss größer als 0 sein",
+        "confirm_transfer": "Bitte bestätigen Sie, dass Sie die Gelder überwiesen haben.",
+        "failed": "Aufladung fehlgeschlagen"
+      }
+    },
+    "bank_transfer": {
+      "title": "Banküberweisung",
+      "steps": {
+        "enter_data": "Daten eingeben",
+        "confirmation": "Bestätigung",
+        "result": "Ergebnis"
+      },
+      "details_subtitle": "Überweisungsdetails",
+      "beneficiary_name": "Name des Begünstigten",
+      "swift_bic": "SWIFT-Code / BIC",
+      "beneficiary_account": "Konto des Begünstigten",
+      "payer_account": "Zahlungskonto",
+      "amount": "Betrag",
+      "currency": "Währung",
+      "available": "Verfügbar",
+      "purpose": "Verwendungszweck",
+      "comment": "Kommentar",
+      "review_instruction": "Bitte überprüfen Sie die Überweisungsdetails vor der Bestätigung.",
+      "completed_title": "Überweisung erfolgreich abgeschlossen.",
+      "errors": {
+        "fill_required": "Bitte füllen Sie alle Pflichtfelder aus",
+        "failed": "Überweisung fehlgeschlagen"
+      }
+    },
+    "loan": {
+      "title": "Kredit aufnehmen",
+      "promo": {
+        "title": "Einen Privatkredit beantragen.",
+        "subtitle": "Zinsen ab 3,6% effektiver Jahreszins.",
+        "desc": "Dieser Zinssatz ist für Kredite zwischen 2.500 $ und 35.000 $ verfügbar. Andere Kreditbeträge sind zu alternativen Zinssätzen verfügbar. Ihr Zinssatz hängt von Ihren persönlichen Umständen, dem Kreditbetrag und der Laufzeit ab.",
+        "benefit_1": "Holen Sie sich Ihr kostenloses, persönliches Angebot",
+        "benefit_2": "Erhalten Sie Ihr Geld innerhalb eines Tages!"
+      },
+      "calculator_title": "Probieren Sie unseren Privatkreditrechner aus",
+      "how_much_borrow": "Wie viel möchten Sie leihen?",
+      "representative_apr": "Repräsentativer {{apr}}% effektiver Jahreszins",
+      "how_long_repay": "Wie lange möchten Sie zurückzahlen?",
+      "years": "Jahre",
+      "months": "Monate",
+      "example": {
+        "title": "Repräsentatives Beispiel",
+        "borrowing": "Kreditbetrag",
+        "over": "Laufzeit",
+        "monthly_repayment": "Monatliche Rate",
+        "total_repayment": "Gesamtrückzahlung"
+      },
+      "tell_us_more": "Erzählen Sie uns mehr über sich",
+      "occupation_label": "Was ist Ihr Beruf?",
+      "income_label": "Monatliches Einkommen",
+      "income_placeholder": "Betrag eingeben",
+      "quote_button": "Mein persönliches Angebot einholen",
+      "upload_title": "Bankauszug der letzten 3 Monate hochladen",
+      "drag_drop": "Dateien hierher ziehen oder zum Durchsuchen klicken",
+      "accepted_formats": "Akzeptierte Formate: PDF, JPG, PNG, GIF (max. 5MB pro Datei)",
+      "max_files": "Maximal 3 Dateien erlaubt",
+      "notification_success": "Vielen Dank! Ihre Angebotsanfrage wurde übermittelt.",
+      "success_modal": {
+        "title": "Antrag erfolgreich eingereicht",
+        "subtitle": "Ihr Kreditantrag wurde eingereicht und wird geprüft. Sie erhalten das Ergebnis innerhalb von 24 Stunden.",
+        "id_label": "Antrags-ID:",
+        "whats_next": "Was passiert als Nächstes?",
+        "step_1": "Unser Team prüft Ihren Antrag und Ihre Dokumente",
+        "step_2": "Sie erhalten innerhalb von 24 Stunden eine Entscheidung",
+        "step_3": "Bei Genehmigung stehen die Mittel kurz darauf zur Verfügung",
+        "close": "Schließen"
+      }
+    },
+    "verification": {
+      "title": "Identitätsprüfung",
+      "subtitle": "Um regulatorische Anforderungen zu erfüllen, müssen wir Ihre Identität überprüfen. Bitte laden Sie die erforderlichen Dokumente unten hoch.",
+      "id_verification": "Identitätsdokumentprüfung",
+      "bank_verification": "Bankkontoprüfung",
+      "doc_type_label": "Dokumententyp",
+      "passport": "Reisepass",
+      "id_card": "Personalausweis",
+      "bank_statement": "Kontoauszug",
+      "upload_instruction_passport": "Bitte laden Sie ein klares Foto der Hauptseite Ihres Reisepasses hoch, auf dem Ihr Foto und Ihre persönlichen Daten zu sehen sind.",
+      "upload_instruction_id": "Bitte laden Sie ein klares Foto der Vorder- und Rückseite Ihres Personalausweises hoch, auf dem Ihr Foto und Ihre persönlichen Daten zu sehen sind.",
+      "bank_instruction": "Bitte laden Sie Ihre Kontoauszüge der letzten 3 Monate hoch. Akzeptierte Formate: PDF, JPG, PNG, GIF (max. 5MB pro Datei). Maximal 3 Dateien erlaubt.",
+      "status": {
+        "verified": "Verifiziert",
+        "approved": "Genehmigt",
+        "pending": "Prüfung ausstehend",
+        "rejected": "Abgelehnt",
+        "not_started": "Nicht gestartet"
+      },
+      "alerts": {
+        "pending": "Dokument erfolgreich hochgeladen und befindet sich in der Prüfung.",
+        "verified": "Ihre Identität wurde erfolgreich verifiziert.",
+        "rejected": "Ihr Dokument wurde abgelehnt. Bitte laden Sie ein klareres Foto hoch."
+      },
+      "upload_box": {
+        "uploading": "Hochladen...",
+        "upload_doc": "Foto von {{type}} hochladen",
+        "click_select": "oder zum Auswählen klicken",
+        "select_button": "Datei auswählen"
+      },
+      "notification": {
+        "success": "Datei erfolgreich hochgeladen",
+        "failed": "Hochladen fehlgeschlagen"
+      }
+    },
+    "settings": {
+      "title": "Profileinstellungen",
+      "personal_info": "Persönliche Informationen",
+      "address_info": "Adressinformationen",
+      "notifications": "Benachrichtigungseinstellungen",
+      "show_notifications": "Benachrichtigungen für neue Nachrichten von AlpenStark anzeigen",
+      "notification_desc": "Wenn aktiviert, erhalten Sie Browser-Benachrichtigungen und In-App-Warnungen, wenn AlpenStark Ihnen neue Nachrichten sendet.",
+      "notification": {
+        "success": "Profil erfolgreich aktualisiert",
+        "failed": "Aktualisierung fehlgeschlagen"
+      },
+      "change_password": "Passwort ändern",
+      "current_password": "Aktuelles Passwort",
+      "new_password": "Neues Passwort",
+      "confirm_new_password": "Neues Passwort bestätigen",
+      "errors": {
+        "fill_all": "Bitte alle Felder ausfüllen",
+        "passwords_mismatch": "Neue Passwörter stimmen nicht überein",
+        "password_too_short": "Neues Passwort muss mindestens 6 Zeichen lang sein",
+        "password_failed": "Passwort konnte nicht geändert werden"
+      },
+      "password_success": "Passwort erfolgreich geändert"
+    },
+    "messages": {
+      "title": "Nachrichten",
+      "tabs": {
+        "list": "Nachrichten",
+        "new": "Neue Nachricht"
+      },
+      "no_messages": "Keine Nachrichten gefunden",
+      "new_badge": "Neu",
+      "subject_label": "Betreff",
+      "content_label": "Nachrichteninhalt",
+      "send_button": "Nachricht senden",
+      "success_send": "Nachricht erfolgreich gesendet!",
+      "errors": {
+        "load_failed": "Nachrichten konnten nicht geladen werden.",
+        "fill_all": "Bitte alle Felder ausfüllen.",
+        "send_failed": "Nachricht konnte nicht gesendet werden."
+      },
+      "dialog": {
+        "reply": "Antworten",
+        "close": "Schließen"
+      }
+    },
+    "withdraw_accounts": {
+      "title": "Auszahlungskonten",
+      "subtitle": "Zur Vereinfachung können Sie Ihre externen Bankkontoinformationen hinzufügen, um Gelder von der AlpenStark Bank einfach zu speichern und abzuheben.",
+      "table": {
+        "bank_name": "Bankname",
+        "swift_bic": "SWIFT/BIC",
+        "account_number": "Kontonummer",
+        "type": "Typ"
+      },
+      "add_button": "Bankkonto hinzufügen",
+      "modal_title": "Bankkonto hinzufügen",
+      "account_type": "Kontotyp",
+      "personal": "Privat",
+      "business": "Geschäftlich",
+      "bank_name_label": "Bankname",
+      "swift_bic_label": "SWIFT/BIC",
+      "account_number_label": "Kontonummer",
+      "confirm_checkbox": "Ich bestätige, dass die eingegebenen Bankkontoinformationen korrekt sind",
+      "notification": {
+        "success": "Bankkonto erfolgreich gespeichert",
+        "failed": "Speichern des Bankkontos fehlgeschlagen"
+      }
+    },
+    "list_transfers": {
+      "title": "Liste der Überweisungen",
+      "tabs": {
+        "all": "Alle",
+        "completed": "Abgeschlossen",
+        "processing": "In Bearbeitung",
+        "declined": "Abgelehnt"
+      },
+      "showing_period": "Überweisungen von {{from}} bis {{to}} anzeigen",
+      "no_transactions": "Keine Transaktionen für die ausgewählten Kriterien gefunden"
+    },
+    "crypto_wallets": {
+      "title": "Kryptowährungs-Wallets",
+      "add_button": "Neue Wallet hinzufügen",
+      "no_wallets": "Sie haben noch keine Kryptowährungs-Wallets.",
+      "table": {
+        "crypto": "Kryptowährung",
+        "blockchain": "Blockchain",
+        "balance": "Verfügbares Guthaben",
+        "actions": "Aktionen"
+      },
+      "modal": {
+        "title": "Neue Kryptowährungs-Wallet erstellen",
+        "network_label": "Blockchain-Netzwerk *",
+        "crypto_label": "Kryptowährung *",
+        "create_button": "Erstellen"
+      },
+      "notification": {
+        "success": "Krypto-Wallet erfolgreich erstellt",
+        "failed": "Wallet konnte nicht erstellt werden. Stellen Sie sicher, dass sie nicht bereits existiert."
+      },
+      "landing": {
+        "hero_title": "Cryptocurrency — simple and secure",
+        "hero_subtitle": "Instant transfers and banking protection of your funds",
+        "create_first": "Create First Wallet",
+        "benefits_title": "Benefits of Cryptocurrency",
+        "benefit_1_title": "Lightning-fast Transactions",
+        "benefit_1_desc": "Send and receive funds worldwide in minutes, without waiting during traditional bank hours or verification periods.",
+        "benefit_2_title": "Enhanced Security",
+        "benefit_2_desc": "Blockchain technology provides unmatched security and transparency for all transactions.",
+        "benefit_3_title": "Global Reach",
+        "benefit_3_desc": "Make cross-border transactions easily, bypassing traditional financial intermediaries and delays.",
+        "benefit_4_title": "Low Fees",
+        "benefit_4_desc": "Enjoy significantly lower transaction fees compared to traditional banking services, especially for international transfers."
+      }
+    },
+    "crypto_transfer": {
+      "title": "Kryptowährungs-Überweisung",
+      "steps": {
+        "details": "Details eingeben",
+        "confirm": "Überweisung bestätigen",
+        "result": "Ergebnis"
+      },
+      "from_wallet": "Von Wallet überweisen",
+      "available": "Verfügbar",
+      "to_address": "An Adresse überweisen",
+      "amount": "Betrag",
+      "network": "Netzwerk",
+      "review_instruction": "Bitte überprüfen Sie die Überweisungsdetails vor der Bestätigung.",
+      "from": "Von:",
+      "wallet": "Wallet",
+      "to_address_label": "An Adresse:",
+      "network_label": "Netzwerk:",
+      "amount_label": "Betrag:",
+      "success_title": "Überweisung erfolgreich",
+      "success_desc": "Ihr Guthaben wurde an die angeforderte Adresse gesendet.",
+      "another_transfer": "Weitere Überweisung tätigen",
+      "confirm_transfer_button": "Überweisung bestätigen",
+      "errors": {
+        "fill_all": "Bitte alle Felder ausfüllen",
+        "amount_gt_zero": "Betrag muss größer als 0 sein",
+        "insufficient_balance": "Unzureichendes Guthaben",
+        "failed": "Überweisung fehlgeschlagen"
+      },
+      "networks": {
+        "bitcoin": "Bitcoin",
+        "ethereum": "Ethereum (ERC20)",
+        "bsc": "Binance Smart Chain (BEP20)",
+        "solana": "Solana",
+        "tron": "Tron (TRC20)"
+      }
+    },
+    "currency_exchange": {
+      "title": "Währungsumtausch",
+      "you_sell": "Sie verkaufen",
+      "you_buy": "Sie kaufen",
+      "amount_label": "Betrag",
+      "from_account": "Vom Konto",
+      "to_currency": "In Währung",
+      "insufficient_balance": "{{currency}}-Konto hat unzureichendes Guthaben. Bitte laden Sie Guthaben auf, um umzutauschen.",
+      "placeholder_amount": "0.00",
+      "exchange_button": "Umtauschen",
+      "success_msg": "Umtausch erfolgreich eingeleitet",
+      "errors": {
+        "failed": "Umtausch fehlgeschlagen"
+      }
+    },
+    "crypto_transactions": {
+      "title": "Krypto-Transaktionen",
+      "filter": {
+        "date_from": "Datum von",
+        "date_to": "Datum bis",
+        "button": "Filtern"
+      },
+      "no_transactions": "Keine Krypto-Transaktionen für den ausgewählten Zeitraum gefunden.",
+      "table": {
+        "date": "Datum",
+        "account": "Konto",
+        "description": "Beschreibung",
+        "status": "Status",
+        "amount": "Betrag"
+      }
+    },
+    "invoices": {
+      "title": "Rechnungen",
+      "no_invoices": "Sie haben zurzeit keine Rechnungen.",
+      "table": {
+        "invoice_num": "Rechnungs-Nr.",
+        "date": "Datum",
+        "amount": "Betrag",
+        "status": "Status"
+      }
+    },
+    "sidebar": {
+      "main_page": "Hauptseite",
+      "accounts": "Konten",
+      "account_overview": "Kontoübersicht",
+      "account_statement": "Kontoauszug",
+      "withdraw_accounts": "Auszahlungskonten",
+      "account_top_up": "Konto aufladen",
+      "transfers": "Überweisungen",
+      "bank_transfer": "Banküberweisung",
+      "list_transfers": "Überweisungsliste",
+      "cryptocurrency": "Kryptowährung",
+      "wallets": "Wallets",
+      "transfer": "Überweisung",
+      "transactions": "Transaktionen",
+      "currency_exchange": "Währungsumtausch",
+      "invoices": "Rechnungen",
+      "get_loan": "Kredit aufnehmen",
+      "settings": "Einstellungen",
+      "profile_settings": "Profil",
+      "verification": "Verifizierung",
+      "security": "Sicherheit",
+      "messages": "Nachrichten",
+      "logout": "Abmelden"
+    }
+  },
+  "admin": {
+    "panel_title": "Admin-Bereich",
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "users": "Benutzer",
+      "transactions": "Transaktionen",
+      "messages": "Nachrichten",
+      "settings": "Einstellungen",
+      "loans": "Kredite",
+      "backup": "Backup",
+      "logout": "Abmelden"
+    },
+    "loans": {
+      "title": "Kreditanfragen",
+      "no_loans": "Keine Kreditanfragen gefunden",
+      "approve": "Genehmigen",
+      "reject": "Ablehnen",
+      "details_title": "Kreditdetails",
+      "user": "Benutzer",
+      "application_date": "Antragsdatum",
+      "amount": "Betrag",
+      "term": "Laufzeit",
+      "occupation": "Beruf",
+      "monthly_income": "Monatliches Einkommen",
+      "years": "Jahre",
+      "months": "Monate"
+    },
+    "backup": {
+      "title": "Sicherung und Wiederherstellung",
+      "export_title": "Datenbank exportieren",
+      "export_description": "Laden Sie die aktuelle Version der SQLite-Datenbank herunter. Dies umfasst alle Benutzer, Konten, Transaktionen und Einstellungen.",
+      "export_button": "Backup herunterladen (.sqlite)",
+      "import_title": "Datenbank importieren",
+      "import_description": "Laden Sie eine SQLite-Datenbankdatei hoch, um Daten wiederherzustellen.",
+      "import_warning": "WARNUNG: Das Importieren einer Datenbank überschreibt alle aktuellen Daten vollständig. Diese Aktion ist unwiderruflich.",
+      "import_button": "Datei auswählen und importieren"
+    },
+    "dashboard": {
+      "overview": "Dashboard-Übersicht",
+      "total_users": "Gesamtbenutzer",
+      "pending_transactions": "Ausstehende Transaktionen",
+      "total_fiat": "Gesamt-Fiat-Saldo des Systems"
+    },
+    "users": {
+      "management": "Benutzerverwaltung",
+      "table": {
+        "id": "ID",
+        "name": "Name",
+        "email": "E-Mail",
+        "role": "Rolle",
+        "verified": "Verifiziert",
+        "actions": "Aktionen"
+      },
+      "edit": "Bearbeiten",
+      "message": "Nachricht",
+      "no_users": "Keine Benutzer gefunden",
+      "roles": {
+        "user": "Benutzer",
+        "admin": "Admin"
+      },
+      "dialog": {
+        "title": "Nachricht an {{name}} senden",
+        "subject": "Betreff",
+        "message": "Nachricht",
+        "cancel": "Abbrechen",
+        "send": "Senden",
+        "sending": "Wird gesendet...",
+        "success": "Nachricht erfolgreich gesendet",
+        "failed": "Fehler beim Senden der Nachricht"
+      }
+    },
+    "transactions": {
+      "management": "Transaktionsverwaltung",
+      "tabs": {
+        "all": "Alle Transaktionen",
+        "pending": "Ausstehend",
+        "completed": "Abgeschlossen"
+      },
+      "table": {
+        "id": "ID",
+        "user": "Benutzer",
+        "account": "Konto",
+        "type": "Typ",
+        "amount": "Betrag",
+        "currency": "Währung",
+        "status": "Status",
+        "date": "Datum",
+        "actions": "Aktionen"
+      },
+      "approve": "Genehmigen",
+      "decline": "Ablehnen",
+      "edit": "Bearbeiten",
+      "no_transactions": "Keine Transaktionen gefunden",
+      "dialog": {
+        "title": "Transaktionsdetails bearbeiten",
+        "sender": "Absenderadresse (Von)",
+        "recipient": "Empfängeradresse (An)",
+        "amount": "Betrag",
+        "fee": "Gebühr / Steuer",
+        "description": "Beschreibung",
+        "impact_title": "Berechnung der Saldoänderung:",
+        "impact_desc_deposit": "Bei Einzahlungen wird nur der Betrag zum Saldo addiert.",
+        "impact_desc_transfer": "Bei Überweisungen werden sowohl Betrag als auch Gebühr vom Saldo abgezogen.",
+        "note": "Hinweis: Das Ändern des Betrags oder der Gebühr passt automatisch den Kontostand des Benutzers an, wenn die Transaktion noch in Bearbeitung ist.",
+        "save": "Änderungen speichern",
+        "cancel": "Abbrechen"
+      },
+      "confirm_status": "Sind Sie sicher, dass Sie diese Transaktion als {{status}} markieren möchten?",
+      "notification": {
+        "status_success": "Transaktionsstatus erfolgreich aktualisiert",
+        "status_error": "Fehler beim Aktualisieren des Transaktionsstatus",
+        "update_success": "Transaktion erfolgreich aktualisiert",
+        "update_error": "Fehler beim Aktualisieren der Transaktion"
+      }
+    },
+    "settings": {
+      "title": "Systemeinstellungen",
+      "crypto_wallets": "Krypto-Wallet-Adressen",
+      "bank_details": "Bankdaten (für FIAT-Aufladung)",
+      "beneficiary": "Name des Begünstigten",
+      "iban": "IBAN",
+      "bic_swift": "BIC / SWIFT",
+      "general_contacts": "General Contact Information",
+      "contact_email": "Company Support Email",
+      "contact_address": "Company Physical Address",
+      "save_all": "Alle Einstellungen speichern",
+      "notification": {
+        "success": "Einstellungen erfolgreich aktualisiert",
+        "error": "Fehler beim Aktualisieren der Einstellungen"
+      }
+    },
+    "user_detail": {
+      "title": "Benutzer bearbeiten: {{name}}",
+      "profile_data": "Profildaten",
+      "role_label": "Rolle",
+      "verified_status": "Verifizierungsstatus",
+      "verification_status_label": "Status",
+      "verification_doc": "Verifizierungsdokument ({{type}}):",
+      "view_doc": "Dokument {{index}} anzeigen",
+      "save_profile": "Profil speichern",
+      "accounts_title": "Konten",
+      "account_info": "{{currency}}-Konto ({{type}})",
+      "account_number": "Nummer: {{num}}",
+      "balance": "Saldo: ",
+      "deposit_withdraw": "Einzahlung / Auszahlung",
+      "no_accounts": "Keine Konten gefunden.",
+      "add_account": "Neues Konto hinzufügen",
+      "type_label": "Typ",
+      "currency_placeholder": "Währung (z.B. USD, BTC)",
+      "initial_balance": "Anfangssaldo",
+      "create_account": "Konto erstellen",
+      "prompts": {
+        "amount": "Geben Sie den Betrag zum Einzahlen (positiv) oder Abheben (negativ) ein:",
+        "description": "Geben Sie eine Beschreibung für diese Transaktion ein:",
+        "incoming": "Eingehende Überweisung",
+        "outgoing": "Ausgehende Überweisung"
+      },
+      "notification": {
+        "user_not_found": "Benutzer nicht gefunden",
+        "user_saved": "Benutzer erfolgreich gespeichert",
+        "user_save_error": "Fehler beim Speichern des Benutzers",
+        "balance_updated": "Saldo erfolgreich aktualisiert",
+        "transaction_created": "Transaktion erstellt und wartet auf Genehmigung",
+        "balance_error": "Fehler beim Aktualisieren des Saldos",
+        "account_created": "Konto erfolgreich erstellt",
+        "account_error": "Fehler beim Erstellen des Kontos"
+      }
+    },
+    "messages": {
+      "title": "Benutzernachrichten",
+      "no_messages": "Noch keine Nachrichten von Benutzern.",
+      "reply_button": "Dem Benutzer antworten",
+      "view_profile": "Profil anzeigen",
+      "admin_label": "Admin (an {{name}})",
+      "dialog": {
+        "title": "Nachricht an {{name}} senden",
+        "subject": "Betreff",
+        "message": "Nachricht",
+        "cancel": "Abbrechen",
+        "send": "Senden",
+        "failed": "Fehler beim Senden der Antwort"
+      }
+    }
+  },
+  "backend": {
+    "ERR_AUTH_UNAUTHORIZED": "Nicht autorisierter Zugriff. Bitte anmelden.",
+    "ERR_AUTH_INVALID_TOKEN": "Sitzung abgelaufen. Bitte erneut anmelden.",
+    "ERR_AUTH_FORBIDDEN": "Zugriff verweigert. Admin-Rechte erforderlich.",
+    "ERR_AUTH_MISSING_FIELDS": "Bitte füllen Sie alle Pflichtfelder aus.",
+    "ERR_AUTH_EMAIL_EXISTS": "E-Mail bereits registriert.",
+    "ERR_AUTH_REGISTER_FAILED": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "ERR_AUTH_INVALID_CREDENTIALS": "Ungültige E-Mail oder Passwort.",
+    "ERR_AUTH_INVALID_PASSWORD": "Das aktuelle Passwort ist falsch.",
+    "ERR_DB_ERROR": "Ein Datenbankfehler ist aufgetreten.",
+    "ERR_USER_NOT_FOUND": "Benutzer nicht gefunden.",
+    "ERR_PROFILE_UPDATE_FAILED": "Profilaktualisierung fehlgeschlagen.",
+    "ERR_PASSWORD_UPDATE_FAILED": "Passwortänderung fehlgeschlagen.",
+    "ERR_NO_FILES": "Keine Dateien zum Hochladen ausgewählt.",
+    "ERR_CURRENCY_REQUIRED": "Bitte wählen Sie eine Währung aus.",
+    "ERR_WALLET_EXISTS": "Dieses Wallet existiert bereits.",
+    "ERR_WALLET_CREATE_FAILED": "Wallet-Erstellung fehlgeschlagen.",
+    "ERR_BANK_SAVE_FAILED": "Speichern des Bankkontos fehlgeschlagen.",
+    "ERR_INVALID_DATA": "Ungültige Eingabedaten.",
+    "ERR_TRANSACTION_FAILED": "Transaktionsverarbeitung fehlgeschlagen.",
+    "ERR_ACCOUNT_NOT_FOUND": "Konto nicht gefunden.",
+    "ERR_INSUFFICIENT_BALANCE": "Unzureichendes Guthaben.",
+    "ERR_BALANCE_UPDATE_FAILED": "Saldoaktualisierung fehlgeschlagen.",
+    "ERR_EXCHANGE_FAILED": "Währungsumtausch fehlgeschlagen.",
+    "ERR_USER_UPDATE_FAILED": "Benutzeraktualisierung fehlgeschlagen.",
+    "ERR_ACCOUNT_CREATE_FAILED": "Kontoerstellung fehlgeschlagen.",
+    "ERR_TRANSACTION_NOT_FOUND": "Transaktion nicht gefunden.",
+    "ERR_STATUS_UPDATE_FAILED": "Statusaktualisierung fehlgeschlagen.",
+    "ERR_TRANSACTION_UPDATE_FAILED": "Transaktionsaktualisierung fehlgeschlagen.",
+    "ERR_TRANSACTION_CREATE_FAILED": "Transaktionserstellung fehlgeschlagen.",
+    "ERR_SETTINGS_UPDATE_FAILED": "Systemeinstellungen konnten nicht aktualisiert werden.",
+    "ERR_MESSAGE_SEND_FAILED": "Nachricht konnte nicht gesendet werden.",
+    "ERR_MESSAGE_UPDATE_FAILED": "Nachricht konnte nicht aktualisiert werden.",
+    "MSG_PROFILE_UPDATED": "Profil erfolgreich aktualisiert.",
+    "MSG_DOCS_UPLOADED": "Dokumente erfolgreich hochgeladen.",
+    "MSG_PASSWORD_UPDATED": "Passwort erfolgreich geändert.",
+    "MSG_WALLET_CREATED": "Wallet erfolgreich erstellt.",
+    "MSG_BANK_SAVED": "Bankkonto erfolgreich gespeichert.",
+    "MSG_TOPUP_SUBMITTED": "Aufladeanfrage übermittelt. Warten auf Bearbeitung.",
+    "MSG_TRANSFER_SUBMITTED": "Überweisungsanfrage übermittelt.",
+    "MSG_EXCHANGE_SUCCESS": "Umtausch erfolgreich.",
+    "MSG_USER_UPDATED": "Benutzer erfolgreich aktualisiert.",
+    "MSG_ACCOUNT_CREATED": "Konto erfolgreich erstellt.",
+    "MSG_BALANCE_UPDATED": "Saldo erfolgreich aktualisiert.",
+    "MSG_DEPOSIT_APPROVED": "Einzahlung genehmigt und Saldo aktualisiert.",
+    "MSG_TRANSFER_APPROVED": "Überweisung genehmigt.",
+    "MSG_TRANSFER_DECLINED": "Überweisung abgelehnt und Geld zurückerstattet.",
+    "MSG_DEPOSIT_DECLINED": "Einzahlung abgelehnt.",
+    "MSG_TRANSACTION_UPDATED": "Transaktion erfolgreich aktualisiert.",
+    "MSG_TRANSACTION_CREATED": "Transaktion erfolgreich erstellt.",
+    "MSG_TRANSACTION_CREATED_BALANCE_UPDATED": "Transaktion erstellt und Saldo aktualisiert.",
+    "MSG_SETTINGS_UPDATED": "Systemeinstellungen erfolgreich aktualisiert.",
+    "MSG_MESSAGE_READ": "Nachricht als gelesen markiert.",
+    "MSG_METHOD_CRYPTO": "Kryptowährung",
+    "MSG_METHOD_BANK": "Banküberweisung",
+    "MSG_METHOD_CARD": "Kredit-/Debitkarte",
+    "MSG_DEPOSIT_VIA": "Einzahlung über {{method}}",
+    "MSG_TRANSFER_TO": "Überweisung an {{beneficiary}}: {{desc}}",
+    "MSG_EXCHANGED_TO": "Umgetauscht in {{currency}}",
+    "MSG_EXCHANGED_FROM": "Umgetauscht von {{currency}}",
+    "MSG_ACCOUNT_OPENED": "Konto eröffnet: {{currency}}"
+  },
+  "countries": {
+    "Afghanistan": "Afghanistan",
+    "Albania": "Albanien",
+    "Algeria": "Algerien",
+    "Andorra": "Andorra",
+    "Angola": "Angola",
+    "Antigua and Barbuda": "Antigua und Barbuda",
+    "Argentina": "Argentinien",
+    "Armenia": "Armenien",
+    "Australia": "Australien",
+    "Austria": "Österreich",
+    "Azerbaijan": "Aserbaidschan",
+    "Bahamas": "Bahamas",
+    "Bahrain": "Bahrein",
+    "Bangladesh": "Bangladesch",
+    "Barbados": "Barbados",
+    "Belarus": "Belarus",
+    "Belgium": "Belgien",
+    "Belize": "Belize",
+    "Benin": "Benin",
+    "Bhutan": "Bhutan",
+    "Bolivia": "Bolivien",
+    "Bosnia and Herzegovina": "Bosnien und Herzegowina",
+    "Botswana": "Botswana",
+    "Brazil": "Brasilien",
+    "Brunei": "Brunei",
+    "Bulgaria": "Bulgarien",
+    "Burkina Faso": "Burkina Faso",
+    "Burundi": "Burundi",
+    "Cabo Verde": "Cabo Verde",
+    "Cambodia": "Kambodscha",
+    "Cameroon": "Kamerun",
+    "Canada": "Kanada",
+    "Central African Republic": "Zentralafrikanische Republik",
+    "Chad": "Tschad",
+    "Chile": "Chile",
+    "China": "China",
+    "Colombia": "Kolumbien",
+    "Comoros": "Komoren",
+    "Congo (Congo-Brazzaville)": "Kongo",
+    "Costa Rica": "Costa Rica",
+    "Croatia": "Kroatien",
+    "Cuba": "Kuba",
+    "Cyprus": "Zypern",
+    "Czechia (Czech Republic)": "Tschechien",
+    "Democratic Republic of the Congo": "Demokratische Republik Kongo",
+    "Denmark": "Dänemark",
+    "Djibouti": "Dschibuti",
+    "Dominica": "Dominica",
+    "Dominican Republic": "Dominikanische Republik",
+    "Ecuador": "Ecuador",
+    "Egypt": "Ägypten",
+    "El Salvador": "El Salvador",
+    "Equatorial Guinea": "Äquatorialguinea",
+    "Eritrea": "Eritrea",
+    "Estonia": "Estland",
+    "Eswatini": "Eswatini",
+    "Ethiopia": "Äthiopien",
+    "Fiji": "Fidschi",
+    "Finland": "Finnland",
+    "France": "Frankreich",
+    "Gabon": "Gabun",
+    "Gambia": "Gambia",
+    "Georgia": "Georgien",
+    "Germany": "Deutschland",
+    "Ghana": "Ghana",
+    "Greece": "Griechenland",
+    "Grenada": "Grenada",
+    "Guatemala": "Guatemala",
+    "Guinea": "Guinea",
+    "Guinea-Bissau": "Guinea-Bissau",
+    "Guyana": "Guyana",
+    "Haiti": "Haiti",
+    "Holy See": "Vatikanstadt",
+    "Honduras": "Honduras",
+    "Hungary": "Ungarn",
+    "Iceland": "Island",
+    "India": "Indien",
+    "Indonesia": "Indonesien",
+    "Iran": "Iran",
+    "Iraq": "Irak",
+    "Ireland": "Irland",
+    "Israel": "Israel",
+    "Italy": "Italien",
+    "Ivory Coast": "Elfenbeinküste",
+    "Jamaica": "Jamaika",
+    "Japan": "Japan",
+    "Jordan": "Jordanien",
+    "Kazakhstan": "Kasachstan",
+    "Kenya": "Kenia",
+    "Kiribati": "Kiribati",
+    "Kuwait": "Kuwait",
+    "Kyrgyzstan": "Kirgisistan",
+    "Laos": "Laos",
+    "Latvia": "Lettland",
+    "Lebanon": "Libanon",
+    "Lesotho": "Lesotho",
+    "Liberia": "Liberia",
+    "Libya": "Libyen",
+    "Liechtenstein": "Liechtenstein",
+    "Lithuania": "Litauen",
+    "Luxembourg": "Luxemburg",
+    "Madagascar": "Madagaskar",
+    "Malawi": "Malawi",
+    "Malaysia": "Malaysia",
+    "Maldives": "Malediven",
+    "Mali": "Mali",
+    "Malta": "Malta",
+    "Marshall Islands": "Marshallinseln",
+    "Mauritania": "Mauretanien",
+    "Mauritius": "Mauritius",
+    "Mexico": "Mexiko",
+    "Micronesia": "Mikronesien",
+    "Moldova": "Moldawien",
+    "Monaco": "Monaco",
+    "Mongolia": "Mongolei",
+    "Montenegro": "Montenegro",
+    "Morocco": "Marokko",
+    "Mozambique": "Mosambik",
+    "Myanmar (formerly Burma)": "Myanmar",
+    "Namibia": "Namibia",
+    "Nauru": "Nauru",
+    "Nepal": "Nepal",
+    "Netherlands": "Niederlande",
+    "New Zealand": "Neuseeland",
+    "Nicaragua": "Nicaragua",
+    "Niger": "Niger",
+    "Nigeria": "Nigeria",
+    "North Korea": "Nordkorea",
+    "North Macedonia": "Nordmazedonien",
+    "Norway": "Norwegen",
+    "Oman": "Oman",
+    "Pakistan": "Pakistan",
+    "Palau": "Palau",
+    "Palestine State": "Palästina",
+    "Panama": "Panama",
+    "Papua New Guinea": "Papua-Neuguinea",
+    "Paraguay": "Paraguay",
+    "Peru": "Peru",
+    "Philippines": "Philippinen",
+    "Poland": "Polen",
+    "Portugal": "Portugal",
+    "Qatar": "Katar",
+    "Romania": "Rumänien",
+    "Russia": "Russland",
+    "Rwanda": "Ruanda",
+    "Saint Kitts and Nevis": "St. Kitts und Nevis",
+    "Saint Lucia": "St. Lucia",
+    "Saint Vincent and the Grenadines": "St. Vincent und die Grenadinen",
+    "Samoa": "Samoa",
+    "San Marino": "San Marino",
+    "Sao Tome and Principe": "São Tomé und Príncipe",
+    "Saudi Arabia": "Saudi-Arabien",
+    "Senegal": "Senegal",
+    "Serbia": "Serbien",
+    "Seychelles": "Seychellen",
+    "Sierra Leone": "Sierra Leone",
+    "Singapore": "Singapur",
+    "Slovakia": "Slowakei",
+    "Slovenia": "Slowenien",
+    "Solomon Islands": "Salomonen",
+    "Somalia": "Somalia",
+    "South Africa": "Südafrika",
+    "South Korea": "Südkorea",
+    "South Sudan": "Südsudan",
+    "Spain": "Spanien",
+    "Sri Lanka": "Sri Lanka",
+    "Sudan": "Sudan",
+    "Suriname": "Suriname",
+    "Sweden": "Schweden",
+    "Switzerland": "Schweiz",
+    "Syria": "Syrien",
+    "Tajikistan": "Tadschikistan",
+    "Tanzania": "Tansania",
+    "Thailand": "Thailand",
+    "Timor-Leste": "Osttimor",
+    "Togo": "Togo",
+    "Tonga": "Tonga",
+    "Trinidad and Tobago": "Trinidad und Tobago",
+    "Tunisia": "Tunesien",
+    "Turkey": "Türkei",
+    "Turkmenistan": "Turkmenistan",
+    "Tuvalu": "Tuvalu",
+    "Uganda": "Uganda",
+    "Ukraine": "Ukraine",
+    "United Arab Emirates": "Vereinigte Arabische Emirate",
+    "United Kingdom": "Vereinigtes Königreich",
+    "United States of America": "Vereinigte Staaten von Amerika",
+    "Uruguay": "Uruguay",
+    "Uzbekistan": "Usbekistan",
+    "Vanuatu": "Vanuatu",
+    "Venezuela": "Venezuela",
+    "Vietnam": "Vietnam",
+    "Yemen": "Jemen",
+    "Zambia": "Sambia",
+    "Zimbabwe": "Simbabwe"
+  },
+  "transactions": {
+    "types": {
+      "deposit": "Einzahlung",
+      "transfer": "Überweisung",
+      "exchange": "Umtausch",
+      "withdrawal": "Auszahlung",
+      "withdraw": "Auszahlung"
+    },
+    "status": {
+      "processing": "In Bearbeitung",
+      "completed": "Abgeschlossen",
+      "declined": "Abgelehnt",
+      "failed": "Fehlgeschlagen"
+    },
+    "details": {
+      "title": "Transaktionsdetails",
+      "amount": "Betrag",
+      "fee": "Gebühr",
+      "date": "Datum",
+      "status": "Status",
+      "description": "Beschreibung",
+      "id": "Transaktions-ID",
+      "outgoing": "Ausgehend",
+      "incoming": "Eingehend",
+      "from": "Von",
+      "to": "An",
+      "total_payment": "Gesamtbetrag",
+      "purpose": "Verwendungszweck",
+      "internal_account": "Internes Konto",
+      "not_specified": "Nicht angegeben"
+    }
+  },
+  "crypto": {
+    "hero": {
+      "subtitle": "Täglich $1 Mrd.+ Krypto-Handelsvolumen",
+      "title": "Handeln Sie digitale Assets mit einer lizenzierten Schweizer Bank",
+      "description": "Das führende Schweizer Kryptowährungs-Institut mit professionellem Schutz. Beginnen Sie den Handel mit vollständiger Einhaltung der Vorschriften und Expertenunterstützung.",
+      "button": "Kunde werden"
+    },
+    "features": {
+      "title": "Krypto-Handel mit voller Sicherheit",
+      "item1": "Tauschen Sie problemlos Bitcoin, Ethereum, Stablecoins und Fiat-Währungen.",
+      "item2": "Handeln Sie effizient mit klaren, marktführenden Gebührenstrukturen.",
+      "item3": "Sehen Sie Ihre Bestände ein und handeln Sie jederzeit, Tag und Nacht, nach Ihrem Zeitplan.",
+      "item4": "Professioneller Schutz mit Schweizer Regulierungsstandards und Überprüfung."
+    },
+    "why": {
+      "title": "Warum AlpenStark wählen?",
+      "description": "AlpenStark bietet professionelle digitale Asset-Dienstleistungen für anspruchsvolle Investoren, die auf langfristigen Vermögensaufbau fokussiert sind. Unsere Plattform vereint moderne Technologie, regulatorische Compliance und persönliche Kundenbetreuung.",
+      "button": "Konto eröffnen"
+    },
+    "stats": {
+      "item1": "Tätig seit 2007",
+      "item2": "Dedizierte Kontoverwaltung und spezialisierte Beratung",
+      "item3": "Betreut Kunden in 150+ Ländern",
+      "item4": "Über $1 Milliarde an verwaltetem Vermögen",
+      "item5": "Schweizer Lizenz mit solidem regulatorischen Rahmen",
+      "item6": "Über $327 Milliarden an verarbeiteten Transaktionen"
+    }
+  },
+  "digitalBanking": {
+    "hero": {
+      "badge": "Über 100.000 zufriedene Nutzer",
+      "title": "Banking nach Ihrem Zeitplan",
+      "description": "Übernehmen Sie die volle Kontrolle über Ihr finanzielles Leben. Greifen Sie jederzeit und überall sicher und bequem auf Ihr Geld zu.",
+      "button": "Jetzt registrieren",
+      "feature1Title": "SICHER",
+      "feature1Desc": "Ihre Daten und Privatsphäre sind geschützt",
+      "feature2Title": "BEQUEM",
+      "feature2Desc": "Rund-um-die-Uhr-Zugang weltweit"
+    },
+    "section1": {
+      "title": "Verwalten Sie Ihr Geld mit Leichtigkeit und Präzision",
+      "description": "Behalten Sie den Überblick über Ihre finanzielle Gesundheit und verfolgen Sie alle Kontoaktivitäten, Karten und Investitionen über unsere digitale Plattform."
+    },
+    "section2": {
+      "title": "Volle Transaktionstransparenz",
+      "description": "Erhalten Sie umfassende Details zu jeder Zahlung. Laden Sie Belege herunter, stornieren Sie ausstehende Überweisungen oder verwenden Sie Zahlungsdetails für wiederkehrende Transaktionen."
+    },
+    "section3": {
+      "title": "Schnelle, intelligente Zahlungsabwicklung",
+      "description": "Senden Sie Zahlungen an über 1.200 Institutionen oder bewegen Sie Gelder zwischen Ihren Konten. Schnelle, zuverlässige und geschützte Überweisungen rund um die Uhr.",
+      "button": "Jetzt starten"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Suchen Sie Antworten? Schauen Sie sich unsere häufig gestellten Fragen an.",
+      "q1": "Welche Funktionen bietet das Online-Banking?",
+      "a1": "Sie können Salden prüfen, Transaktionen durchsuchen, Gelder überweisen, Rechnungen bezahlen, Daueraufträge erstellen und vieles mehr.",
+      "q2": "Ist eine Registrierung erforderlich?",
+      "a2": "Ja, die Registrierung gibt Ihnen Zugriff auf alle Funktionen. Es ist kostenlos und dauert nur wenige Minuten.",
+      "q3": "Was ist, wenn ich mein Passwort vergesse?",
+      "a3": "Klicken Sie einfach auf 'Passwort vergessen' und folgen Sie den Anweisungen in der E-Mail.",
+      "q4": "Wie sicher ist das Online-Banking?",
+      "a4": "Sehr sicher. Wir nutzen 256-Bit-SSL-Verschlüsselung, Multi-Faktor-Authentifizierung und ständige Betrugsüberwachung.",
+      "q5": "Welche Arten von Überweisungen sind möglich?",
+      "a5": "Sofortüberweisungen zwischen eigenen Konten sowie internationale Zahlungen und Terminüberweisungen.",
+      "q6": "Kann ich mit dem Support chatten?",
+      "a6": "Ja, nach dem Login können Sie direkt über unseren sicheren Chat mit dem Support kommunizieren.",
+      "q7": "Können Rechnungen bezahlt werden?",
+      "a7": "Ja, Sie können jede schweizerische oder internationale Rechnung direkt bezahlen.",
+      "q8": "Kann ich den Status verfolgen?",
+      "a8": "Ja, alle Zahlungen können live verfolgt werden."
+    }
+  },
+  "currencyExchange": {
+    "hero": {
+      "badge": "Hervorragend 4.5 von 5 Trustpilot",
+      "title": "Intelligente Währungsumrechnung",
+      "description": "Konvertieren Sie Währungen mühelos mit attraktiven Kursen und sofortiger Ausführung. Greifen Sie auf über 20 Währungen zu.",
+      "widget": {
+        "sell": "Sie verkaufen",
+        "rate": "Kurs",
+        "buy": "Sie erhalten",
+        "button": "Konto eröffnen",
+        "adding": "Wir fügen ständig neue Währungen hinzu"
+      }
+    },
+    "section1": {
+      "title": "Internationale Währungsabdeckung",
+      "description": "Greifen Sie über unsere voll ausgestattete Plattform auf globale Finanzmärkte zu. Handeln Sie 20+ Währungen mit Unternehmensschutz.",
+      "button": "Konto eröffnen"
+    },
+    "section2": {
+      "title": "Umrechnungsschritte",
+      "step1": "Wählen Sie Quell- und Zielwährung",
+      "step2": "Geben Sie den Betrag ein",
+      "step3": "Prüfen Sie Kurs und Zusammenfassung",
+      "step4": "Bestätigen Sie und erhalten Sie sofort Geld"
+    },
+    "section3": {
+      "title": "Live-Marktkurse",
+      "description": "Genießen Sie klare Preise mit Marktkursen, die sekündlich aktualisiert werden. Wir bieten die besten Wechselkurse mit engen Spreads.",
+      "button": "Jetzt handeln"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": "Wie oft werden Kurse aktualisiert?",
+      "a1": "In Echtzeit während der Marktöffnungszeiten.",
+      "q2": "Welche Gebühren fallen an?",
+      "a2": "Wir haben klare Gebührenstrukturen ohne versteckte Kosten.",
+      "q3": "Wie schnell sind Konvertierungen?",
+      "a3": "Alle Währungsumrechnungen werden sofort ausgeführt.",
+      "q4": "Gibt es Limits?",
+      "a4": "Limits hängen von Ihrer Kontoverifizierung ab."
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "9.5 Minuten durchschnittliche Reaktionszeit",
+      "title": "Über uns",
+      "description": "Finanzdienstleistungen bilden das Rückgrat jedes Unternehmens. Sie müssen einwandfrei funktionieren. Wir sind Ihr zuverlässiger Partner."
+    },
+    "quote": {
+      "text": "\"Herkömmliche Banken lassen Unternehmer oft im Stich. Wir haben AlpenStark gegründet, um diese Lücke durch massgeschneiderten Service zu schließen.\"",
+      "author": "Gründer"
+    },
+    "story": {
+      "title": "Unsere Geschichte",
+      "p1": "Nach fünfzehn Jahren im traditionellen Bankwesen habe ich aus erster Hand gesehen, wie grosse Banken immer wieder unabhängige Unternehmer und aufstrebende Unternehmen im Stich liessen. Wieder und wieder wurden fähige Menschen abgelehnt.",
+      "p2": "Deshalb habe ich AlpenStark gegründet - um eine Finanzinstitution aufzubauen, die Menschen mit echten Zielen wirklich unterstützt. Heute bin ich geehrt, dass wir über 100.000 Kunden weltweit betreuen."
+    },
+    "contact": {
+      "title": "Sprechen Sie mit echten Menschen",
+      "description": "Unsere Experten sind hier, um alle Ihre Fragen zu beantworten. Wir liefern den Service, den wir uns selbst wünschen würden!",
+      "formTitle": "Senden Sie uns eine Nachricht",
+      "formDescription": "Füllen Sie das untenstehende Formular aus oder senden Sie uns eine E-Mail an support@alpenstark.com.",
+      "firstName": "Vorname *",
+      "lastName": "Nachname *",
+      "email": "E-Mail *",
+      "message": "Nachricht",
+      "button": "Senden",
+      "success": "Ihre Nachricht wurde erfolgreich gesendet!",
+      "error": "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    }
+  }
+}

@@ -1,0 +1,1201 @@
+{
+  "common": {
+    "login": "Accedi",
+    "register": "Registrati",
+    "open_account": "Apri un conto",
+    "logout": "Esci",
+    "withdraw": "Preleva",
+    "deposit": "Deposita",
+    "exchange": "Scambia",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "loading": "Caricamento...",
+    "no_data": "Nessun dato disponibile",
+    "yes": "Sì",
+    "no": "No",
+    "dashboard": "Dashboard",
+    "upload_file": "Carica file",
+    "view_attachment": "Vedi allegato"
+  },
+  "legal": {
+    "terms_title": "Termini e Condizioni",
+    "privacy_title": "Informativa sulla Privacy",
+    "cookies_title": "Politica sui Cookie",
+    "last_updated": "Ultimo aggiornamento: Marzo 2024"
+  },
+  "navbar": {
+    "crypto": "Cripto",
+    "digital_banking": "Banking Digitale",
+    "currency_exchange": "Cambio Valuta",
+    "about_us": "Chi Siamo"
+  },
+  "footer": {
+    "legal_info": "Informazioni Legali",
+    "terms": "Termini",
+    "cookie_policy": "Politica sui cookie",
+    "privacy_policy": "Informativa sulla privacy",
+    "contact_info": "Informazioni di Contatto",
+    "address": "Avenue Industrielle 12, 1227 Carouge GE, Svizzera",
+    "all_rights_reserved": "Tutti i diritti sono riservati.",
+    "contacts": "Contatti"
+  },
+  "home": {
+    "hero": {
+      "title_1": "Le tue finanze,",
+      "title_2": "senza limiti.",
+      "subtitle": "Sperimenta la vera indipendenza finanziaria. I tuoi asset, sicuri e ottimizzati, ovunque ti porti il tuo viaggio."
+    },
+    "marquee": {
+      "transfers": "Trasferimenti Globali",
+      "exchange": "Cambio in Tempo Reale",
+      "assets": "Asset Digitali",
+      "wallets": "Portafogli Protetti",
+      "invoicing": "Fatturazione Intelligente",
+      "banking": "Banking Multivaluta"
+    },
+    "solutions": {
+      "title_1": "Soluzioni",
+      "title_2": "Finanziarie Complete",
+      "items": {
+        "iban": {
+          "title": "IBAN Dedicato",
+          "description": "Accetta e invia pagamenti con la tua identità aziendale, beneficia di un'elaborazione rapida con credenziali di conto personalizzate.",
+          "button": "Crea Conto Bancario"
+        },
+        "multi_currency": {
+          "title": "Conto Multivaluta",
+          "description": "Gestisci oltre 30 valute con facilità, semplifica i pagamenti transfrontalieri e riduci le commissioni di cambio, il tutto in un'unica interfaccia unificata.",
+          "button": "Inizia"
+        },
+        "exchange": {
+          "title": "Cambio Valuta",
+          "description": "Converti valute in pochi secondi a tassi vantaggiosi con dati di mercato in tempo reale. Accedi a oltre 30 valute internazionali.",
+          "button": "Inizia a Scambiare"
+        },
+        "crypto": {
+          "title": "Compra e Vendi Cripto",
+          "description": "Scambia criptovalute senza sforzo con tassi interessanti e transazioni protette.",
+          "button": "Inizia il Trading"
+        },
+        "cards": {
+          "title": "Carte Virtuali e Fisiche",
+          "description": "Genera istantaneamente carte virtuali per acquisti web e richiedi carte fisiche per spese globali.",
+          "button": "Ordina la tua Carta"
+        }
+      }
+    },
+    "platform": {
+      "title": "Piattaforma Finanziaria Avanzata",
+      "title_accent": "per trasferimenti globali",
+      "description": "Utilizza la nostra sofisticata infrastruttura bancaria per gestire transazioni transfrontaliere senza sforzo e soddisfare le tue complesse esigenze in termini di valuta e asset digitali.",
+      "feature_1_title": "Invia denaro in oltre 100 paesi",
+      "feature_1_desc": "Elabora pagamenti internazionali tramite reti SWIFT o sistemi di compensazione nazionali, supportati dalla nostra solida rete.",
+      "feature_2_title": "Converti valute di tutto il mondo",
+      "feature_2_desc": "Cambia i tuoi fondi in quasi tutte le principali valute globali. Collegati ai circuiti SWIFT e alle reti di pagamento locali.",
+      "feature_3_title": "Ricevi fondi tramite SWIFT e cripto",
+      "feature_3_desc": "Accetta pagamenti in entrata in più valute tra cui USD, EUR, GBP, USDC e BTC."
+    },
+    "convert_widget": {
+      "title": "Converti valute e cripto",
+      "description": "Ottieni tassi di cambio vantaggiosi per oltre 20 valute e criptovalute popolari. La nostra robusta piattaforma di trading garantisce il valore ottimale.",
+      "rate_title": "Tassi di Cambio Vantaggiosi",
+      "rate_desc": "Accedi ai migliori tassi di mercato con prezzi trasparenti e zero costi nascosti.",
+      "instant_title": "Conversioni Immediate",
+      "instant_desc": "Completa le conversioni di valuta in pochi istanti con regolamento istantaneo.",
+      "card_title": "Cambio Valuta",
+      "sell_label": "Vendi",
+      "buy_label": "Compri",
+      "rate_label": "Tasso di Cambio",
+      "button": "Cambia Ora"
+    },
+    "large_transfers": {
+      "title": "Elabora Grandi Trasferimenti con Totale Sicurezza",
+      "description": "Il nostro processo efficiente riduce gli attriti e l'esposizione, garantendo un'esecuzione senza intoppi.",
+      "point_1": "Goditi un unico tasso di ricarica chiaro per tutte le valute.",
+      "point_2": "Usa i tassi di mercato in tempo reale per scegliere il momento giusto per le tue conversioni.",
+      "point_3": "Sperimenta la piena libertà senza conversioni forzate.",
+      "point_4": "Ogni commissione è mostrata in anticipo prima di procedere."
+    },
+    "security": {
+      "title": "Infrastruttura affidabile e protetta per",
+      "title_accent": "le tue transazioni",
+      "subtitle": "La tua protezione è la nostra massima priorità",
+      "feature_1_title": "Sicurezza di Livello Aziendale",
+      "feature_1_desc": "Le tue transazioni sono salvaguardate da crittografia professionale e misure di sicurezza.",
+      "feature_2_title": "Accesso sicuro",
+      "feature_2_desc": "La verifica avanzata multi-livello protegge tutti i tuoi dati sensibili, con l'autenticazione a due fattori come standard.",
+      "feature_3_title": "Conti protetti",
+      "feature_3_desc": "I tuoi fondi non vengono mai prestati o investiti: rimangono pienamente disponibili in ogni momento."
+    },
+    "trust": {
+      "title_1": "Scelta da più di",
+      "title_2": "100.000 clienti",
+      "title_3": "per un servizio affidabile.",
+      "subtitle": "Iniziare con il tuo conto personale dovrebbe essere semplice. Noi facciamo in modo che lo sia.",
+      "button": "Crea Conto"
+    }
+  },
+  "auth": {
+    "login_title": "Accedi al tuo account",
+    "register_title": "Crea un account",
+    "email": "Email",
+    "password": "Password",
+    "login_button": "Accedi alla Dashboard",
+    "register_button": "Registrati",
+    "no_account": "Non hai un account?",
+    "already_have_account": "Hai già un account?",
+    "invalid_credentials": "Credenziali non valide o errore del server",
+    "full_name": "Nome Completo",
+    "phone": "Numero di Telefono",
+    "dob": "Data di Nascita",
+    "address": "Indirizzo",
+    "city": "Città",
+    "state": "Stato/Provincia",
+    "zip": "CAP",
+    "country": "Paese",
+    "step_account": "Dettagli Account",
+    "step_personal": "Informazioni Personali",
+    "first_name": "Nome",
+    "last_name": "Cognome",
+    "region": "Regione / Stato",
+    "postal_code": "Codice Postale",
+    "back": "Indietro",
+    "next": "Avanti",
+    "fill_required": "Per favore compila tutti i campi obbligatori",
+    "register_error": "Errore durante la registrazione dell'account",
+    "sign_in": "Accedi"
+  },
+  "dashboard": {
+    "welcome": "Benvenuto, {{name}}",
+    "total_balance_in": "Saldo totale in",
+    "bank_accounts": "Conti bancari",
+    "cryptocurrency": "Criptovaluta",
+    "recent_activity": "Attività recente",
+    "no_transactions": "Nessuna transazione recente",
+    "quick_links": "Link rapidi",
+    "add_bank": "Aggiungi la tua banca",
+    "create_crypto_wallet": "Crea portafoglio cripto",
+    "buy_crypto": "Compra Cripto",
+    "currency_exchange_title": "Cambio Valuta",
+    "cryptocurrency_exchange_title": "Cambio Criptovaluta",
+    "table": {
+      "name": "Nome",
+      "price": "Prezzo (USD)",
+      "change_24h": "Variazione 24h",
+      "change_percent": "% Variazione",
+      "buy": "Compra",
+      "sell": "Vendi"
+    },
+    "account_overview": {
+      "title": "Conti Correnti",
+      "available_funds": "Fondi Disponibili in",
+      "new_transfer": "Nuovo Trasferimento",
+      "table": {
+        "account": "Conto",
+        "balance": "Saldo del conto",
+        "reserved": "Riservato",
+        "available": "Fondi disponibili",
+        "currency": "Valuta"
+      }
+    },
+    "account_statement": {
+      "title": "Estratto Conto",
+      "filter": {
+        "date_from": "Dalla data",
+        "date_to": "Alla data",
+        "account": "Conto",
+        "button": "Filtra"
+      },
+      "info": {
+        "account_number": "Numero di conto:",
+        "currency": "Valuta:",
+        "period": "Periodo:",
+        "debit_turnover": "Volume dare:",
+        "credit_turnover": "Volume avere:"
+      },
+      "no_transactions": "Nessuna transazione trovata per il periodo e il conto selezionati."
+    },
+    "top_up": {
+      "title": "Ricarica Conto",
+      "steps": {
+        "enter_details": "Inserisci Dettagli",
+        "payment_info": "Info Pagamento",
+        "confirmation": "Conferma"
+      },
+      "subtitle_details": "Inserisci i Dettagli della Ricarica",
+      "subtitle_crypto": "Dettagli Pagamento in Criptovaluta",
+      "subtitle_bank": "Dettagli Bonifico Bancario",
+      "select_type": "Seleziona il tipo di conto da ricaricare",
+      "fiat_account": "CONTO FIAT",
+      "crypto_account": "CONTO CRIPTOVALUTA",
+      "no_wallets_error": "Non hai ancora portafogli cripto. Per favore creane uno nella sezione Portafogli.",
+      "select_account_label": "Seleziona Conto da Ricaricare",
+      "amount_label": "Importo",
+      "currency_label": "Valuta",
+      "payment_method_label": "Metodo di Pagamento",
+      "bank_transfer": "Bonifico Bancario",
+      "card_payment": "Carta di Credito o Debito",
+      "crypto_instruction": "Per favore trasferisci {{amount}} {{currency}} a uno dei seguenti indirizzi:",
+      "blockchain_network": "Rete Blockchain",
+      "address": "Indirizzo",
+      "bank_instruction": "Per favore invia {{amount}} {{currency}} ai seguenti dati bancari:",
+      "beneficiary": "Beneficiario",
+      "iban": "IBAN",
+      "bic_swift": "BIC/SWIFT",
+      "reference": "Riferimento",
+      "card_instruction": "Il nostro team di supporto esaminerà la tua richiesta e ti contatterà entro 24 ore con le istruzioni di pagamento.",
+      "card_request_summary": "Hai richiesto un versamento sul tuo conto di {{amount}} {{currency}} tramite {{method}}.",
+      "redirecting": "Reindirizzamento al gateway di pagamento sicuro...",
+      "amount_to_deposit": "Importo da depositare: {{amount}} {{currency}}",
+      "confirm_checkbox": "Confermo di aver trasferito i fondi",
+      "confirm_button": "Conferma",
+      "terms_agreement": "Inviando i fondi riconosci di accettare i nostri Termini di Accordo.",
+      "success_title": "Successo!",
+      "success_subtitle": "Transazione in corso",
+      "success_desc": "In attesa della conferma del pagamento. Vedrai la transazione nell'estratto conto una volta confermata.",
+      "view_accounts": "Visualizza i Miei Conti",
+      "errors": {
+        "enter_amount_account": "Per favore inserisci l'importo e seleziona il conto",
+        "amount_gt_zero": "L'importo deve essere maggiore di 0",
+        "confirm_transfer": "Per favore conferma di aver trasferito i fondi.",
+        "failed": "Ricarica fallita"
+      }
+    },
+    "bank_transfer": {
+      "title": "Bonifico Bancario",
+      "steps": {
+        "enter_data": "Inserisci Dati",
+        "confirmation": "Conferma",
+        "result": "Risultato"
+      },
+      "details_subtitle": "Dettagli del trasferimento",
+      "beneficiary_name": "Nome del beneficiario",
+      "swift_bic": "Codice SWIFT / BIC",
+      "beneficiary_account": "Conto del beneficiario",
+      "payer_account": "Conto dell'ordinante",
+      "amount": "Importo",
+      "currency": "Valuta",
+      "available": "Disponibile",
+      "purpose": "Causale del pagamento",
+      "comment": "Commento",
+      "review_instruction": "Per favore rivedi i dettagli del trasferimento prima di confermare.",
+      "completed_title": "Trasferimento completato con successo.",
+      "errors": {
+        "fill_required": "Per favore compila tutti i campi obbligatori",
+        "failed": "Trasferimento fallito"
+      }
+    },
+    "loan": {
+      "title": "Ottieni un prestito",
+      "promo": {
+        "title": "Richiedi un prestito personale.",
+        "subtitle": "Tassi a partire dal 3.6% TAEG.",
+        "desc": "Questo tasso è disponibile per prestiti tra $2,500 e $35,000. Altri importi sono disponibili a tassi alternativi. Il tuo tasso dipende dalle tue circostanze personali, dall'importo del prestito e dalla durata.",
+        "benefit_1": "Ottieni il tuo preventivo gratuito e personalizzato",
+        "benefit_2": "Ricevi i tuoi soldi in un giorno!"
+      },
+      "calculator_title": "Prova il nostro calcolatore di prestiti personali",
+      "how_much_borrow": "Quanto vorresti prendere in prestito?",
+      "representative_apr": "TAEG indicativo {{apr}}%",
+      "how_long_repay": "In quanto tempo vorresti rimborsare?",
+      "years": "anni",
+      "months": "mesi",
+      "example": {
+        "title": "Esempio Rappresentativo",
+        "borrowing": "Prestito",
+        "over": "Durata",
+        "monthly_repayment": "Rata mensile",
+        "total_repayment": "Totale da rimborsare"
+      },
+      "tell_us_more": "Dicci di più su di te",
+      "occupation_label": "Qual è la tua occupazione?",
+      "income_label": "Reddito mensile",
+      "income_placeholder": "Inserisci importo",
+      "quote_button": "Ottieni il mio preventivo personalizzato",
+      "upload_title": "Carica l'estratto conto degli ultimi 3 mesi",
+      "drag_drop": "Trascina i file qui o clicca per sfogliare",
+      "accepted_formats": "Formati accettati: PDF, JPG, PNG, GIF (max 5MB per file)",
+      "max_files": "Massimo 3 file consentiti",
+      "notification_success": "Grazie! La tua richiesta di preventivo è stata inviata.",
+      "success_modal": {
+        "title": "Richiesta inviata con successo",
+        "subtitle": "La tua richiesta di prestito è stata inviata ed è in fase di revisione. Riceverai il risultato entro 24 ore.",
+        "id_label": "ID Richiesta:",
+        "whats_next": "Cosa succede dopo?",
+        "step_1": "Il nostro team esaminerà la tua richiesta e i documenti",
+        "step_2": "Riceverai una decisione entro 24 ore",
+        "step_3": "Se approvato, i fondi saranno disponibili poco dopo",
+        "close": "Chiudi"
+      }
+    },
+    "verification": {
+      "title": "Verifica dell'Identità",
+      "subtitle": "Per conformità ai requisiti normativi, dobbiamo verificare la tua identità. Carica i documenti richiesti qui sotto.",
+      "id_verification": "Verifica del Documento d'Identità",
+      "bank_verification": "Verifica del Conto Bancario",
+      "doc_type_label": "Tipo di Documento",
+      "passport": "Passaporto",
+      "id_card": "Carta d'Identità",
+      "bank_statement": "Estratto conto bancario",
+      "upload_instruction_passport": "Carica una foto nitida della pagina principale del tuo passaporto che mostri la tua foto e i dati personali.",
+      "upload_instruction_id": "Carica una foto nitida della parte anteriore e posteriore della tua carta d'identità che mostri la tua foto e i dati personali.",
+      "bank_instruction": "Carica gli estratti conto bancari degli ultimi 3 mesi. Formati accettati: PDF, JPG, PNG, GIF (max 5MB per file). Massimo 3 file consentiti.",
+      "status": {
+        "verified": "Verificato",
+        "approved": "Approvato",
+        "pending": "In attesa di revisione",
+        "rejected": "Rifiutato",
+        "not_started": "Non avviato"
+      },
+      "alerts": {
+        "pending": "Documento caricato con successo ed è in attesa di revisione.",
+        "verified": "La tua identità è stata verificata con successo.",
+        "rejected": "Il tuo documento è stato rifiutato. Per favore carica una foto più nitida."
+      },
+      "upload_box": {
+        "uploading": "Caricamento in corso...",
+        "upload_doc": "Carica foto {{type}}",
+        "click_select": "o clicca per selezionare il file",
+        "select_button": "Seleziona File"
+      },
+      "notification": {
+        "success": "File caricato con successo",
+        "failed": "Caricamento fallito"
+      }
+    },
+    "settings": {
+      "title": "Impostazioni Profilo",
+      "personal_info": "Informazioni Personali",
+      "address_info": "Informazioni Indirizzo",
+      "notifications": "Preferenze Notifiche",
+      "show_notifications": "Mostra notifiche per nuovi messaggi da AlpenStark",
+      "notification_desc": "Quando abilitato, riceverai notifiche del browser e avvisi in-app quando AlpenStark ti invia nuovi messaggi.",
+      "notification": {
+        "success": "Profilo aggiornato con successo",
+        "failed": "Aggiornamento fallito"
+      },
+      "change_password": "Cambia Password",
+      "current_password": "Password Attuale",
+      "new_password": "Nuova Password",
+      "confirm_new_password": "Conferma Nuova Password",
+      "errors": {
+        "fill_all": "Per favore compila tutti i campi",
+        "passwords_mismatch": "Le nuove password non corrispondono",
+        "password_too_short": "La nuova password deve essere lunga almeno 6 caratteri",
+        "password_failed": "Impossibile cambiare la password"
+      },
+      "password_success": "Password cambiata con successo"
+    },
+    "messages": {
+      "title": "Messaggi",
+      "tabs": {
+        "list": "Messaggi",
+        "new": "Nuovo Messaggio"
+      },
+      "no_messages": "Nessun messaggio trovato",
+      "new_badge": "Nuovo",
+      "subject_label": "Oggetto",
+      "content_label": "Contenuto del Messaggio",
+      "send_button": "Invia Messaggio",
+      "success_send": "Messaggio inviato con successo!",
+      "errors": {
+        "load_failed": "Impossibile caricare i messaggi.",
+        "fill_all": "Per favore compila tutti i campi.",
+        "send_failed": "Impossibile inviare il messaggio."
+      },
+      "dialog": {
+        "reply": "Rispondi",
+        "close": "Chiudi"
+      }
+    },
+    "withdraw_accounts": {
+      "title": "Conti per Prelievo",
+      "subtitle": "Per comodità, puoi aggiungere le informazioni del tuo conto bancario esterno per salvare e prelevare facilmente fondi da AlpenStark Bank.",
+      "table": {
+        "bank_name": "Nome Banca",
+        "swift_bic": "SWIFT/BIC",
+        "account_number": "Numero di Conto",
+        "type": "Tipo"
+      },
+      "add_button": "Aggiungi Conto Bancario",
+      "modal_title": "Aggiungi Conto Bancario",
+      "account_type": "Tipo di Conto",
+      "personal": "Personale",
+      "business": "Aziendale",
+      "bank_name_label": "Nome Banca",
+      "swift_bic_label": "SWIFT/BIC",
+      "account_number_label": "Numero di Conto",
+      "confirm_checkbox": "Confermo che le informazioni del conto bancario inserite sono corrette",
+      "notification": {
+        "success": "Conto bancario salvato con successo",
+        "failed": "Impossibile salvare il conto bancario"
+      }
+    },
+    "list_transfers": {
+      "title": "Lista Trasferimenti",
+      "tabs": {
+        "all": "Tutti",
+        "completed": "Completati",
+        "processing": "In elaborazione",
+        "declined": "Rifiutati"
+      },
+      "showing_period": "Visualizzazione dei trasferimenti dal {{from}} al {{to}}",
+      "no_transactions": "Nessuna transazione trovata per i criteri selezionati"
+    },
+    "crypto_wallets": {
+      "title": "Portafogli Criptovaluta",
+      "add_button": "Aggiungi Nuovo Portafoglio",
+      "no_wallets": "Non hai ancora portafogli criptovaluta.",
+      "table": {
+        "crypto": "Criptovaluta",
+        "blockchain": "Blockchain",
+        "balance": "Saldo Disponibile",
+        "actions": "Azioni"
+      },
+      "modal": {
+        "title": "Crea un Nuovo Portafoglio Criptovaluta",
+        "network_label": "Rete Blockchain *",
+        "crypto_label": "Criptovaluta *",
+        "create_button": "Crea"
+      },
+      "notification": {
+        "success": "Portafoglio cripto creato con successo",
+        "failed": "Impossibile creare il portafoglio. Assicurati che non esista già."
+      },
+      "landing": {
+        "hero_title": "Cryptocurrency — simple and secure",
+        "hero_subtitle": "Instant transfers and banking protection of your funds",
+        "create_first": "Create First Wallet",
+        "benefits_title": "Benefits of Cryptocurrency",
+        "benefit_1_title": "Lightning-fast Transactions",
+        "benefit_1_desc": "Send and receive funds worldwide in minutes, without waiting during traditional bank hours or verification periods.",
+        "benefit_2_title": "Enhanced Security",
+        "benefit_2_desc": "Blockchain technology provides unmatched security and transparency for all transactions.",
+        "benefit_3_title": "Global Reach",
+        "benefit_3_desc": "Make cross-border transactions easily, bypassing traditional financial intermediaries and delays.",
+        "benefit_4_title": "Low Fees",
+        "benefit_4_desc": "Enjoy significantly lower transaction fees compared to traditional banking services, especially for international transfers."
+      }
+    },
+    "crypto_transfer": {
+      "title": "Trasferimento Criptovaluta",
+      "steps": {
+        "details": "Inserisci Dettagli",
+        "confirm": "Conferma Trasferimento",
+        "result": "Risultato"
+      },
+      "from_wallet": "Trasferisci dal Portafoglio",
+      "available": "Disponibile",
+      "to_address": "Trasferisci all'Indirizzo",
+      "amount": "Importo",
+      "network": "Rete",
+      "review_instruction": "Per favore rivedi i dettagli del trasferimento prima di confermare.",
+      "from": "Da:",
+      "wallet": "Portafoglio",
+      "to_address_label": "All'indirizzo:",
+      "network_label": "Rete:",
+      "amount_label": "Importo:",
+      "success_title": "Trasferimento Riuscito",
+      "success_desc": "I tuoi fondi sono stati inviati all'indirizzo richiesto.",
+      "another_transfer": "Effettua un altro trasferimento",
+      "confirm_transfer_button": "Conferma Trasferimento",
+      "errors": {
+        "fill_all": "Per favore compila tutti i campi",
+        "amount_gt_zero": "L'importo deve essere maggiore di 0",
+        "insufficient_balance": "Saldo insufficiente",
+        "failed": "Trasferimento fallito"
+      },
+      "networks": {
+        "bitcoin": "Bitcoin",
+        "ethereum": "Ethereum (ERC20)",
+        "bsc": "Binance Smart Chain (BEP20)",
+        "solana": "Solana",
+        "tron": "Tron (TRC20)"
+      }
+    },
+    "currency_exchange": {
+      "title": "Cambio Valuta",
+      "you_sell": "Vendi",
+      "you_buy": "Compri",
+      "amount_label": "Importo",
+      "from_account": "Dal Conto",
+      "to_currency": "Alla Valuta",
+      "insufficient_balance": "Il conto {{currency}} ha un saldo insufficiente. Per favore aggiungi fondi per scambiare.",
+      "placeholder_amount": "0.00",
+      "exchange_button": "Scambia",
+      "success_msg": "Scambio avviato con successo",
+      "errors": {
+        "failed": "Scambio fallito"
+      }
+    },
+    "crypto_transactions": {
+      "title": "Transazioni Cripto",
+      "filter": {
+        "date_from": "Dalla data",
+        "date_to": "Alla data",
+        "button": "Filtra"
+      },
+      "no_transactions": "Nessuna transazione cripto trovata per il periodo selezionato.",
+      "table": {
+        "date": "Data",
+        "account": "Conto",
+        "description": "Descrizione",
+        "status": "Stato",
+        "amount": "Importo"
+      }
+    },
+    "invoices": {
+      "title": "Fatture",
+      "no_invoices": "Al momento non hai fatture.",
+      "table": {
+        "invoice_num": "Fattura #",
+        "date": "Data",
+        "amount": "Importo",
+        "status": "Stato"
+      }
+    },
+    "sidebar": {
+      "main_page": "Pagina principale",
+      "accounts": "Conti",
+      "account_overview": "Panoramica Conti",
+      "account_statement": "Estratto Conto",
+      "withdraw_accounts": "Conti per Prelievo",
+      "account_top_up": "Ricarica Conto",
+      "transfers": "Trasferimenti",
+      "bank_transfer": "Bonifico Bancario",
+      "list_transfers": "Lista Trasferimenti",
+      "cryptocurrency": "Criptovaluta",
+      "wallets": "Portafogli",
+      "transfer": "Trasferimento",
+      "transactions": "Transazioni",
+      "currency_exchange": "Cambio Valuta",
+      "invoices": "Fatture",
+      "get_loan": "Ottieni un prestito",
+      "settings": "Impostazioni",
+      "profile_settings": "Profilo",
+      "verification": "Verifica",
+      "security": "Sicurezza",
+      "messages": "Messaggi",
+      "logout": "Esci"
+    }
+  },
+  "admin": {
+    "panel_title": "Pannello Amministratore",
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "users": "Utenti",
+      "transactions": "Transazioni",
+      "messages": "Messaggi",
+      "settings": "Impostazioni",
+      "loans": "Prestiti",
+      "backup": "Backup",
+      "logout": "Esci"
+    },
+    "loans": {
+      "title": "Richieste di prestito",
+      "no_loans": "Nessuna richiesta di prestito trovata",
+      "approve": "Approva",
+      "reject": "Rifiuta",
+      "details_title": "Dettagli del prestito",
+      "user": "Utente",
+      "application_date": "Data della richiesta",
+      "amount": "Importo",
+      "term": "Durata",
+      "occupation": "Occupazione",
+      "monthly_income": "Reddito mensile",
+      "years": "anni",
+      "months": "mesi"
+    },
+    "backup": {
+      "title": "Backup e ripristino",
+      "export_title": "Esporta database",
+      "export_description": "Scarica la versione attuale del database SQLite. Questo include tutti gli utenti, i conti, le transazioni e le impostazioni.",
+      "export_button": "Scarica backup (.sqlite)",
+      "import_title": "Importa database",
+      "import_description": "Carica un file di database SQLite per ripristinare i dati.",
+      "import_warning": "ATTENZIONE: L'importazione di un database sovrascriverà completamente tutti i dati attuali. Questa azione è irreversibile.",
+      "import_button": "Seleziona e importa file"
+    },
+    "dashboard": {
+      "overview": "Panoramica Dashboard",
+      "total_users": "Utenti Totali",
+      "pending_transactions": "Transazioni in Sospeso",
+      "total_fiat": "Saldo Fiat Totale del Sistema"
+    },
+    "users": {
+      "management": "Gestione Utenti",
+      "table": {
+        "id": "ID",
+        "name": "Nome",
+        "email": "Email",
+        "role": "Ruolo",
+        "verified": "Verificato",
+        "actions": "Azioni"
+      },
+      "edit": "Modifica",
+      "message": "Messaggio",
+      "no_users": "Nessun utente trovato",
+      "roles": {
+        "user": "Utente",
+        "admin": "Admin"
+      },
+      "dialog": {
+        "title": "Invia Messaggio a {{name}}",
+        "subject": "Oggetto",
+        "message": "Messaggio",
+        "cancel": "Annulla",
+        "send": "Invia",
+        "sending": "Invio in corso...",
+        "success": "Messaggio inviato con successo",
+        "failed": "Impossibile inviare il messaggio"
+      }
+    },
+    "transactions": {
+      "management": "Gestione Transazioni",
+      "tabs": {
+        "all": "Tutte le Transazioni",
+        "pending": "In Sospeso",
+        "completed": "Completate"
+      },
+      "table": {
+        "id": "ID",
+        "user": "Utente",
+        "account": "Conto",
+        "type": "Tipo",
+        "amount": "Importo",
+        "currency": "Valuta",
+        "status": "Stato",
+        "date": "Data",
+        "actions": "Azioni"
+      },
+      "approve": "Approva",
+      "decline": "Rifiuta",
+      "edit": "Modifica",
+      "no_transactions": "Nessuna transazione trovata",
+      "dialog": {
+        "title": "Modifica Dettagli Transazione",
+        "sender": "Indirizzo Mittente (Da)",
+        "recipient": "Indirizzo Destinatario (A)",
+        "amount": "Importo",
+        "fee": "Commissione / Tassa",
+        "description": "Descrizione",
+        "impact_title": "Calcolo Variazione Saldo:",
+        "impact_desc_deposit": "Per i depositi, solo l'Importo viene aggiunto al saldo.",
+        "impact_desc_transfer": "Per i trasferimenti, sia l'Importo che la Commissione vengono dedotti dal saldo.",
+        "note": "Nota: La modifica dell'importo o della commissione regolerà automaticamente il saldo del conto dell'utente se la transazione è ancora in elaborazione.",
+        "save": "Salva Modifiche",
+        "cancel": "Annulla"
+      },
+      "confirm_status": "Sei sicuro di voler contrassegnare questa transazione come {{status}}?",
+      "notification": {
+        "status_success": "Stato della transazione aggiornato con successo",
+        "status_error": "Errore durante l'aggiornamento dello stato della transazione",
+        "update_success": "Transazione aggiornata con successo",
+        "update_error": "Errore durante l'aggiornamento della transazione"
+      }
+    },
+    "settings": {
+      "title": "Impostazioni di Sistema",
+      "crypto_wallets": "Indirizzi Portafoglio Crypto",
+      "bank_details": "Dettagli Bancari (per Ricarica FIAT)",
+      "beneficiary": "Nome Beneficiario",
+      "iban": "IBAN",
+      "bic_swift": "BIC / SWIFT",
+      "general_contacts": "Informazioni di Contatto Generali",
+      "contact_email": "Email di Supporto Aziendale",
+      "contact_address": "Indirizzo Fisico Aziendale",
+      "save_all": "Salva tutte le impostazioni",
+      "notification": {
+        "success": "Impostazioni aggiornate con successo",
+        "error": "Errore durante l'aggiornamento delle impostazioni"
+      }
+    },
+    "user_detail": {
+      "title": "Modifica Utente: {{name}}",
+      "profile_data": "Dati del Profilo",
+      "role_label": "Ruolo",
+      "verified_status": "Stato Verificato",
+      "verification_status_label": "Stato Verifica",
+      "verification_doc": "Documento di Verifica ({{type}}):",
+      "view_doc": "Visualizza Doc {{index}}",
+      "save_profile": "Salva Profilo",
+      "accounts_title": "Conti",
+      "account_info": "Conto {{currency}} ({{type}})",
+      "account_number": "Numero: {{num}}",
+      "balance": "Saldo: ",
+      "deposit_withdraw": "Deposito / Prelievo",
+      "no_accounts": "Nessun conto trovato.",
+      "add_account": "Aggiungi Nuovo Conto",
+      "type_label": "Tipo",
+      "currency_placeholder": "Valuta (es. USD, BTC)",
+      "initial_balance": "Saldo Iniziale",
+      "create_account": "Crea Conto",
+      "prompts": {
+        "amount": "Inserisci importo da depositare (positivo) o prelevare (negativo):",
+        "description": "Inserisci descrizione per questa transazione:",
+        "incoming": "Trasferimento in Entrata",
+        "outgoing": "Trasferimento in Uscita"
+      },
+      "notification": {
+        "user_not_found": "Utente non trovato",
+        "user_saved": "Utente salvato con successo",
+        "user_save_error": "Errore durante il salvataggio dell'utente",
+        "balance_updated": "Saldo aggiornato con successo",
+        "transaction_created": "Transazione creata e in attesa di approvazione",
+        "balance_error": "Errore durante l'aggiornamento del saldo",
+        "account_created": "Conto creato con successo",
+        "account_error": "Errore durante la creazione del conto"
+      }
+    },
+    "messages": {
+      "title": "Messaggi Utente",
+      "no_messages": "Ancora nessun messaggio dagli utenti.",
+      "reply_button": "Rispondi all'Utente",
+      "view_profile": "Visualizza Profilo",
+      "admin_label": "Admin (a {{name}})",
+      "dialog": {
+        "title": "Invia Messaggio a {{name}}",
+        "subject": "Oggetto",
+        "message": "Messaggio",
+        "cancel": "Annulla",
+        "send": "Invia",
+        "failed": "Invio della risposta fallito"
+      }
+    }
+  },
+  "backend": {
+    "ERR_AUTH_UNAUTHORIZED": "Accesso non autorizzato. Per favore esegui il login.",
+    "ERR_AUTH_INVALID_TOKEN": "Sessione scaduta. Per favore esegui nuovamente il login.",
+    "ERR_AUTH_FORBIDDEN": "Accesso negato. Diritti di amministratore richiesti.",
+    "ERR_AUTH_MISSING_FIELDS": "Per favore compila tutti i campi obbligatori.",
+    "ERR_AUTH_EMAIL_EXISTS": "Email già registrata.",
+    "ERR_AUTH_REGISTER_FAILED": "Registrazione fallita. Per favore riprova.",
+    "ERR_AUTH_INVALID_CREDENTIALS": "Email o password non valide.",
+    "ERR_AUTH_INVALID_PASSWORD": "La password attuale non è corretta.",
+    "ERR_DB_ERROR": "Si è verificato un errore del database.",
+    "ERR_USER_NOT_FOUND": "Utente non trovato.",
+    "ERR_PROFILE_UPDATE_FAILED": "Aggiornamento del profilo fallito.",
+    "ERR_PASSWORD_UPDATE_FAILED": "Impossibile cambiare la password.",
+    "ERR_NO_FILES": "Nessun file selezionato per il caricamento.",
+    "ERR_CURRENCY_REQUIRED": "Per favore seleziona una valuta.",
+    "ERR_WALLET_EXISTS": "Questo portafoglio esiste già.",
+    "ERR_WALLET_CREATE_FAILED": "Creazione del portafoglio fallita.",
+    "ERR_BANK_SAVE_FAILED": "Salvataggio del conto bancario fallito.",
+    "ERR_INVALID_DATA": "Dati in ingresso non validi.",
+    "ERR_TRANSACTION_FAILED": "Elaborazione della transazione fallita.",
+    "ERR_ACCOUNT_NOT_FOUND": "Conto non trovato.",
+    "ERR_INSUFFICIENT_BALANCE": "Saldo insufficiente.",
+    "ERR_BALANCE_UPDATE_FAILED": "Aggiornamento del saldo fallito.",
+    "ERR_EXCHANGE_FAILED": "Cambio valuta fallito.",
+    "ERR_USER_UPDATE_FAILED": "Aggiornamento utente fallito.",
+    "ERR_ACCOUNT_CREATE_FAILED": "Creazione del conto fallita.",
+    "ERR_TRANSACTION_NOT_FOUND": "Transazione non trovata.",
+    "ERR_STATUS_UPDATE_FAILED": "Aggiornamento dello stato fallito.",
+    "ERR_TRANSACTION_UPDATE_FAILED": "Aggiornamento della transazione fallito.",
+    "ERR_TRANSACTION_CREATE_FAILED": "Creazione della transazione fallita.",
+    "ERR_SETTINGS_UPDATE_FAILED": "Aggiornamento delle impostazioni di sistema fallito.",
+    "ERR_MESSAGE_SEND_FAILED": "Invio del messaggio fallito.",
+    "ERR_MESSAGE_UPDATE_FAILED": "Aggiornamento del messaggio fallito.",
+    "MSG_PROFILE_UPDATED": "Profilo aggiornato con successo.",
+    "MSG_DOCS_UPLOADED": "Documenti caricati con successo.",
+    "MSG_PASSWORD_UPDATED": "Password cambiata con successo.",
+    "MSG_WALLET_CREATED": "Portafoglio creato con successo.",
+    "MSG_BANK_SAVED": "Conto bancario salvato con successo.",
+    "MSG_TOPUP_SUBMITTED": "Richiesta di ricarica inviata. In attesa di elaborazione.",
+    "MSG_TRANSFER_SUBMITTED": "Richiesta di trasferimento inviata.",
+    "MSG_EXCHANGE_SUCCESS": "Scambio riuscito.",
+    "MSG_USER_UPDATED": "Utente aggiornato con successo.",
+    "MSG_ACCOUNT_CREATED": "Conto creato con successo.",
+    "MSG_BALANCE_UPDATED": "Saldo aggiornato con successo.",
+    "MSG_DEPOSIT_APPROVED": "Deposito approvato e saldo aggiornato.",
+    "MSG_TRANSFER_APPROVED": "Trasferimento approvato.",
+    "MSG_TRANSFER_DECLINED": "Trasferimento rifiutato e denaro restituito.",
+    "MSG_DEPOSIT_DECLINED": "Deposito rifiutato.",
+    "MSG_TRANSACTION_UPDATED": "Transazione aggiornata con successo.",
+    "MSG_TRANSACTION_CREATED": "Transazione creata con successo.",
+    "MSG_TRANSACTION_CREATED_BALANCE_UPDATED": "Transazione creata e saldo aggiornato.",
+    "MSG_SETTINGS_UPDATED": "Impostazioni di sistema aggiornate con successo.",
+    "MSG_MESSAGE_READ": "Messaggio contrassegnato come letto.",
+    "MSG_METHOD_CRYPTO": "Criptovaluta",
+    "MSG_METHOD_BANK": "Bonifico Bancario",
+    "MSG_METHOD_CARD": "Carta di Credito/Debito",
+    "MSG_DEPOSIT_VIA": "Deposito via {{method}}",
+    "MSG_TRANSFER_TO": "Trasferimento a {{beneficiary}}: {{desc}}",
+    "MSG_EXCHANGED_TO": "Scambiato in {{currency}}",
+    "MSG_EXCHANGED_FROM": "Scambiato da {{currency}}",
+    "MSG_ACCOUNT_OPENED": "Conto aperto: {{currency}}"
+  },
+  "countries": {
+    "Afghanistan": "Afghanistan",
+    "Albania": "Albania",
+    "Algeria": "Algeria",
+    "Andorra": "Andorra",
+    "Angola": "Angola",
+    "Antigua and Barbuda": "Antigua e Barbuda",
+    "Argentina": "Argentina",
+    "Armenia": "Armenia",
+    "Australia": "Australia",
+    "Austria": "Austria",
+    "Azerbaijan": "Azerbaigian",
+    "Bahamas": "Bahamas",
+    "Bahrain": "Bahrein",
+    "Bangladesh": "Bangladesh",
+    "Barbados": "Barbados",
+    "Belarus": "Bielorussia",
+    "Belgium": "Belgio",
+    "Belize": "Belize",
+    "Benin": "Benin",
+    "Bhutan": "Bhutan",
+    "Bolivia": "Bolivia",
+    "Bosnia and Herzegovina": "Bosnia ed Erzegovina",
+    "Botswana": "Botswana",
+    "Brazil": "Brasile",
+    "Brunei": "Brunei",
+    "Bulgaria": "Bulgaria",
+    "Burkina Faso": "Burkina Faso",
+    "Burundi": "Burundi",
+    "Cabo Verde": "Capo Verde",
+    "Cambodia": "Cambogia",
+    "Cameroon": "Camerun",
+    "Canada": "Canada",
+    "Central African Republic": "Repubblica Centrafricana",
+    "Chad": "Ciad",
+    "Chile": "Cile",
+    "China": "Cina",
+    "Colombia": "Colombia",
+    "Comoros": "Comore",
+    "Congo (Congo-Brazzaville)": "Congo",
+    "Costa Rica": "Costa Rica",
+    "Croatia": "Croazia",
+    "Cuba": "Cuba",
+    "Cyprus": "Cipro",
+    "Czechia (Czech Republic)": "Cechia",
+    "Democratic Republic of the Congo": "Repubblica Democratica del Congo",
+    "Denmark": "Danimarca",
+    "Djibouti": "Gibuti",
+    "Dominica": "Dominica",
+    "Dominican Republic": "Repubblica Dominicana",
+    "Ecuador": "Ecuador",
+    "Egypt": "Egitto",
+    "El Salvador": "El Salvador",
+    "Equatorial Guinea": "Guinea Equatoriale",
+    "Eritrea": "Eritrea",
+    "Estonia": "Estonia",
+    "Eswatini": "Eswatini",
+    "Ethiopia": "Etiopia",
+    "Fiji": "Figi",
+    "Finland": "Finlandia",
+    "France": "Francia",
+    "Gabon": "Gabon",
+    "Gambia": "Gambia",
+    "Georgia": "Georgia",
+    "Germany": "Germania",
+    "Ghana": "Ghana",
+    "Greece": "Grecia",
+    "Grenada": "Grenada",
+    "Guatemala": "Guatemala",
+    "Guinea": "Guinea",
+    "Guinea-Bissau": "Guinea-Bissau",
+    "Guyana": "Guyana",
+    "Haiti": "Haiti",
+    "Holy See": "Santa Sede",
+    "Honduras": "Honduras",
+    "Hungary": "Ungheria",
+    "Iceland": "Islanda",
+    "India": "India",
+    "Indonesia": "Indonesia",
+    "Iran": "Iran",
+    "Iraq": "Iraq",
+    "Ireland": "Irlanda",
+    "Israel": "Israele",
+    "Italy": "Italia",
+    "Ivory Coast": "Costa d'Avorio",
+    "Jamaica": "Giamaica",
+    "Japan": "Giappone",
+    "Jordan": "Giordania",
+    "Kazakhstan": "Kazakistan",
+    "Kenya": "Kenya",
+    "Kiribati": "Kiribati",
+    "Kuwait": "Kuwait",
+    "Kyrgyzstan": "Kirghizistan",
+    "Laos": "Laos",
+    "Latvia": "Lettonia",
+    "Lebanon": "Libano",
+    "Lesotho": "Lesotho",
+    "Liberia": "Liberia",
+    "Libya": "Libia",
+    "Liechtenstein": "Liechtenstein",
+    "Lithuania": "Lituania",
+    "Luxembourg": "Lussemburgo",
+    "Madagascar": "Madagascar",
+    "Malawi": "Malawi",
+    "Malaysia": "Malesia",
+    "Maldives": "Maldive",
+    "Mali": "Mali",
+    "Malta": "Malta",
+    "Marshall Islands": "Isole Marshall",
+    "Mauritania": "Mauritania",
+    "Mauritius": "Mauritius",
+    "Mexico": "Messico",
+    "Micronesia": "Micronesia",
+    "Moldova": "Moldavia",
+    "Monaco": "Monaco",
+    "Mongolia": "Mongolia",
+    "Montenegro": "Montenegro",
+    "Morocco": "Marocco",
+    "Mozambique": "Mozambico",
+    "Myanmar (formerly Burma)": "Myanmar",
+    "Namibia": "Namibia",
+    "Nauru": "Nauru",
+    "Nepal": "Nepal",
+    "Netherlands": "Paesi Bassi",
+    "New Zealand": "Nuova Zelanda",
+    "Nicaragua": "Nicaragua",
+    "Niger": "Niger",
+    "Nigeria": "Nigeria",
+    "North Korea": "Corea del Nord",
+    "North Macedonia": "Macedonia del Nord",
+    "Norway": "Norvegia",
+    "Oman": "Oman",
+    "Pakistan": "Pakistan",
+    "Palau": "Palau",
+    "Palestine State": "Stato di Palestina",
+    "Panama": "Panama",
+    "Papua New Guinea": "Papua Nuova Guinea",
+    "Paraguay": "Paraguay",
+    "Peru": "Perù",
+    "Philippines": "Filippine",
+    "Poland": "Polonia",
+    "Portugal": "Portogallo",
+    "Qatar": "Qatar",
+    "Romania": "Romania",
+    "Russia": "Russia",
+    "Rwanda": "Ruanda",
+    "Saint Kitts and Nevis": "Saint Kitts e Nevis",
+    "Saint Lucia": "Santa Lucia",
+    "Saint Vincent and the Grenadines": "Saint Vincent e Grenadine",
+    "Samoa": "Samoa",
+    "San Marino": "San Marino",
+    "Sao Tome and Principe": "Sao Tome e Principe",
+    "Saudi Arabia": "Arabia Saudita",
+    "Senegal": "Senegal",
+    "Serbia": "Serbia",
+    "Seychelles": "Seychelles",
+    "Sierra Leone": "Sierra Leone",
+    "Singapore": "Singapore",
+    "Slovakia": "Slovacchia",
+    "Slovenia": "Slovenia",
+    "Solomon Islands": "Isole Salomone",
+    "Somalia": "Somalia",
+    "South Africa": "Sudafrica",
+    "South Korea": "Corea del Sud",
+    "South Sudan": "Sudan del Sud",
+    "Spain": "Spagna",
+    "Sri Lanka": "Sri Lanka",
+    "Sudan": "Sudan",
+    "Suriname": "Suriname",
+    "Sweden": "Svezia",
+    "Switzerland": "Svizzera",
+    "Syria": "Siria",
+    "Tajikistan": "Tagikistan",
+    "Tanzania": "Tanzania",
+    "Thailand": "Thailandia",
+    "Timor-Leste": "Timor Est",
+    "Togo": "Togo",
+    "Tonga": "Tonga",
+    "Trinidad and Tobago": "Trinidad e Tobago",
+    "Tunisia": "Tunisia",
+    "Turkey": "Turchia",
+    "Turkmenistan": "Turkmenistan",
+    "Tuvalu": "Tuvalu",
+    "Uganda": "Uganda",
+    "Ukraine": "Ucraina",
+    "United Arab Emirates": "Emirati Arabi Uniti",
+    "United Kingdom": "Regno Unito",
+    "United States of America": "Stati Uniti d'America",
+    "Uruguay": "Uruguay",
+    "Uzbekistan": "Uzbekistan",
+    "Vanuatu": "Vanuatu",
+    "Venezuela": "Venezuela",
+    "Vietnam": "Vietnam",
+    "Yemen": "Yemen",
+    "Zambia": "Zambia",
+    "Zimbabwe": "Zimbabwe"
+  },
+  "transactions": {
+    "types": {
+      "deposit": "Deposito",
+      "transfer": "Trasferimento",
+      "exchange": "Scambio",
+      "withdrawal": "Prelievo",
+      "withdraw": "Prelievo"
+    },
+    "status": {
+      "processing": "In elaborazione",
+      "completed": "Completato",
+      "declined": "Rifiutato",
+      "failed": "Fallito"
+    },
+    "details": {
+      "title": "Dettagli Transazione",
+      "amount": "Importo",
+      "fee": "Commissione",
+      "date": "Data",
+      "status": "Stato",
+      "description": "Descrizione",
+      "id": "ID Transazione",
+      "outgoing": "In uscita",
+      "incoming": "In entrata",
+      "from": "Da",
+      "to": "A",
+      "total_payment": "Pagamento Totale",
+      "purpose": "Causale",
+      "internal_account": "Conto Interno",
+      "not_specified": "Non specificato"
+    }
+  },
+  "crypto": {
+    "hero": {
+      "subtitle": "Più di $1 miliardo di volume crypto giornaliero",
+      "title": "Fai trading di asset digitali con una banca svizzera autorizzata",
+      "description": "L'istituzione svizzera di criptovalute con protezione professionale. Inizia a fare trading con la massima aderenza alle normative.",
+      "button": "Diventa cliente"
+    },
+    "features": {
+      "title": "Fai trading crypto in totale sicurezza",
+      "item1": "Scambia Bitcoin, Ethereum e valute legali con facilità.",
+      "item2": "Fai trading in modo efficiente con tariffe chiare.",
+      "item3": "Visualizza e gestisci le tue posizioni in qualsiasi momento.",
+      "item4": "Protezione di livello professionale con standard svizzeri."
+    },
+    "why": {
+      "title": "Perché scegliere AlpenStark?",
+      "description": "AlpenStark fornisce servizi di asset digitali di livello professionale per investitori esigenti.",
+      "button": "Apri un conto"
+    },
+    "stats": {
+      "item1": "Operativo dal 2007",
+      "item2": "Gestione account dedicata",
+      "item3": "Oltre 150 paesi serviti",
+      "item4": "Oltre $1 miliardo di asset gestiti",
+      "item5": "Licenza svizzera con solido quadro normativo",
+      "item6": "Oltre $327 miliardi in transazioni processate"
+    }
+  },
+  "digitalBanking": {
+    "hero": {
+      "badge": "Oltre 100.000 utenti soddisfatti",
+      "title": "Gestisci i tuoi soldi secondo i tuoi orari",
+      "description": "Prendi il pieno controllo della tua vita finanziaria in modo sicuro e conveniente.",
+      "button": "Registrati ora",
+      "feature1Title": "SICURO",
+      "feature1Desc": "I tuoi dati sono protetti",
+      "feature2Title": "CONVENIENTE",
+      "feature2Desc": "Accesso 24 ore su 24 in tutto il mondo"
+    },
+    "section1": {
+      "title": "Gestisci i tuoi soldi con precisione",
+      "description": "Tieni traccia delle tue attività finanziarie, carte e investimenti sulla nostra piattaforma digitale."
+    },
+    "section2": {
+      "title": "Totale trasparenza",
+      "description": "Accedi a tutti i dettagli di ogni pagamento. Scarica le ricevute e controlla le tue operazioni bancarie."
+    },
+    "section3": {
+      "title": "Elaborazione rapida dei pagamenti",
+      "description": "Invia pagamenti a oltre 1.200 istituzioni o trasferisci fondi in Svizzera e all'estero in modo sicuro.",
+      "button": "Inizia ora"
+    },
+    "faq": {
+      "title": "Domande frequenti",
+      "subtitle": "Cerchi risposte? Controlla qui sotto.",
+      "q1": "Quali funzioni offre l'Online Banking?",
+      "a1": "Puoi controllare i saldi, effettuare bonifici, pagare bollette e molto altro.",
+      "q2": "È necessaria la registrazione?",
+      "a2": "Assolutamente. Ti dà accesso completo al tuo account 24/7.",
+      "q3": "Cosa succede se dimentico la password?",
+      "a3": "Tocca semplicemente 'Password dimenticata' e segui i passaggi.",
+      "q4": "Quanto è sicuro?",
+      "a4": "Molto sicuro. Utilizziamo la crittografia a 256 bit.",
+      "q5": "Quali tipi di trasferimenti sono disponibili?",
+      "a5": "Trasferimenti locali, internazionali e pagamenti ricorrenti.",
+      "q6": "Posso chattare con il supporto?",
+      "a6": "Sì, direttamente tramite la nostra chat sicura.",
+      "q7": "È supportato il pagamento delle bollette?",
+      "a7": "Sì, puoi pagare fatture svizzere e internazionali.",
+      "q8": "Posso tracciare lo stato dei pagamenti?",
+      "a8": "Sì, tutti i pagamenti possono essere tracciati."
+    }
+  },
+  "currencyExchange": {
+    "hero": {
+      "badge": "Eccellente 4.5 su 5 su Trustpilot",
+      "title": "Conversione di valuta intelligente",
+      "description": "Converti facilmente le valute con tassi vantaggiosi ed esecuzione immediata.",
+      "widget": {
+        "sell": "Tu vendi",
+        "rate": "Tasso",
+        "buy": "Tu compri",
+        "button": "Apri un conto",
+        "adding": "Aggiungiamo costantemente nuove valute"
+      }
+    },
+    "section1": {
+      "title": "Copertura internazionale",
+      "description": "Accedi ai mercati globali attraverso la nostra piattaforma di cambio valuta.",
+      "button": "Apri un conto"
+    },
+    "section2": {
+      "title": "Passaggi per la conversione",
+      "step1": "Scegli la valuta di origine e di destinazione",
+      "step2": "Specifica l'importo",
+      "step3": "Controlla il tasso e il riepilogo",
+      "step4": "Approva e ricevi i fondi immediatamente"
+    },
+    "section3": {
+      "title": "Tassi di mercato in tempo reale",
+      "description": "Goditi prezzi chiari con tassi aggiornati ogni secondo.",
+      "button": "Inizia a fare trading"
+    },
+    "faq": {
+      "title": "Domande Frequenti",
+      "q1": "Quanto spesso vengono aggiornati i tassi?",
+      "a1": "In tempo reale.",
+      "q2": "Quali sono le commissioni?",
+      "a2": "Strutture di commissioni chiare senza costi imprevisti.",
+      "q3": "Quanto sono veloci le conversioni?",
+      "a3": "Eseguite istantaneamente.",
+      "q4": "Ci sono dei limiti?",
+      "a4": "I limiti dipendono dal tuo livello di verifica."
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "9.5 minuti di tempo di risposta medio",
+      "title": "Chi siamo",
+      "description": "I servizi finanziari sono la spina dorsale di ogni impresa. Devono funzionare in modo impeccabile."
+    },
+    "quote": {
+      "text": "\"Le banche tradizionali spesso deludono gli imprenditori. Abbiamo creato AlpenStark per colmare questa lacuna.\"",
+      "author": "Fondatore"
+    },
+    "story": {
+      "title": "La nostra storia",
+      "p1": "Dopo quindici anni nel settore bancario, ho visto in prima persona come le banche deludessero gli imprenditori.",
+      "p2": "Ecco perché ho fondato AlpenStark. Oggi, sono onorato di supportare oltre 100.000 clienti in tutto il mondo."
+    },
+    "contact": {
+      "title": "Parla con una persona reale",
+      "description": "I nostri professionisti sono qui per rispondere a qualsiasi domanda tu abbia.",
+      "formTitle": "Inviaci un messaggio",
+      "formDescription": "Compila il modulo sottostante o scrivici a support@alpenstark.com.",
+      "firstName": "Nome *",
+      "lastName": "Cognome *",
+      "email": "Email *",
+      "message": "Messaggio",
+      "button": "Invia",
+      "success": "Il tuo messaggio è stato inviato con successo!",
+      "error": "Si è verificato un errore durante l'invio. Riprova."
+    }
+  }
+}

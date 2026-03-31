@@ -1,0 +1,20 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import App from './App.jsx'
+import theme from './theme/theme'
+import { NotificationProvider } from './context/NotificationContext'
+import './index.css'
+import './i18n'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <NotificationProvider>
+        <App />
+      </NotificationProvider>
+    </ThemeProvider>
+  </StrictMode>,
+)
