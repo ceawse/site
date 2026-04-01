@@ -82,6 +82,7 @@ const AccountOverview = () => {
                 <MenuItem value="USD"><CurrencyIcon currency="USD" sx={{ mr: 1, width: 20, height: 20 }} /> USD</MenuItem>
                 <MenuItem value="EUR"><CurrencyIcon currency="EUR" sx={{ mr: 1, width: 20, height: 20 }} /> EUR</MenuItem>
                 <MenuItem value="GBP"><CurrencyIcon currency="GBP" sx={{ mr: 1, width: 20, height: 20 }} /> GBP</MenuItem>
+                <MenuItem value="CHF"><CurrencyIcon currency="CHF" sx={{ mr: 1, width: 20, height: 20 }} /> CHF</MenuItem>
               </Select>
             </Box>
             <Typography variant="h4" fontWeight={700} sx={{ color: '#0f172a' }}>

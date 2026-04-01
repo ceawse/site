@@ -75,7 +75,7 @@ const AccountTopUp = () => {
   const allowedCurrencies = (() => {
     const selected = accounts.find(a => a.id === formData.accountId);
     if (!selected) return [];
-    if (selected.type === 'fiat') return ['USD', 'EUR', 'GBP'];
+    if (selected.type === 'fiat') return ['USD', 'EUR', 'GBP', 'CHF'];
     if (selected.currency === 'BTC') return ['BTC'];
     if (selected.currency === 'ETH') return ['ETH', 'USDT'];
     if (selected.currency === 'SOL') return ['SOL', 'USDT'];
