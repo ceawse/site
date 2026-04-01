@@ -15,17 +15,19 @@ export const api = {
     });
     const text = await res.text();
     if (!res.ok) {
-      let message;
+      let json;
       try {
-        const json = JSON.parse(text);
-        message = json.message || JSON.stringify(json);
+        json = JSON.parse(text);
       } catch (e) {
-        message = text || res.statusText;
+        json = { message: text || res.statusText };
       }
-      throw new Error(message);
+      const error = new Error(json.message || 'Unknown error');
+      error.responseData = json;
+      throw error;
     }
     return text ? JSON.parse(text) : null;
   },
+
   post: async (endpoint, data) => {
     const res = await fetch(`${API_BASE}${endpoint}`, {
       method: 'POST',
@@ -34,17 +36,19 @@ export const api = {
     });
     const text = await res.text();
     if (!res.ok) {
-      let message;
+      let json;
       try {
-        const json = JSON.parse(text);
-        message = json.message || JSON.stringify(json);
+        json = JSON.parse(text);
       } catch (e) {
-        message = text || res.statusText;
+        json = { message: text || res.statusText };
       }
-      throw new Error(message);
+      const error = new Error(json.message || 'Unknown error');
+      error.responseData = json;
+      throw error;
     }
     return text ? JSON.parse(text) : null;
   },
+
   put: async (endpoint, data) => {
     const res = await fetch(`${API_BASE}${endpoint}`, {
       method: 'PUT',
@@ -53,17 +57,19 @@ export const api = {
     });
     const text = await res.text();
     if (!res.ok) {
-      let message;
+      let json;
       try {
-        const json = JSON.parse(text);
-        message = json.message || JSON.stringify(json);
+        json = JSON.parse(text);
       } catch (e) {
-        message = text || res.statusText;
+        json = { message: text || res.statusText };
       }
-      throw new Error(message);
+      const error = new Error(json.message || 'Unknown error');
+      error.responseData = json;
+      throw error;
     }
     return text ? JSON.parse(text) : null;
   },
+
   delete: async (endpoint) => {
     const res = await fetch(`${API_BASE}${endpoint}`, {
       method: 'DELETE',
@@ -71,14 +77,15 @@ export const api = {
     });
     const text = await res.text();
     if (!res.ok) {
-      let message;
+      let json;
       try {
-        const json = JSON.parse(text);
-        message = json.message || JSON.stringify(json);
+        json = JSON.parse(text);
       } catch (e) {
-        message = text || res.statusText;
+        json = { message: text || res.statusText };
       }
-      throw new Error(message);
+      const error = new Error(json.message || 'Unknown error');
+      error.responseData = json;
+      throw error;
     }
     return text ? JSON.parse(text) : null;
   }
