@@ -234,6 +234,7 @@
       "currency_label": "Divisa",
       "payment_method_label": "Método di Pago",
       "bank_transfer": "Transferencia Bancaria",
+      "cash_transfer": "Transferencia de dinero",
       "card_payment": "Tarjeta de Crédito o Débito",
       "crypto_instruction": "Por favor, transfiera {{amount}} {{currency}} a una de las siguientes direcciones:",
       "blockchain_network": "Red Blockchain",

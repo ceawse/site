@@ -1,8 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-
 const dbPath = path.resolve(__dirname, 'database.sqlite');
-
 let db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error('Error opening database', err.message);
@@ -11,11 +9,8 @@ let db = new sqlite3.Database(dbPath, (err) => {
     initialize(db);
   }
 });
-
 function initialize(database) {
-  // Initialize tables
   database.serialize(() => {
-    // Users table
     database.run(`CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
@@ -35,11 +30,11 @@ function initialize(database) {
       verification_document TEXT,
       verification_document_type TEXT,
       bank_statement_document TEXT,
-      verification_status TEXT DEFAULT 'not_started', -- 'not_started', 'pending', 'verified', 'rejected'
-      department_id INTEGER DEFAULT 1
+      verification_status TEXT DEFAULT 'not_started',
+      department_id INTEGER DEFAULT 1,
+      is_blocked INTEGER DEFAULT 0,
+      blocked_reason TEXT
     )`);
-
-    // Add columns to existing users if needed
     database.run(`ALTER TABLE users ADD COLUMN role TEXT DEFAULT 'user'`, (err) => {});
     database.run(`ALTER TABLE users ADD COLUMN verification_document TEXT`, (err) => {});
     database.run(`ALTER TABLE users ADD COLUMN verification_document_type TEXT`, (err) => {});
@@ -49,27 +44,28 @@ function initialize(database) {
     database.run(`ALTER TABLE users ADD COLUMN email_verification_code TEXT`, (err) => {});
     database.run(`ALTER TABLE users ADD COLUMN department_id INTEGER DEFAULT 1`, (err) => {});
 
-    // Accounts table
+    // ПРАВКА: Добавляем колонки для блокировки в существующую базу
+    database.run(`ALTER TABLE users ADD COLUMN is_blocked INTEGER DEFAULT 0`, (err) => {});
+    database.run(`ALTER TABLE users ADD COLUMN blocked_reason TEXT`, (err) => {});
+
     database.run(`CREATE TABLE IF NOT EXISTS accounts (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       user_id INTEGER,
       account_number TEXT UNIQUE,
-      type TEXT, -- 'fiat' or 'crypto'
+      type TEXT,
       currency TEXT,
       balance REAL DEFAULT 0.0,
       reserved REAL DEFAULT 0.0,
       FOREIGN KEY(user_id) REFERENCES users(id)
     )`);
-
-    // Transactions table
     database.run(`CREATE TABLE IF NOT EXISTS transactions (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       user_id INTEGER,
       account_id INTEGER,
-      type TEXT, -- 'deposit', 'withdraw', 'transfer', 'exchange'
+      type TEXT,
       amount REAL,
       currency TEXT,
-      status TEXT, -- 'completed', 'processing', 'declined'
+      status TEXT,
       date TEXT,
       description TEXT,
       comment TEXT,
@@ -79,14 +75,10 @@ function initialize(database) {
       FOREIGN KEY(user_id) REFERENCES users(id),
       FOREIGN KEY(account_id) REFERENCES accounts(id)
     )`);
-
-    // Add columns to existing transactions if needed
     database.run(`ALTER TABLE transactions ADD COLUMN fee REAL DEFAULT 0.0`, (err) => {});
     database.run(`ALTER TABLE transactions ADD COLUMN recipient_address TEXT`, (err) => {});
     database.run(`ALTER TABLE transactions ADD COLUMN comment TEXT`, (err) => {});
     database.run(`ALTER TABLE transactions ADD COLUMN sender_address TEXT`, (err) => {});
-
-    // Invoices table
     database.run(`CREATE TABLE IF NOT EXISTS invoices (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       user_id INTEGER,
@@ -97,8 +89,6 @@ function initialize(database) {
       description TEXT,
       FOREIGN KEY(user_id) REFERENCES users(id)
     )`);
-
-    // Saved Banks table
     database.run(`CREATE TABLE IF NOT EXISTS saved_banks (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       user_id INTEGER,
@@ -108,30 +98,23 @@ function initialize(database) {
       account_number TEXT,
       FOREIGN KEY(user_id) REFERENCES users(id)
     )`);
-
-    // Settings table
     database.run(`CREATE TABLE IF NOT EXISTS settings (
       key TEXT PRIMARY KEY,
       value TEXT
     )`);
-
-    // Messages table
     database.run(`CREATE TABLE IF NOT EXISTS messages (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       thread_id INTEGER,
       user_id INTEGER,
-      sender_role TEXT, -- 'user' or 'admin'
+      sender_role TEXT,
       subject TEXT,
       content TEXT,
-      status TEXT DEFAULT 'unread', -- 'unread', 'read'
+      status TEXT DEFAULT 'unread',
       date TEXT,
       attachment TEXT,
       FOREIGN KEY(user_id) REFERENCES users(id)
     )`);
-
     database.run(`ALTER TABLE messages ADD COLUMN attachment TEXT`, (err) => {});
-
-    // Loans table
     database.run(`CREATE TABLE IF NOT EXISTS loans (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       user_id INTEGER,
@@ -140,21 +123,17 @@ function initialize(database) {
       term_months INTEGER,
       occupation TEXT,
       monthly_income TEXT,
-      documents TEXT, -- comma-separated file paths
-      status TEXT DEFAULT 'pending', -- 'pending', 'approved', 'rejected'
+      documents TEXT,
+      status TEXT DEFAULT 'pending',
       created_at TEXT,
       FOREIGN KEY(user_id) REFERENCES users(id)
     )`);
-
-    // Departments table
     database.run(`CREATE TABLE IF NOT EXISTS departments (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT
     )`, (err) => {
       database.run(`INSERT OR IGNORE INTO departments (id, name) VALUES (1, 'Standard')`);
     });
-
-    // Initialize default settings
     const defaultSettings = [
       ['wallet_btc', 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh'],
       ['wallet_eth', '0x71C7656EC7ab88b098defB751B7401B5f6d8976F'],
@@ -166,13 +145,11 @@ function initialize(database) {
       ['contact_email', 'support@alpenstark.com'],
       ['contact_address', 'Avenue Industrielle 12, 1227 Carouge GE, Switzerland']
     ];
-
     defaultSettings.forEach(([key, value]) => {
       database.run(`INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)`, [key, value]);
     });
   });
 }
-
 module.exports = {
   dbPath,
   get: (...args) => db.get(...args),

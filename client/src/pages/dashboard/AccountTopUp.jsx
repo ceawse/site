@@ -117,6 +117,7 @@ const AccountTopUp = () => {
 
   const isCrypto = accountType === 'crypto' || ['USDT', 'ETH', 'BTC'].includes(formData.currency);
   const isBank = !isCrypto && formData.method === 'bank';
+  const isCash = !isCrypto && formData.method === 'cash';
 
   const handleNext = async () => {
     if (activeStep === 0) {
@@ -278,6 +279,7 @@ const AccountTopUp = () => {
                     >
                       <MenuItem value="bank">{t('dashboard.top_up.bank_transfer')}</MenuItem>
                       <MenuItem value="card">{t('dashboard.top_up.card_payment')}</MenuItem>
+                      <MenuItem value="cash">{t('dashboard.top_up.cash_transfer')}</MenuItem>
                     </Select>
                   </FormControl>
                 </Grid>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
@@ -24,7 +24,6 @@ import StorageIcon from '@mui/icons-material/Storage';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import { api } from '../../api';
 import { useAuth } from '../../context/AuthContext';
-
 import AdminDashboard from './AdminDashboard';
 import AdminUsers from './AdminUsers';
 import AdminUserDetail from './AdminUserDetail';
@@ -43,6 +42,40 @@ export default function AdminLayout() {
   const { user: authUser, logout } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [adminUser, setAdminUser] = useState(authUser);
+
+  const lastCounts = useRef(null);
+  const audioRef = useRef(new Audio('/notification.mp3'));
+
+  useEffect(() => {
+    const checkNotifications = async () => {
+      try {
+        const counts = await api.get('/admin/notification-counts');
+
+        if (lastCounts.current) {
+          const hasNewEvent =
+            counts.messages > lastCounts.current.messages ||
+            counts.transactions > lastCounts.current.transactions ||
+            counts.verifications > lastCounts.current.verifications;
+
+          if (hasNewEvent) {
+            console.log("[ADMIN] New activity! Playing sound...");
+            audioRef.current.currentTime = 0;
+            audioRef.current.play().catch(e => {
+              console.log("Audio play failed. Click anywhere on the page to enable sound notifications.");
+            });
+          }
+        }
+        lastCounts.current = counts;
+      } catch (err) {
+        console.error("Failed to check notifications:", err);
+      }
+    };
+
+    const interval = setInterval(checkNotifications, 10000);
+    checkNotifications();
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -74,7 +107,7 @@ export default function AdminLayout() {
       <List>
         {menuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton 
+            <ListItemButton
               selected={location.pathname === item.path || (item.path !== '/admin' && location.pathname.startsWith(item.path))}
               onClick={() => navigate(item.path)}
             >
@@ -100,7 +133,7 @@ export default function AdminLayout() {
     </div>
   );
 
-  if (!adminUser) return null; // loading or redirecting
+  if (!adminUser) return null;
 
   return (
     <Box sx={{ display: 'flex' }}>

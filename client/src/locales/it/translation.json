@@ -234,6 +234,7 @@
       "currency_label": "Valuta",
       "payment_method_label": "Metodo di Pagamento",
       "bank_transfer": "Bonifico Bancario",
+      "cash_transfer": "Rimessa",
       "card_payment": "Carta di Credito o Debito",
       "crypto_instruction": "Per favore trasferisci {{amount}} {{currency}} a uno dei seguenti indirizzi:",
       "blockchain_network": "Rete Blockchain",

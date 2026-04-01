@@ -9,6 +9,8 @@
     "ERR_AUTH_INVALID_CREDENTIALS": "Invalid email or password.",
     "ERR_AUTH_INVALID_PASSWORD": "Current password is incorrect.",
     "ERR_DB_ERROR": "A database error occurred.",
+    "MSG_METHOD_CASH": "Cash transfer",
+    "ERR_USER_BLOCKED": "Your account is blocked. Reason: {{reason}}",
     "ERR_USER_NOT_FOUND": "User not found.",
     "ERR_PROFILE_UPDATE_FAILED": "Failed to update profile.",
     "ERR_PASSWORD_UPDATE_FAILED": "Failed to change password.",
@@ -234,6 +236,8 @@
     "register_title": "Create an account",
     "email": "Email",
     "password": "Password",
+    "forgot_password_link": "Forgot password?",
+    "forgot_password_msg": "Please contact our support team at support@alpenstark.com to reset your password.",
     "login_button": "Login to Dashboard",
     "register_button": "Register",
     "no_account": "Don't have an account?",
@@ -328,6 +332,7 @@
       "currency_label": "Currency",
       "payment_method_label": "Payment Method",
       "bank_transfer": "Bank Transfer",
+      "cash_transfer": "Cash Transfer",
       "card_payment": "Credit or Debit Card",
       "crypto_instruction": "Please transfer {{amount}} {{currency}} to one of the following addresses:",
       "blockchain_network": "Blockchain Network",
@@ -678,6 +683,8 @@
   },
   "admin": {
     "panel_title": "Admin Panel",
+    "is_blocked": "Blocked account",
+    "blocked_reason": "Причина блокировки",
     "sidebar": {
       "dashboard": "Dashboard",
       "users": "Users",
@@ -826,6 +833,8 @@
       }
     },
     "user_detail": {
+      "is_blocked": "Block Account",
+      "blocked_reason": "Reason for blocking",
       "title": "Edit User: {{name}}",
       "profile_data": "Profile Data",
       "role_label": "Role",

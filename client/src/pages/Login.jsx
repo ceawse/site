@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Typography, TextField, Button, Box, Paper } from '@mui/material';
+import { Container, Typography, TextField, Button, Box, Paper, Alert } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
@@ -17,6 +17,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [info, setInfo] = useState('');
   const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -26,14 +27,26 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setInfo('');
     try {
       setError('');
       const data = await api.post('/auth/login', { email, password });
       login(data.token, data.user);
       navigate('/dashboard');
     } catch (err) {
-      setError(translateBackendMessage(err.message) || t('auth.invalid_credentials'));
+      const errorMessage = translateBackendMessage(err.message);
+
+      if (err.message === 'ERR_USER_BLOCKED') {
+         setError(t('backend.ERR_USER_BLOCKED', { reason: err.reason || 'Not specified' }));
+      } else {
+         setError(errorMessage || t('auth.invalid_credentials'));
+      }
     }
+  };
+
+  const handleForgotPassword = () => {
+    setError('');
+    setInfo(t('auth.forgot_password_msg'));
   };
 
   return (
@@ -42,8 +55,14 @@ const Login = () => {
         <Typography variant="h4" fontWeight={700} color="primary" gutterBottom>
           {t('auth.login_title')}
         </Typography>
-        
+
         {error && <Typography color="error" variant="body2" sx={{ mb: 2 }}>{error}</Typography>}
+
+        {info && (
+          <Alert severity="info" sx={{ mb: 2, textAlign: 'left', borderRadius: 2 }}>
+            {info}
+          </Alert>
+        )}
 
         <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
           <TextField
@@ -55,36 +74,52 @@ const Login = () => {
             required
             variant="outlined"
           />
-          <TextField
-            label={t('auth.password')}
-            type={showPassword ? 'text' : 'password'}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            fullWidth
-            required
-            variant="outlined"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
-          />
-          <Button 
-            type="submit" 
-            variant="contained" 
+          <Box>
+            <TextField
+              label={t('auth.password')}
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              fullWidth
+              required
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
+            />
+            <Box sx={{ textAlign: 'right', mt: 1 }}>
+              <Typography
+                variant="caption"
+                onClick={handleForgotPassword}
+                sx={{
+                  color: '#4F46E5',
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                  '&:hover': { textDecoration: 'underline' }
+                }}
+              >
+                {t('auth.forgot_password_link')}
+              </Typography>
+            </Box>
+          </Box>
+          <Button
+            type="submit"
+            variant="contained"
             size="large"
-            sx={{ 
-              mt: 2, 
-              bgcolor: '#4F46E5', 
+            sx={{
+              mt: 1,
+              bgcolor: '#4F46E5',
               color: 'white',
               py: 1.5,
               fontWeight: 600,
@@ -94,7 +129,6 @@ const Login = () => {
           >
             {t('auth.login_button')}
           </Button>
-          
           <Box sx={{ textAlign: 'center', mt: 2 }}>
             <Typography variant="body2" sx={{ color: '#64748b' }}>
               {t('auth.no_account')}{' '}

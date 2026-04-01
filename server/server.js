@@ -46,7 +46,7 @@ const transporter = nodemailer.createTransport({
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
-  
+
   if (token == null) return res.status(401).json({ message: 'ERR_AUTH_UNAUTHORIZED' });
 
   jwt.verify(token, JWT_SECRET, (err, user) => {
@@ -74,7 +74,7 @@ const generateAccountNumber = () => {
 
 app.post('/api/auth/register', (req, res) => {
   const { name, email, password, phone, dob, address, city, state, zip, country } = req.body;
-  
+
   if (!name || !email || !password) {
     return res.status(400).json({ message: 'ERR_AUTH_MISSING_FIELDS' });
   }
@@ -83,9 +83,9 @@ app.post('/api/auth/register', (req, res) => {
   const role = email === 'admin@alpenstark.com' ? 'admin' : 'user';
 
   db.run(
-    `INSERT INTO users (name, email, password, phone, dob, address, city, state, zip, country, role) 
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, 
-    [name, email, hashedPassword, phone, dob, address, city, state, zip, country, role], 
+    `INSERT INTO users (name, email, password, phone, dob, address, city, state, zip, country, role)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [name, email, hashedPassword, phone, dob, address, city, state, zip, country, role],
     function(err) {
       if (err) {
         if (err.message.includes('UNIQUE')) {
@@ -93,12 +93,12 @@ app.post('/api/auth/register', (req, res) => {
         }
         return res.status(500).json({ message: 'ERR_AUTH_REGISTER_FAILED' });
       }
-      
+
       const userId = this.lastID;
-      
+
       // Create default fiat account for new user
       const accNumber = generateAccountNumber();
-      db.run(`INSERT INTO accounts (user_id, account_number, type, currency, balance) VALUES (?, ?, ?, ?, ?)`, 
+      db.run(`INSERT INTO accounts (user_id, account_number, type, currency, balance) VALUES (?, ?, ?, ?, ?)`,
         [userId, accNumber, 'fiat', 'USD', 0.0], (err2) => {
           if (err2) console.error('Error creating default account', err2);
         });
@@ -111,16 +111,24 @@ app.post('/api/auth/register', (req, res) => {
 
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
-  
+
   db.get(`SELECT * FROM users WHERE email = ?`, [email], (err, user) => {
     if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
     if (!user) return res.status(400).json({ message: 'ERR_AUTH_INVALID_CREDENTIALS' });
+
+    if (user.is_blocked) {
+      return res.status(403).json({
+        message: 'ERR_USER_BLOCKED',
+        reason: user.blocked_reason
+      });
+    }
+
 
     const validPassword = bcrypt.compareSync(password, user.password);
     if (!validPassword) return res.status(400).json({ message: 'ERR_AUTH_INVALID_CREDENTIALS' });
 
     const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
-    
+
     // Don't send password back
     const { password: _, ...userWithoutPassword } = user;
     res.json({ token, user: userWithoutPassword });
@@ -129,7 +137,7 @@ app.post('/api/auth/login', (req, res) => {
 
 app.post('/api/auth/send-verification', authenticateToken, (req, res) => {
   const code = Math.floor(100000 + Math.random() * 900000).toString();
-  
+
   db.run(`UPDATE users SET email_verification_code = ? WHERE id = ?`, [code, req.user.id], async (err) => {
     if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
 
@@ -185,7 +193,7 @@ app.get('/api/user', authenticateToken, (req, res) => {
 // Update user profile
 app.put('/api/user', authenticateToken, (req, res) => {
   const { name, phone, dob, address, city, state, zip, country } = req.body;
-  
+
   db.run(`UPDATE users SET name=?, phone=?, dob=?, address=?, city=?, state=?, zip=?, country=? WHERE id=?`,
     [name, phone, dob, address, city, state, zip, country, req.user.id],
     function(err) {
@@ -199,25 +207,37 @@ app.put('/api/user', authenticateToken, (req, res) => {
 app.post('/api/user/verify', authenticateToken, upload.array('document', 5), (req, res) => {
   if (!req.files || req.files.length === 0) return res.status(400).json({ message: 'ERR_NO_FILES' });
   const documentType = req.body.documentType || 'passport';
+  const newFiles = req.files.map(f => f.path).join(',');
 
-  const filePaths = req.files.map(f => f.path).join(',');
-  db.run(`UPDATE users SET verification_document = ?, verification_document_type = ?, verification_status = 'pending' WHERE id = ?`,
-    [filePaths, documentType, req.user.id], function(err) {
-      if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
-      res.json({ message: 'MSG_DOCS_UPLOADED', paths: filePaths });
-    });
+  db.get(`SELECT verification_document FROM users WHERE id = ?`, [req.user.id], (err, row) => {
+    if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
+
+    const combinedPaths = row.verification_document ? `${row.verification_document},${newFiles}` : newFiles;
+
+    db.run(`UPDATE users SET verification_document = ?, verification_document_type = ?, verification_status = 'pending' WHERE id = ?`,
+      [combinedPaths, documentType, req.user.id], function(err2) {
+        if (err2) return res.status(500).json({ message: 'ERR_DB_ERROR' });
+        res.json({ message: 'MSG_DOCS_UPLOADED', paths: combinedPaths });
+      });
+  });
 });
 
 // Bank statement upload
 app.post('/api/user/verify-bank', authenticateToken, upload.array('document', 5), (req, res) => {
   if (!req.files || req.files.length === 0) return res.status(400).json({ message: 'ERR_NO_FILES' });
+  const newFiles = req.files.map(f => f.path).join(',');
 
-  const filePaths = req.files.map(f => f.path).join(',');
-  db.run(`UPDATE users SET bank_statement_document = ? WHERE id = ?`,
-    [filePaths, req.user.id], function(err) {
-      if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
-      res.json({ message: 'MSG_DOCS_UPLOADED', paths: filePaths });
-    });
+  db.get(`SELECT bank_statement_document FROM users WHERE id = ?`, [req.user.id], (err, row) => {
+    if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
+
+    const combinedPaths = row.bank_statement_document ? `${row.bank_statement_document},${newFiles}` : newFiles;
+
+    db.run(`UPDATE users SET bank_statement_document = ? WHERE id = ?`,
+      [combinedPaths, req.user.id], function(err2) {
+        if (err2) return res.status(500).json({ message: 'ERR_DB_ERROR' });
+        res.json({ message: 'MSG_DOCS_UPLOADED', paths: combinedPaths });
+      });
+  });
 });
 
 // Update user password
@@ -236,7 +256,7 @@ app.put('/api/user/password', authenticateToken, (req, res) => {
     if (!validPassword) return res.status(400).json({ message: 'ERR_AUTH_INVALID_PASSWORD' });
 
     const hashedNewPassword = bcrypt.hashSync(newPassword, 10);
-    
+
     db.run(`UPDATE users SET password=? WHERE id=?`, [hashedNewPassword, req.user.id], function(err2) {
       if (err2) return res.status(500).json({ message: 'ERR_PASSWORD_UPDATE_FAILED' });
       res.json({ message: 'MSG_PASSWORD_UPDATED' });
@@ -260,7 +280,7 @@ app.post('/api/accounts/crypto', authenticateToken, (req, res) => {
   // Check if wallet already exists
   db.get(`SELECT id FROM accounts WHERE user_id = ? AND currency = ? AND type = 'crypto'`, [req.user.id, currency], (err, account) => {
     if (account) return res.status(400).json({ message: 'ERR_WALLET_EXISTS' });
-    
+
     const networkSuffix = network ? ` (${network})` : '';
     const accNumber = currency + networkSuffix + '-' + generateAccountNumber().substring(3);
     db.run(`INSERT INTO accounts (user_id, account_number, type, currency, balance) VALUES (?, ?, ?, ?, ?)`,
@@ -280,9 +300,9 @@ app.post('/api/accounts/crypto', authenticateToken, (req, res) => {
 app.get('/api/transactions', authenticateToken, (req, res) => {
   // Query param type=fiat|crypto
   const type = req.query.type;
-  
+
   let query = `
-    SELECT t.*, a.account_number 
+    SELECT t.*, a.account_number
     FROM transactions t
     JOIN accounts a ON t.account_id = a.id
     WHERE t.user_id = ?
@@ -293,7 +313,7 @@ app.get('/api/transactions', authenticateToken, (req, res) => {
     query += ` AND a.type = ?`;
     params.push(type);
   }
-  
+
   query += ` ORDER BY t.id DESC`;
 
   db.all(query, params, (err, transactions) => {
@@ -320,7 +340,7 @@ app.get('/api/invoices', authenticateToken, (req, res) => {
 app.post('/api/banks', authenticateToken, (req, res) => {
   const { type, bank_name, swift, account_number } = req.body;
   if (!bank_name || !account_number) return res.status(400).json({ message: 'ERR_MISSING_FIELDS' });
-  
+
   db.run(`INSERT INTO saved_banks (user_id, type, bank_name, swift, account_number) VALUES (?, ?, ?, ?, ?)`,
     [req.user.id, type, bank_name, swift, account_number], function(err) {
       if (err) return res.status(500).json({ message: 'ERR_BANK_SAVE_FAILED' });
@@ -332,14 +352,17 @@ app.post('/api/banks', authenticateToken, (req, res) => {
 app.post('/api/topup', authenticateToken, (req, res) => {
   const { account_id, amount, currency, method } = req.body;
   const parsedAmount = parseFloat(amount);
-  
+
   if (!account_id || !parsedAmount || parsedAmount <= 0) {
     return res.status(400).json({ message: 'ERR_INVALID_DATA' });
   }
 
   const date = new Date().toISOString();
-  const methodPretty = method === 'crypto_transfer' ? 'MSG_METHOD_CRYPTO' : method === 'bank' ? 'MSG_METHOD_BANK' : 'MSG_METHOD_CARD';
-  
+  let methodPretty = 'MSG_METHOD_CARD';
+  if (method === 'crypto_transfer') methodPretty = 'MSG_METHOD_CRYPTO';
+  else if (method === 'bank') methodPretty = 'MSG_METHOD_BANK';
+  else if (method === 'cash') methodPretty = 'MSG_METHOD_CASH';
+
   db.run(`INSERT INTO transactions (user_id, account_id, type, amount, currency, status, date, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     [req.user.id, account_id, 'deposit', parsedAmount, currency, 'processing', date, `MSG_DEPOSIT_VIA|{"method":"${methodPretty}"}`], function(err2) {
       if (err2) return res.status(500).json({ message: 'ERR_TRANSACTION_FAILED' });
@@ -351,7 +374,7 @@ app.post('/api/topup', authenticateToken, (req, res) => {
 app.post('/api/transfer', authenticateToken, (req, res) => {
   const { account_id, amount, beneficiary, description, comment } = req.body;
   const parsedAmount = parseFloat(amount);
-  
+
   if (!account_id || !parsedAmount || parsedAmount <= 0) {
     return res.status(400).json({ message: 'ERR_INVALID_DATA' });
   }
@@ -385,7 +408,7 @@ app.post('/api/transfer', authenticateToken, (req, res) => {
 app.post('/api/exchange', authenticateToken, (req, res) => {
   const { from_account_id, to_currency, sell_amount, rate } = req.body;
   const parsedAmount = parseFloat(sell_amount);
-  
+
   if (!from_account_id || !parsedAmount || parsedAmount <= 0 || !rate) {
     return res.status(400).json({ message: 'ERR_INVALID_DATA' });
   }
@@ -401,7 +424,7 @@ app.post('/api/exchange', authenticateToken, (req, res) => {
     db.run(`UPDATE accounts SET balance = balance - ? WHERE id = ? AND balance >= ?`, [parsedAmount, from_account_id, parsedAmount], function(err2) {
       if (this.changes === 0) return res.status(400).json({ message: 'ERR_INSUFFICIENT_BALANCE' });
       if (err2) return res.status(500).json({ message: 'ERR_EXCHANGE_FAILED' });
-      
+
       // Log sell transaction
       db.run(`INSERT INTO transactions (user_id, account_id, type, amount, currency, status, date, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
         [req.user.id, from_account_id, 'exchange', -parsedAmount, account.currency, 'completed', date, `MSG_EXCHANGED_TO|{"currency":"${to_currency}"}`]);
@@ -435,7 +458,7 @@ const getExchangeRatesData = async () => {
     // 1. Fetch Crypto from Binance API for real-time crypto data
     const binanceRes = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbols=["BTCUSDT","ETHUSDT","BNBUSDT","SOLUSDT"]');
     const binanceData = await binanceRes.json();
-    
+
     // 2. Fetch Fiat from ExchangeRate-API (USD as base)
     const fiatRes = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
     const fiatData = await fiatRes.json();
@@ -550,7 +573,7 @@ app.get('/api/admin/users/:id', authenticateToken, isAdmin, (req, res) => {
   db.get(`SELECT id, name, email, phone, dob, address, city, state, zip, country, verified, is_email_verified, role, verification_status, verification_document, verification_document_type, bank_statement_document, department_id FROM users WHERE id = ?`, [userId], (err, user) => {
     if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
     if (!user) return res.status(404).json({ message: 'ERR_USER_NOT_FOUND' });
-    
+
     db.all(`SELECT * FROM accounts WHERE user_id = ?`, [userId], (err2, accounts) => {
       user.accounts = accounts || [];
       res.json(user);
@@ -559,11 +582,18 @@ app.get('/api/admin/users/:id', authenticateToken, isAdmin, (req, res) => {
 });
 
 app.put('/api/admin/users/:id', authenticateToken, isAdmin, (req, res) => {
-  const { name, email, phone, dob, address, city, state, zip, country, verified, is_email_verified, role, verification_status, department_id } = req.body;
+  const { name, email, phone, dob, address, city, state, zip, country, verified, is_email_verified, role, verification_status, department_id, is_blocked, blocked_reason } = req.body;
   const userId = req.params.id;
-  
-  db.run(`UPDATE users SET name=?, email=?, phone=?, dob=?, address=?, city=?, state=?, zip=?, country=?, verified=?, is_email_verified=?, role=?, verification_status=?, department_id=? WHERE id=?`,
-    [name, email, phone, dob, address, city, state, zip, country, verified ? 1 : 0, is_email_verified ? 1 : 0, role, verification_status, department_id || 1, userId],
+
+  db.run(`UPDATE users SET name=?, email=?, phone=?, dob=?, address=?, city=?, state=?, zip=?, country=?, verified=?, is_email_verified=?, role=?, verification_status=?, department_id=?, is_blocked=?, blocked_reason=? WHERE id=?`,
+    [
+      name, email, phone, dob, address, city, state, zip, country,
+      verified ? 1 : 0, is_email_verified ? 1 : 0, role, verification_status,
+      department_id || 1,
+      is_blocked || 0,
+      blocked_reason || '',
+      userId
+    ],
     function(err) {
       if (err) return res.status(500).json({ message: 'ERR_USER_UPDATE_FAILED' });
       res.json({ message: 'MSG_USER_UPDATED' });
@@ -621,7 +651,7 @@ app.post('/api/admin/departments', authenticateToken, isAdmin, (req, res) => {
 app.put('/api/admin/departments/:id', authenticateToken, isAdmin, (req, res) => {
   const { name } = req.body;
   const depId = req.params.id;
-  
+
   if (!name) return res.status(400).json({ message: 'ERR_INVALID_DATA' });
 
   db.run(`UPDATE departments SET name=? WHERE id=?`, [name, depId], function(err) {
@@ -642,8 +672,8 @@ app.delete('/api/admin/departments/:id', authenticateToken, isAdmin, (req, res) 
 app.post('/api/admin/accounts', authenticateToken, isAdmin, (req, res) => {
   const { user_id, type, currency, balance } = req.body;
   const accNumber = type === 'crypto' ? currency + '-' + generateAccountNumber().substring(3) : generateAccountNumber();
-  
-  db.run(`INSERT INTO accounts (user_id, account_number, type, currency, balance) VALUES (?, ?, ?, ?, ?)`, 
+
+  db.run(`INSERT INTO accounts (user_id, account_number, type, currency, balance) VALUES (?, ?, ?, ?, ?)`,
     [user_id, accNumber, type, currency, parseFloat(balance) || 0], function(err) {
       if (err) return res.status(500).json({ message: 'ERR_ACCOUNT_CREATE_FAILED' });
       res.json({ message: 'MSG_ACCOUNT_CREATED', id: this.lastID });
@@ -691,7 +721,7 @@ app.put('/api/admin/transactions/:id', authenticateToken, isAdmin, (req, res) =>
     const updatedSender = sender_address !== undefined ? sender_address : tx.sender_address;
     const updatedDesc = description !== undefined ? description : tx.description;
     const finalComment = comment !== undefined ? comment : tx.comment;
-    
+
     // Calculate new amount with correct sign
     let newAmount = tx.amount;
     if (amount !== undefined) {
@@ -701,18 +731,18 @@ app.put('/api/admin/transactions/:id', authenticateToken, isAdmin, (req, res) =>
     // Calculate current and new total impact on balance
     // For transfers: amount is negative, so total impact is amount - fee (e.g. -100 - 5 = -105)
     // For deposits: amount is positive, total impact is just amount (user gets the amount, fee was paid outside or deducted before)
-    // Wait, the user said: "списано 1000, 100 налог, 900 дойдёт до пользователя". 
+    // Wait, the user said: "списано 1000, 100 налог, 900 дойдёт до пользователя".
     // In this case: amount = +900, fee = 100. Impact = +900.
-    
+
     // Calculate current and new total impact on balance
     // For transfers: amount is negative, so total impact is amount - fee (e.g. -100 - 5 = -105)
     // For deposits: amount is positive, total impact is just amount
-    
+
     const getImpact = (amt, f, type) => {
         const feeVal = parseFloat(f) || 0;
         const amtVal = parseFloat(amt) || 0;
-        if (type === 'deposit') return amtVal; 
-        return amtVal - feeVal; 
+        if (type === 'deposit') return amtVal;
+        return amtVal - feeVal;
     };
 
     const currentImpact = getImpact(tx.amount, tx.fee, tx.type);
@@ -785,7 +815,7 @@ app.post('/api/admin/transactions', authenticateToken, isAdmin, (req, res) => {
   db.run(`INSERT INTO transactions (user_id, account_id, type, amount, currency, status, date, description, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [user_id, account_id, type, parsedAmount, currency, status, date, description, comment], function(err) {
       if (err) return res.status(500).json({ message: 'ERR_TRANSACTION_CREATE_FAILED' });
-      
+
       if (status === 'completed') {
         db.run(`UPDATE accounts SET balance = balance + ? WHERE id = ?`, [parsedAmount, account_id], function(err2) {
           if (err2) return res.status(500).json({ message: 'ERR_BALANCE_UPDATE_FAILED' });
@@ -814,7 +844,7 @@ app.get('/api/settings', (req, res) => {
 app.put('/api/admin/settings', authenticateToken, isAdmin, (req, res) => {
   const settings = req.body; // { key: value, ... }
   const keys = Object.keys(settings);
-  
+
   if (keys.length === 0) return res.status(400).json({ message: 'ERR_NO_SETTINGS' });
 
   const stmt = db.prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)');
@@ -843,7 +873,7 @@ app.post('/api/messages', authenticateToken, upload.single('attachment'), (req, 
   const { subject, content, thread_id } = req.body;
   const date = new Date().toISOString();
   const attachment = req.file ? req.file.path : null;
-  
+
   db.run('INSERT INTO messages (thread_id, user_id, sender_role, subject, content, date, attachment) VALUES (?, ?, ?, ?, ?, ?, ?)',
     [thread_id || null, req.user.id, 'user', subject, content, date, attachment], function(err) {
       if (err) {
@@ -851,12 +881,12 @@ app.post('/api/messages', authenticateToken, upload.single('attachment'), (req, 
         return res.status(500).json({ message: 'ERR_MESSAGE_SEND_FAILED', error: err.message });
       }
       const msgId = this.lastID;
-      
+
       // If this is a new message (no thread_id), set thread_id to itself
       if (!thread_id) {
         db.run('UPDATE messages SET thread_id = ? WHERE id = ?', [msgId, msgId]);
       }
-      
+
       res.status(201).json({ id: msgId, thread_id: thread_id || msgId, user_id: req.user.id, sender_role: 'user', subject, content, date, status: 'unread', attachment });
     });
 });
@@ -869,7 +899,7 @@ app.post('/api/loans', authenticateToken, upload.array('documents', 5), (req, re
   const date = new Date().toISOString();
 
   db.run(
-    `INSERT INTO loans (user_id, amount, term_years, term_months, occupation, monthly_income, documents, created_at) 
+    `INSERT INTO loans (user_id, amount, term_years, term_months, occupation, monthly_income, documents, created_at)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     [req.user.id, amount, term_years, term_months, occupation, monthly_income, filePaths, date],
     function(err) {
@@ -917,7 +947,7 @@ app.post('/api/admin/messages', authenticateToken, isAdmin, upload.single('attac
   const { user_id, subject, content, thread_id } = req.body;
   const date = new Date().toISOString();
   const attachment = req.file ? req.file.path : null;
-  
+
   db.run('INSERT INTO messages (thread_id, user_id, sender_role, subject, content, date, attachment) VALUES (?, ?, ?, ?, ?, ?, ?)',
     [thread_id || null, user_id, 'admin', subject, content, date, attachment], function(err) {
       if (err) return res.status(500).json({ message: 'ERR_MESSAGE_SEND_FAILED' });
@@ -972,7 +1002,7 @@ app.post('/api/admin/backup/import', authenticateToken, isAdmin, upload.single('
     try {
       fs.copyFileSync(req.file.path, db.dbPath);
       fs.unlinkSync(req.file.path); // remove temp file
-      
+
       // Re-open DB
       db.reopen();
       res.json({ message: 'MSG_BACKUP_IMPORTED' });
@@ -981,6 +1011,20 @@ app.post('/api/admin/backup/import', authenticateToken, isAdmin, upload.single('
       db.reopen(); // try to reopen even if copy failed
       res.status(500).json({ message: 'ERR_BACKUP_IMPORT_FAILED' });
     }
+  });
+});
+
+app.get('/api/admin/notification-counts', authenticateToken, isAdmin, (req, res) => {
+  const data = {};
+  db.get("SELECT COUNT(*) as count FROM messages WHERE sender_role = 'user' AND status = 'unread'", (err, row) => {
+    data.messages = row ? row.count : 0;
+    db.get("SELECT COUNT(*) as count FROM transactions WHERE status = 'processing'", (err, row) => {
+      data.transactions = row ? row.count : 0;
+      db.get("SELECT COUNT(*) as count FROM users WHERE verification_status = 'pending'", (err, row) => {
+        data.verifications = row ? row.count : 0;
+        res.json(data);
+      });
+    });
   });
 });
 

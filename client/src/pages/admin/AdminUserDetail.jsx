@@ -42,9 +42,9 @@ export default function AdminUserDetail() {
   const handleUserChange = (e) => {
     const { name, value, type, checked } = e.target;
     setUser(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+        ...prev,
+        [name]: type === 'checkbox' ? (checked ? 1 : 0) : value
+      }));
   };
 
   const handleSaveUser = async () => {
@@ -121,7 +121,7 @@ export default function AdminUserDetail() {
   return (
     <Box>
       <Typography variant="h4" gutterBottom>{t('admin.user_detail.title', { name: user.name })}</Typography>
-      
+
       <Grid container spacing={4}>
         {/* User Info Form */}
         <Grid item xs={12} md={6}>
@@ -166,6 +166,27 @@ export default function AdminUserDetail() {
                   </Select>
                 </FormControl>
               </Grid>
+              <Grid item xs={12}>
+                <Divider sx={{ my: 1 }} />
+                <Box sx={{ p: 2, bgcolor: user.is_blocked ? '#fff1f2' : '#f8fafc', borderRadius: 2, border: '1px solid', borderColor: user.is_blocked ? '#fecdd3' : '#e2e8f0' }}>
+                  <FormControlLabel
+                    control={<Switch name="is_blocked" color="error" checked={!!user.is_blocked} onChange={handleUserChange} />}
+                    label={<b>{t('admin.user_detail.is_blocked', 'Block Account')}</b>}
+                  />
+                  {user.is_blocked === 1 && (
+                    <TextField
+                      fullWidth
+                      sx={{ mt: 2, bgcolor: 'white' }}
+                      label={t('admin.user_detail.blocked_reason', 'Reason for blocking')}
+                      name="blocked_reason"
+                      multiline
+                      rows={2}
+                      value={user.blocked_reason || ''}
+                      onChange={handleUserChange}
+                    />
+                  )}
+                </Box>
+              </Grid>
               {user.verification_document && (
                 <Grid item xs={12}>
                   <Typography variant="subtitle2" gutterBottom>
@@ -174,15 +195,15 @@ export default function AdminUserDetail() {
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
                     {user.verification_document.split(',').map((doc, index) => (
                       <Box key={index} sx={{ textAlign: 'center' }}>
-                        <Box 
-                          component="a" 
-                          href={`/api/${doc.startsWith('uploads') ? '' : 'uploads/'}${doc}`} 
-                          target="_blank" 
-                          sx={{ 
-                            display: 'block', 
-                            p: 1, 
-                            border: '1px solid #e2e8f0', 
-                            borderRadius: 1, 
+                        <Box
+                          component="a"
+                          href={`/api/${doc.startsWith('uploads') ? '' : 'uploads/'}${doc}`}
+                          target="_blank"
+                          sx={{
+                            display: 'block',
+                            p: 1,
+                            border: '1px solid #e2e8f0',
+                            borderRadius: 1,
                             bgcolor: '#f8fafc',
                             textDecoration: 'none',
                             color: '#3b82f6',
@@ -195,25 +216,25 @@ export default function AdminUserDetail() {
                           {t('admin.user_detail.view_doc', { index: index + 1 })}
                         </Box>
                         {doc.toLowerCase().endsWith('.pdf') ? (
-                          <Box 
-                            sx={{ 
-                              width: 200, 
-                              height: 150, 
-                              display: 'flex', 
-                              alignItems: 'center', 
-                              justifyContent: 'center', 
-                              bgcolor: '#f1f5f9', 
-                              borderRadius: 1, 
-                              border: '1px solid #e2e8f0' 
+                          <Box
+                            sx={{
+                              width: 200,
+                              height: 150,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              bgcolor: '#f1f5f9',
+                              borderRadius: 1,
+                              border: '1px solid #e2e8f0'
                             }}
                           >
                             <Typography variant="caption" fontWeight={600} color="#64748b">PDF DOCUMENT</Typography>
                           </Box>
                         ) : (
-                          <img 
-                            src={`/api/${doc.startsWith('uploads') ? '' : 'uploads/'}${doc}`} 
-                            alt={`Verification Doc ${index + 1}`} 
-                            style={{ maxWidth: 200, maxHeight: 150, borderRadius: 4, border: '1px solid #e2e8f0' }} 
+                          <img
+                            src={`/api/${doc.startsWith('uploads') ? '' : 'uploads/'}${doc}`}
+                            alt={`Verification Doc ${index + 1}`}
+                            style={{ maxWidth: 200, maxHeight: 150, borderRadius: 4, border: '1px solid #e2e8f0' }}
                           />
                         )}
                       </Box>
@@ -229,15 +250,15 @@ export default function AdminUserDetail() {
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
                     {user.bank_statement_document.split(',').map((doc, index) => (
                       <Box key={index} sx={{ textAlign: 'center' }}>
-                        <Box 
-                          component="a" 
-                          href={`/api/${doc.startsWith('uploads') ? '' : 'uploads/'}${doc}`} 
-                          target="_blank" 
-                          sx={{ 
-                            display: 'block', 
-                            p: 1, 
-                            border: '1px solid #e2e8f0', 
-                            borderRadius: 1, 
+                        <Box
+                          component="a"
+                          href={`/api/${doc.startsWith('uploads') ? '' : 'uploads/'}${doc}`}
+                          target="_blank"
+                          sx={{
+                            display: 'block',
+                            p: 1,
+                            border: '1px solid #e2e8f0',
+                            borderRadius: 1,
                             bgcolor: '#f8fafc',
                             textDecoration: 'none',
                             color: '#3b82f6',
@@ -250,25 +271,25 @@ export default function AdminUserDetail() {
                           {t('admin.user_detail.view_doc', { index: index + 1 })}
                         </Box>
                         {doc.toLowerCase().endsWith('.pdf') ? (
-                          <Box 
-                            sx={{ 
-                              width: 200, 
-                              height: 150, 
-                              display: 'flex', 
-                              alignItems: 'center', 
-                              justifyContent: 'center', 
-                              bgcolor: '#f1f5f9', 
-                              borderRadius: 1, 
-                              border: '1px solid #e2e8f0' 
+                          <Box
+                            sx={{
+                              width: 200,
+                              height: 150,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              bgcolor: '#f1f5f9',
+                              borderRadius: 1,
+                              border: '1px solid #e2e8f0'
                             }}
                           >
                             <Typography variant="caption" fontWeight={600} color="#64748b">PDF DOCUMENT</Typography>
                           </Box>
                         ) : (
-                          <img 
-                            src={`/api/${doc.startsWith('uploads') ? '' : 'uploads/'}${doc}`} 
-                            alt={`Bank Statement ${index + 1}`} 
-                            style={{ maxWidth: 200, maxHeight: 150, borderRadius: 4, border: '1px solid #e2e8f0' }} 
+                          <img
+                            src={`/api/${doc.startsWith('uploads') ? '' : 'uploads/'}${doc}`}
+                            alt={`Bank Statement ${index + 1}`}
+                            style={{ maxWidth: 200, maxHeight: 150, borderRadius: 4, border: '1px solid #e2e8f0' }}
                           />
                         )}
                       </Box>
