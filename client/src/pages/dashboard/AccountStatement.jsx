@@ -22,7 +22,6 @@ const AccountStatement = () => {
   const [dateTo, setDateTo] = useState('');
   const [appliedPeriod, setAppliedPeriod] = useState({ from: '', to: '' });
 
-  // Вспомогательная функция для форматирования дат в таблице
   const formatDateOnly = (dateStr) => {
     if (!dateStr) return '-';
     const date = new Date(dateStr);

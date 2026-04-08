@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   Box, Typography, Paper, Button, Chip, Select, MenuItem, FormControl,
-  InputLabel, CircularProgress, Alert, Stack, Divider, List, ListItem, ListItemText, IconButton
+  InputLabel, CircularProgress, Alert, Stack, Divider, List, ListItem, ListItemText, IconButton, Link
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { api } from '../../api';
@@ -13,24 +13,25 @@ import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import CancelIcon from '@mui/icons-material/Cancel';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import SendIcon from '@mui/icons-material/Send';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import ImageIcon from '@mui/icons-material/Image';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 const Verification = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { showNotification } = useNotification();
   const [user, setUser] = useState({
     email: 'Loading...',
     verification_status: 'not_started',
-    verification_document_type: 'passport'
+    verification_document_type: 'passport',
+    verification_document: '',
+    bank_statement_document: ''
   });
 
-  // Состояния для процесса загрузки
   const [uploading, setUploading] = useState(false);
   const [uploadingBank, setUploadingBank] = useState(false);
-
-  // Состояния для выбранных, но не отправленных файлов
   const [selectedIdFiles, setSelectedIdFiles] = useState([]);
   const [selectedBankFiles, setSelectedBankFiles] = useState([]);
-
   const [docType, setDocType] = useState('passport');
 
   const fileInputRef = useRef(null);
@@ -52,7 +53,6 @@ const Verification = () => {
     fetchUser();
   }, []);
 
-  // 1. Обработка ВЫБОРА файлов (ID)
   const handleIdFileSelect = (event) => {
     const files = Array.from(event.target.files);
     if (files.length > 0) {
@@ -60,14 +60,10 @@ const Verification = () => {
     }
   };
 
-  // 2. Фактическая ОТПРАВКА файлов (ID)
   const handleIdUploadSubmit = async () => {
     if (selectedIdFiles.length === 0) return;
-
     const formData = new FormData();
-    selectedIdFiles.forEach(file => {
-      formData.append('document', file);
-    });
+    selectedIdFiles.forEach(file => { formData.append('document', file); });
     formData.append('documentType', docType);
 
     setUploading(true);
@@ -75,66 +71,51 @@ const Verification = () => {
       const token = localStorage.getItem('token');
       const response = await fetch('/api/user/verify', {
         method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
+        headers: { 'Authorization': `Bearer ${token}` },
         body: formData
       });
-
       if (response.ok) {
         await fetchUser();
-        setSelectedIdFiles([]); // Очищаем выбор после успеха
+        setSelectedIdFiles([]);
         showNotification(t('dashboard.verification.notification.success'), 'success');
       } else {
         const err = await response.json();
         showNotification(err.message || t('dashboard.verification.notification.failed'), 'error');
       }
     } catch (err) {
-      console.error('Error uploading file', err);
       showNotification(t('dashboard.verification.notification.failed'), 'error');
     } finally {
       setUploading(false);
     }
   };
 
-  // 3. Обработка ВЫБОРА файлов (Bank)
   const handleBankFileSelect = (event) => {
     const files = Array.from(event.target.files);
-    if (files.length > 0) {
-      setSelectedBankFiles(files);
-    }
+    if (files.length > 0) { setSelectedBankFiles(files); }
   };
 
-  // 4. Фактическая ОТПРАВКА файлов (Bank)
   const handleBankUploadSubmit = async () => {
     if (selectedBankFiles.length === 0) return;
-
     const formData = new FormData();
-    selectedBankFiles.forEach(file => {
-      formData.append('document', file);
-    });
+    selectedBankFiles.forEach(file => { formData.append('document', file); });
 
     setUploadingBank(true);
     try {
       const token = localStorage.getItem('token');
       const response = await fetch('/api/user/verify-bank', {
         method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
+        headers: { 'Authorization': `Bearer ${token}` },
         body: formData
       });
-
       if (response.ok) {
         await fetchUser();
-        setSelectedBankFiles([]); // Очищаем выбор после успеха
+        setSelectedBankFiles([]);
         showNotification(t('dashboard.verification.notification.success'), 'success');
       } else {
         const err = await response.json();
         showNotification(err.message || t('dashboard.verification.notification.failed'), 'error');
       }
     } catch (err) {
-      console.error('Error uploading bank statement', err);
       showNotification(t('dashboard.verification.notification.failed'), 'error');
     } finally {
       setUploadingBank(false);
@@ -144,43 +125,54 @@ const Verification = () => {
   const triggerFileInput = () => fileInputRef.current?.click();
   const triggerBankInput = () => bankInputRef.current?.click();
 
+  const renderUploadedFiles = (filesString) => {
+    if (!filesString) return null;
+    const files = filesString.split(',').filter(f => f.trim() !== '');
+    if (files.length === 0) return null;
+
+    return (
+      <Box sx={{ mt: 2, mb: 3 }}>
+        <Typography variant="caption" sx={{ color: '#64748b', fontWeight: 600, textTransform: 'uppercase', mb: 1, display: 'block' }}>
+          {t('dashboard.verification.uploaded_docs')}:
+        </Typography>
+        <Stack spacing={1}>
+          {files.map((filePath, idx) => {
+            const fileName = filePath.split(/[/\\]/).pop();
+            const isPdf = fileName.toLowerCase().endsWith('.pdf');
+            const isImg = /\.(jpg|jpeg|png|webp)$/i.test(fileName);
+            return (
+              <Link
+                key={idx} href={`/api/${filePath}`} target="_blank" rel="noopener noreferrer"
+                sx={{
+                  textDecoration: 'none', display: 'flex', alignItems: 'center', p: 1.5,
+                  bgcolor: '#f8fafc', borderRadius: 1, border: '1px solid #e2e8f0',
+                  '&:hover': { bgcolor: '#f1f5f9', borderColor: '#cbd5e1' }
+                }}
+              >
+                {isPdf ? <PictureAsPdfIcon sx={{ color: '#ef4444', mr: 1.5 }} /> :
+                 isImg ? <ImageIcon sx={{ color: '#3b82f6', mr: 1.5 }} /> :
+                 <InsertDriveFileIcon sx={{ color: '#64748b', mr: 1.5 }} />}
+                <Typography variant="body2" sx={{ color: '#1e293b', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {fileName}
+                </Typography>
+              </Link>
+            );
+          })}
+        </Stack>
+      </Box>
+    );
+  };
+
   const getStatusChip = (status) => {
     switch (status) {
       case 'verified':
-        return (
-          <Chip
-            icon={<CheckCircleIcon style={{ color: '#16a34a' }} />}
-            label={t('dashboard.verification.status.verified')}
-            variant="outlined"
-            sx={{ borderColor: '#16a34a', color: '#16a34a', fontWeight: 500, bgcolor: '#f0fdf4' }}
-          />
-        );
+        return <Chip icon={<CheckCircleIcon style={{ color: '#16a34a' }} />} label={t('dashboard.verification.status.verified')} variant="outlined" sx={{ borderColor: '#16a34a', color: '#16a34a', fontWeight: 500, bgcolor: '#f0fdf4' }} />;
       case 'pending':
-        return (
-          <Chip
-            icon={<HourglassEmptyIcon style={{ color: '#ea580c' }} />}
-            label={t('dashboard.verification.status.pending')}
-            variant="outlined"
-            sx={{ borderColor: '#ea580c', color: '#ea580c', fontWeight: 500, bgcolor: '#fff7ed' }}
-          />
-        );
+        return <Chip icon={<HourglassEmptyIcon style={{ color: '#ea580c' }} />} label={t('dashboard.verification.status.pending')} variant="outlined" sx={{ borderColor: '#ea580c', color: '#ea580c', fontWeight: 500, bgcolor: '#fff7ed' }} />;
       case 'rejected':
-        return (
-          <Chip
-            icon={<CancelIcon style={{ color: '#dc2626' }} />}
-            label={t('dashboard.verification.status.rejected')}
-            variant="outlined"
-            sx={{ borderColor: '#dc2626', color: '#dc2626', fontWeight: 500, bgcolor: '#fef2f2' }}
-          />
-        );
+        return <Chip icon={<CancelIcon style={{ color: '#dc2626' }} />} label={t('dashboard.verification.status.rejected')} variant="outlined" sx={{ borderColor: '#dc2626', color: '#dc2626', fontWeight: 500, bgcolor: '#fef2f2' }} />;
       default:
-        return (
-          <Chip
-            label={t('dashboard.verification.status.not_started')}
-            variant="outlined"
-            sx={{ borderColor: '#64748b', color: '#64748b', fontWeight: 500, bgcolor: '#f1f5f9' }}
-          />
-        );
+        return <Chip label={t('dashboard.verification.status.not_started')} variant="outlined" sx={{ borderColor: '#64748b', color: '#64748b', fontWeight: 500, bgcolor: '#f1f5f9' }} />;
     }
   };
 
@@ -197,7 +189,6 @@ const Verification = () => {
         {t('dashboard.verification.subtitle')}
       </Typography>
 
-      {/* СЕКЦИЯ ID ВЕРИФИКАЦИИ */}
       <Paper elevation={0} sx={{ p: { xs: 3, md: 4 }, borderRadius: 2, border: '1px solid #e2e8f0', mb: 4, maxWidth: 800 }}>
         <Typography variant="subtitle1" fontWeight={600} gutterBottom sx={{ color: '#0f172a', mb: 3 }}>
           {t('dashboard.verification.id_verification')}
@@ -222,36 +213,22 @@ const Verification = () => {
           </Typography>
         </Box>
 
-        <input
-          type="file"
-          accept="image/*,.pdf"
-          style={{ display: 'none' }}
-          ref={fileInputRef}
-          onChange={handleIdFileSelect}
-          multiple
-        />
+        {renderUploadedFiles(user.verification_document)}
 
-        {user.verification_status === 'pending' && (
-          <Alert severity="info" sx={{ mb: 3 }}>{t('dashboard.verification.alerts.pending')}</Alert>
-        )}
-        {user.verification_status === 'verified' && (
-          <Alert severity="success" sx={{ mb: 3, bgcolor: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0' }}>
-            {t('dashboard.verification.alerts.verified')}
-          </Alert>
-        )}
+        <input type="file" accept="image/*,.pdf" style={{ display: 'none' }} ref={fileInputRef} onChange={handleIdFileSelect} multiple />
 
-        <UploadPreviewZone
-          selectedFiles={selectedIdFiles}
-          onSelect={triggerFileInput}
-          onCancel={() => setSelectedIdFiles([])}
-          onSubmit={handleIdUploadSubmit}
-          uploading={uploading}
-          t={t}
-          docType={docType}
-        />
+        {user.verification_status === 'pending' && <Alert severity="info" sx={{ mb: 3 }}>{t('dashboard.verification.alerts.pending')}</Alert>}
+        {user.verification_status === 'verified' && <Alert severity="success" sx={{ mb: 3, bgcolor: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0' }}>{t('dashboard.verification.alerts.verified')}</Alert>}
+
+        {user.verification_status !== 'verified' && (
+          <UploadPreviewZone
+            selectedFiles={selectedIdFiles} onSelect={triggerFileInput} onCancel={() => setSelectedIdFiles([])}
+            onSubmit={handleIdUploadSubmit} uploading={uploading} t={t}
+            docName={t(`dashboard.verification.${docType}`)}
+          />
+        )}
       </Paper>
 
-      {/* СЕКЦИЯ БАНКОВСКОЙ ВЫПИСКИ */}
       <Paper elevation={0} sx={{ p: { xs: 3, md: 4 }, borderRadius: 2, border: '1px solid #e2e8f0', mb: 4, maxWidth: 800 }}>
         <Typography variant="subtitle1" fontWeight={600} gutterBottom sx={{ color: '#0f172a', mb: 3 }}>
           {t('dashboard.verification.bank_verification')}
@@ -264,115 +241,67 @@ const Verification = () => {
           </Typography>
         </Box>
 
-        <input
-          type="file"
-          accept="image/*,.pdf"
-          style={{ display: 'none' }}
-          ref={bankInputRef}
-          onChange={handleBankFileSelect}
-          multiple
-        />
+        {renderUploadedFiles(user.bank_statement_document)}
 
-        {user.bank_statement_document && !selectedBankFiles.length && (
-          <Alert severity="success" sx={{ mb: 3, bgcolor: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0' }}>
-            {t('dashboard.verification.alerts.pending', 'Document uploaded and awaiting review.')}
-          </Alert>
-        )}
+        <input type="file" accept="image/*,.pdf" style={{ display: 'none' }} ref={bankInputRef} onChange={handleBankFileSelect} multiple />
 
         <UploadPreviewZone
-          selectedFiles={selectedBankFiles}
-          onSelect={triggerBankInput}
-          onCancel={() => setSelectedBankFiles([])}
-          onSubmit={handleBankUploadSubmit}
-          uploading={uploadingBank}
-          t={t}
-          docType="bank_statement"
+          selectedFiles={selectedBankFiles} onSelect={triggerBankInput} onCancel={() => setSelectedBankFiles([])}
+          onSubmit={handleBankUploadSubmit} uploading={uploadingBank} t={t}
+          docName={t('dashboard.verification.bank_statement')}
         />
       </Paper>
     </Box>
   );
 };
 
-// Вспомогательный компонент зоны загрузки с предпросмотром
-const UploadPreviewZone = ({ selectedFiles, onSelect, onCancel, onSubmit, uploading, t, docType }) => {
+const UploadPreviewZone = ({ selectedFiles, onSelect, onCancel, onSubmit, uploading, t, docName }) => {
   if (uploading) {
     return (
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 5, border: '2px dashed #cbd5e1', borderRadius: 2 }}>
         <CircularProgress size={48} sx={{ color: '#3b82f6', mb: 2 }} />
-        <Typography variant="subtitle1" fontWeight={600}>
-          {t('dashboard.verification.upload_box.uploading')}
-        </Typography>
+        <Typography variant="subtitle1" fontWeight={600}>{t('dashboard.verification.upload_box.uploading')}</Typography>
       </Box>
     );
   }
 
-  // Если файлы выбраны, показываем список и кнопки подтверждения
   if (selectedFiles.length > 0) {
     return (
       <Box sx={{ p: 3, border: '2px solid #3b82f6', bgcolor: '#f0f9ff', borderRadius: 2 }}>
-        <Typography variant="subtitle2" fontWeight={700} color="#1e40af" gutterBottom>
-          {t('common.selected_files', 'Выбранные файлы:')}
-        </Typography>
+        <Typography variant="subtitle2" fontWeight={700} color="#1e40af" gutterBottom>{t('common.selected_files')}</Typography>
         <List dense sx={{ mb: 2 }}>
           {selectedFiles.map((file, idx) => (
             <ListItem key={idx} sx={{ px: 0 }}>
-              <ListItemText
-                primary={file.name}
-                secondary={`${(file.size / 1024 / 1024).toFixed(2)} MB`}
-              />
+              <ListItemText primary={file.name} secondary={`${(file.size / 1024 / 1024).toFixed(2)} MB`} />
             </ListItem>
           ))}
         </List>
         <Divider sx={{ mb: 2 }} />
         <Stack direction="row" spacing={2}>
-          <Button
-            variant="contained"
-            startIcon={<SendIcon />}
-            onClick={onSubmit}
-            fullWidth
-            sx={{ textTransform: 'none', borderRadius: 1.5, bgcolor: '#3b82f6' }}
-          >
-            {t('common.confirm', 'Подтвердить и отправить')}
+          <Button variant="contained" startIcon={<SendIcon />} onClick={onSubmit} fullWidth sx={{ textTransform: 'none', borderRadius: 1.5, bgcolor: '#3b82f6' }}>
+            {t('common.confirm_send')}
           </Button>
-          <Button
-            variant="outlined"
-            color="error"
-            startIcon={<DeleteOutlineIcon />}
-            onClick={onCancel}
-            sx={{ textTransform: 'none', borderRadius: 1.5 }}
-          >
-            {t('common.cancel', 'Отмена')}
+          <Button variant="outlined" color="error" startIcon={<DeleteOutlineIcon />} onClick={onCancel} sx={{ textTransform: 'none', borderRadius: 1.5 }}>
+            {t('common.cancel')}
           </Button>
         </Stack>
       </Box>
     );
   }
 
-  // Обычное состояние загрузки (как было)
   return (
     <Box
       onClick={onSelect}
       sx={{
-        border: '2px dashed #cbd5e1',
-        borderRadius: 2,
-        p: 5,
-        textAlign: 'center',
-        bgcolor: '#f8fafc',
-        '&:hover': { borderColor: '#94a3b8', bgcolor: '#f1f5f9' },
-        cursor: 'pointer',
-        transition: 'all 0.2s'
+        border: '2px dashed #cbd5e1', borderRadius: 2, p: 5, textAlign: 'center', bgcolor: '#f8fafc',
+        '&:hover': { borderColor: '#94a3b8', bgcolor: '#f1f5f9' }, cursor: 'pointer', transition: 'all 0.2s'
       }}>
       <CloudUploadIcon sx={{ fontSize: 48, color: '#3b82f6', mb: 2 }} />
       <Typography variant="subtitle1" fontWeight={600} sx={{ color: '#0f172a', mb: 0.5 }}>
-        {t('dashboard.verification.upload_box.upload_doc', { type: t(`dashboard.verification.${docType}`) })}
+        {t('dashboard.verification.upload_box.title', { type: docName })}
       </Typography>
-      <Typography variant="body2" sx={{ color: '#64748b', mb: 3 }}>
-        {t('dashboard.verification.upload_box.click_select')}
-      </Typography>
-      <Button
-        variant="outlined"
-        component="span"
-        sx={{ textTransform: 'none', px: 4, borderRadius: 1.5, borderColor: '#cbd5e1', color: '#3b82f6' }}>
+      <Typography variant="body2" sx={{ color: '#64748b', mb: 3 }}>{t('dashboard.verification.upload_box.subtitle')}</Typography>
+      <Button variant="outlined" component="span" sx={{ textTransform: 'none', px: 4, borderRadius: 1.5, borderColor: '#cbd5e1', color: '#3b82f6' }}>
         {t('dashboard.verification.upload_box.select_button')}
       </Button>
     </Box>

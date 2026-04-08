@@ -89,7 +89,8 @@
     "approve": "Approve",
     "reject": "Reject",
     "upload_file": "Upload file",
-    "view_attachment": "View attachment"
+    "view_attachment": "View attachment",
+    "confirm_send": "Confirm & Send"
   },
   "email_verification": {
     "banner": "Your email is not verified. Please verify it to ensure account security.",
@@ -315,7 +316,7 @@
       "steps": {
         "enter_details": "Enter Details",
         "payment_info": "Payment Info",
-        "confirmation": "Confirmation"
+        "confirmation": "Confirm"
       },
       "subtitle_details": "Enter Top Up Details",
       "subtitle_crypto": "Cryptocurrency Payment Details",
@@ -363,7 +364,7 @@
       "title": "Bank Transfer",
       "steps": {
         "enter_data": "Enter Data",
-        "confirmation": "Confirmation",
+        "confirmation": "Confirm",
         "result": "Result"
       },
       "details_subtitle": "Transfer details",
@@ -441,6 +442,7 @@
       "upload_instruction_passport": "Please upload a clear photo of your passport's main page.",
       "upload_instruction_id": "Please upload a clear photo of your ID card's front and back sides.",
       "bank_instruction": "Please upload your bank account statements for the last 3 months.",
+      "uploaded_docs": "Uploaded Documents",
       "status": {
         "verified": "Verified",
         "approved": "Approved",
@@ -455,8 +457,8 @@
       },
       "upload_box": {
         "uploading": "Uploading...",
-        "upload_doc": "Upload {{type}} photo",
-        "click_select": "or click to select file",
+        "title": "Upload {{type}} photo",
+        "subtitle": "or click to select file",
         "select_button": "Select File"
       },
       "notification": {

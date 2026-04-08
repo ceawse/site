@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import {
   Box, Typography, Grid, Paper, TextField, Button,
   Switch, FormControlLabel, Select, MenuItem, InputLabel, FormControl, Divider,
-  Chip, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Stack
+  Chip, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Stack, Link
 } from '@mui/material';
 import { useParams, useNavigate } from 'react-router-dom';
 import { api } from '../../api';
@@ -12,6 +12,10 @@ import { countries } from '../../utils/countries';
 import BlockIcon from '@mui/icons-material/Block';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import SaveIcon from '@mui/icons-material/Save';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import ImageIcon from '@mui/icons-material/Image';
+
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 export default function AdminUserDetail() {
   const { t } = useTranslation();
@@ -24,12 +28,10 @@ export default function AdminUserDetail() {
   const [blockDialogOpen, setBlockDialogOpen] = useState(false);
   const [tempReason, setTempReason] = useState('');
 
-  // Состояния для создания счета
   const [newAccType, setNewAccType] = useState('fiat');
   const [newAccCurrency, setNewAccCurrency] = useState('USD');
   const [newAccBalance, setNewAccBalance] = useState('0');
 
-  // Состояние для редактирования адресов кошельков
   const [walletAddresses, setWalletAddresses] = useState({});
 
   useEffect(() => {
@@ -41,7 +43,6 @@ export default function AdminUserDetail() {
       const data = await api.get(`/admin/users/${id}`);
       setUser(data);
 
-      // Инициализируем адреса кошельков из данных БД
       const addresses = {};
       if (data.accounts) {
         data.accounts.forEach(acc => {
@@ -69,7 +70,6 @@ export default function AdminUserDetail() {
     setWalletAddresses(prev => ({ ...prev, [accId]: value }));
   };
 
-  // Сохранение адреса кошелька для конкретного счета
   const saveWalletAddress = async (accId, balance) => {
     try {
       await api.put(`/admin/accounts/${accId}`, {
@@ -157,6 +157,55 @@ export default function AdminUserDetail() {
     }
   };
 
+  const renderDocsForAdmin = (title, filesString) => {
+    if (!filesString) return null;
+    const files = filesString.split(',').filter(f => f.trim() !== '');
+    if (files.length === 0) return null;
+
+    return (
+      <Box sx={{ mb: 2 }}>
+        <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1.5, color: '#475569' }}>
+          {title}
+        </Typography>
+        <Grid container spacing={2}>
+          {files.map((filePath, idx) => {
+            const cleanPath = filePath.replace('server/', '');
+            const fileName = cleanPath.split(/[/\\]/).pop();
+            const isPdf = fileName.toLowerCase().endsWith('.pdf');
+
+            return (
+              <Grid item xs={12} key={idx}>
+                <Link
+                  href={`/api/${cleanPath}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ textDecoration: 'none' }}
+                >
+                  <Paper variant="outlined" sx={{
+                    p: 1.5,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1.5,
+                    '&:hover': { bgcolor: '#f8fafc', borderColor: '#3b82f6' }
+                  }}>
+                    {isPdf ? <PictureAsPdfIcon color="error" /> : <ImageIcon color="primary" />}
+                    <Typography variant="body2" color="text.primary" sx={{
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap'
+                    }}>
+                      {fileName}
+                    </Typography>
+                  </Paper>
+                </Link>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Box>
+    );
+  };
+
   if (loading || !user) return <Typography sx={{p: 4}}>{t('common.loading')}</Typography>;
 
   return (
@@ -166,7 +215,6 @@ export default function AdminUserDetail() {
       </Typography>
 
       <Grid container spacing={3}>
-        {/* ЛЕВАЯ КОЛОНКА: ДАННЫЕ ПРОФИЛЯ */}
         <Grid item xs={12}>
           <Paper sx={{ p: 3, borderRadius: 2 }}>
             <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>Данные профиля</Typography>
@@ -179,7 +227,7 @@ export default function AdminUserDetail() {
                 <TextField fullWidth size="small" label="Email" name="email" value={user.email || ''} onChange={handleUserChange} />
               </Grid>
 
-              {/* Блок блокировки (встроен в строку) */}
+              {/* Блок блокировки */}
               <Grid item xs={12} md={6}>
                 <Box sx={{
                   p: 1, px: 2, borderRadius: 1, border: '1px solid',
@@ -210,7 +258,7 @@ export default function AdminUserDetail() {
               <Grid item xs={12} md={3}>
                 <FormControlLabel
                   control={<Switch name="verified" checked={!!user.verified} onChange={handleUserChange} size="small" />}
-                  label="Статус верификации (Switch)"
+                  label="Статус верификации"
                 />
               </Grid>
 
@@ -256,7 +304,27 @@ export default function AdminUserDetail() {
           </Paper>
         </Grid>
 
-        {/* СЧЕТА */}
+        <Grid item xs={12}>
+          <Paper sx={{ p: 3, borderRadius: 2, border: '1px solid #e2e8f0', bgcolor: '#f8fafc' }}>
+            <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 1 }}>
+              <InsertDriveFileIcon color="primary" /> Документы для верификации
+            </Typography>
+
+            {!user.verification_document && !user.bank_statement_document ? (
+               <Typography variant="body2" color="text.secondary">Пользователь еще не загрузил ни одного документа.</Typography>
+            ) : (
+              <Grid container spacing={4}>
+                <Grid item xs={12} md={6}>
+                  {renderDocsForAdmin(`Удостоверение личности (${user.verification_document_type || 'ID'})`, user.verification_document)}
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  {renderDocsForAdmin("Выписка / Подтверждение адреса", user.bank_statement_document)}
+                </Grid>
+              </Grid>
+            )}
+          </Paper>
+        </Grid>
+
         <Grid item xs={12} md={7}>
           <Paper sx={{ p: 3, borderRadius: 2 }}>
             <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>Счета</Typography>
@@ -296,7 +364,6 @@ export default function AdminUserDetail() {
           </Paper>
         </Grid>
 
-        {/* ДОБАВИТЬ СЧЕТ */}
         <Grid item xs={12} md={5}>
           <Paper sx={{ p: 3, borderRadius: 2 }}>
             <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>Добавить счет</Typography>
@@ -312,7 +379,6 @@ export default function AdminUserDetail() {
         </Grid>
       </Grid>
 
-      {/* Диалог бана */}
       <Dialog open={blockDialogOpen} onClose={() => setBlockDialogOpen(false)} fullWidth maxWidth="xs">
         <DialogTitle>Причина блокировки</DialogTitle>
         <DialogContent>
