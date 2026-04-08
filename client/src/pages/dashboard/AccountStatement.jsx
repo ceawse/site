@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Box, Typography, Paper, Grid, TextField, Button, Select, MenuItem, InputAdornment,
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow
+import {
+  Box, Typography, Paper, Grid, TextField, Button, Select, MenuItem,
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Stack, FormControl, InputLabel, Chip
 } from '@mui/material';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
+
 import { api } from '../../api';
 import TransactionDetailsDialog from '../../components/TransactionDetailsDialog';
 import { useTranslation } from 'react-i18next';
@@ -20,30 +17,27 @@ const AccountStatement = () => {
   const [transactions, setTransactions] = useState([]);
   const [selectedTx, setSelectedTx] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
   const [appliedPeriod, setAppliedPeriod] = useState({ from: '', to: '' });
 
+  // Вспомогательная функция для форматирования дат в таблице
   const formatDateOnly = (dateStr) => {
     if (!dateStr) return '-';
     const date = new Date(dateStr);
     if (isNaN(date.getTime())) return '-';
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}.${month}.${year}`;
+    return date.toLocaleDateString(i18n.language === 'gb' ? 'en-GB' : i18n.language);
   };
 
-  const formatDate = (dateStr) => {
+  const formatDateTime = (dateStr) => {
     if (!dateStr) return '';
     const date = new Date(dateStr);
     if (isNaN(date.getTime())) return dateStr;
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    return `${day}.${month}.${year} ${hours}:${minutes}`;
+    return date.toLocaleString(i18n.language === 'gb' ? 'en-GB' : i18n.language, {
+        day: '2-digit', month: '2-digit', year: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+    });
   };
 
   useEffect(() => {
@@ -53,8 +47,6 @@ const AccountStatement = () => {
         setAccounts(accs);
         if (accs.length > 0) {
           setSelectedAccountId(accs[0].id);
-          const txs = await api.get('/transactions');
-          setTransactions(txs.filter(t => t.account_id === accs[0].id));
         }
       } catch (err) {
         console.error(err);
@@ -68,19 +60,18 @@ const AccountStatement = () => {
     try {
       const txs = await api.get('/transactions');
       let filtered = txs.filter(t => t.account_id === selectedAccountId);
-      
+
       if (dateFrom) {
         const from = new Date(dateFrom);
         from.setHours(0, 0, 0, 0);
         filtered = filtered.filter(t => new Date(t.date) >= from);
       }
-      
       if (dateTo) {
         const to = new Date(dateTo);
         to.setHours(23, 59, 59, 999);
         filtered = filtered.filter(t => new Date(t.date) <= to);
       }
-      
+
       setTransactions(filtered);
       setAppliedPeriod({ from: dateFrom, to: dateTo });
     } catch (err) {
@@ -88,16 +79,8 @@ const AccountStatement = () => {
     }
   };
 
-  const handleTxClick = (tx) => {
-    setSelectedTx(tx);
-    setDialogOpen(true);
-  };
-
   useEffect(() => {
-    if (selectedAccountId) {
-      handleFilter();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (selectedAccountId) handleFilter();
   }, [selectedAccountId]);
 
   const selectedAccount = accounts.find(a => a.id === selectedAccountId) || {};
@@ -109,11 +92,12 @@ const AccountStatement = () => {
       <Typography variant="h6" fontWeight={600} gutterBottom sx={{ color: '#1e293b', mb: 3 }}>
         {t('dashboard.account_statement.title')}
       </Typography>
-      
-      <Paper elevation={0} sx={{ p: 3, borderRadius: 2, border: '1px solid #e2e8f0', mb: 4 }}>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} sm={3}>
-            <TextField 
+
+      <Paper elevation={0} sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, border: '1px solid #e2e8f0', mb: 4 }}>
+        <Grid container spacing={2} alignItems="flex-end">
+          {/* Дата С */}
+          <Grid item xs={12} sm={6} md={3}>
+            <TextField
               type="date"
               label={t('dashboard.account_statement.filter.date_from')}
               value={dateFrom}
@@ -121,10 +105,13 @@ const AccountStatement = () => {
               size="small"
               fullWidth
               InputLabelProps={{ shrink: true }}
+              inputProps={{ lang: i18n.language === 'gb' ? 'en' : i18n.language }}
             />
           </Grid>
-          <Grid item xs={12} sm={3}>
-            <TextField 
+
+          {/* Дата ПО */}
+          <Grid item xs={12} sm={6} md={3}>
+            <TextField
               type="date"
               label={t('dashboard.account_statement.filter.date_to')}
               value={dateTo}
@@ -132,34 +119,37 @@ const AccountStatement = () => {
               size="small"
               fullWidth
               InputLabelProps={{ shrink: true }}
+              inputProps={{ lang: i18n.language === 'gb' ? 'en' : i18n.language }}
             />
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <Box sx={{ position: 'relative' }}>
-              <Typography variant="caption" sx={{ position: 'absolute', top: -8, left: 8, bgcolor: 'white', px: 0.5, color: '#64748b', zIndex: 1 }}>{t('dashboard.account_statement.filter.account')}</Typography>
+
+          {/* Выбор счета */}
+          <Grid item xs={12} sm={8} md={4}>
+            <FormControl fullWidth size="small">
+              <InputLabel shrink>{t('dashboard.account_statement.filter.account')}</InputLabel>
               <Select
                 value={selectedAccountId}
                 onChange={(e) => setSelectedAccountId(e.target.value)}
-                size="small"
-                fullWidth
-                sx={{ '& .MuiSelect-select': { py: 1 } }}
+                label={t('dashboard.account_statement.filter.account')}
+                notched
               >
                 {accounts.map(a => (
                   <MenuItem key={a.id} value={a.id}>{a.account_number} ({a.currency})</MenuItem>
                 ))}
               </Select>
-            </Box>
+            </FormControl>
           </Grid>
-          <Grid item xs={12} sm={2}>
-            <Button 
+
+          {/* Кнопка */}
+          <Grid item xs={12} sm={4} md={2}>
+            <Button
               onClick={handleFilter}
-              variant="contained" 
+              variant="contained"
               fullWidth
-              sx={{ 
-                bgcolor: '#3b82f6', 
-                '&:hover': { bgcolor: '#2563eb' },
+              sx={{
+                bgcolor: '#3b82f6',
+                height: '40px',
                 textTransform: 'none',
-                py: 1,
                 boxShadow: 'none'
               }}
             >
@@ -169,98 +159,99 @@ const AccountStatement = () => {
         </Grid>
       </Paper>
 
-      <Grid container spacing={4} sx={{ mb: 4 }}>
+      {/* Информационный блок */}
+      <Grid container spacing={2} sx={{ mb: 4 }}>
         <Grid item xs={12} md={6}>
-          <Box sx={{ display: 'flex', mb: 1 }}>
-            <Typography variant="body2" fontWeight={600} sx={{ width: 140, color: '#1e293b' }}>{t('dashboard.account_statement.info.account_number')}</Typography>
-            <Typography variant="body2" sx={{ color: '#334155' }}>{selectedAccount.account_number}</Typography>
-          </Box>
-          <Box sx={{ display: 'flex', mb: 1 }}>
-            <Typography variant="body2" fontWeight={600} sx={{ width: 140, color: '#1e293b' }}>{t('dashboard.account_statement.info.currency')}</Typography>
-            <Typography variant="body2" sx={{ color: '#334155' }}>{selectedAccount.currency}</Typography>
-          </Box>
-          <Box sx={{ display: 'flex' }}>
-            <Typography variant="body2" fontWeight={600} sx={{ width: 140, color: '#1e293b' }}>{t('dashboard.account_statement.info.period')}</Typography>
-            <Typography variant="body2" sx={{ color: '#334155' }}>{formatDateOnly(appliedPeriod.from)} - {formatDateOnly(appliedPeriod.to)}</Typography>
-          </Box>
+          <Stack spacing={1}>
+            <Box sx={{ display: 'flex' }}>
+              <Typography variant="body2" sx={{ width: 140, color: '#64748b', fontWeight: 500 }}>{t('dashboard.account_statement.info.account_number')}</Typography>
+              <Typography variant="body2" fontWeight={600}>{selectedAccount.account_number || '-'}</Typography>
+            </Box>
+            <Box sx={{ display: 'flex' }}>
+              <Typography variant="body2" sx={{ width: 140, color: '#64748b', fontWeight: 500 }}>{t('dashboard.account_statement.info.currency')}</Typography>
+              <Typography variant="body2" fontWeight={600}>{selectedAccount.currency}</Typography>
+            </Box>
+            <Box sx={{ display: 'flex' }}>
+              <Typography variant="body2" sx={{ width: 140, color: '#64748b', fontWeight: 500 }}>{t('dashboard.account_statement.info.period')}</Typography>
+              <Typography variant="body2" fontWeight={600}>
+                {dateFrom ? formatDateOnly(dateFrom) : '...'} — {dateTo ? formatDateOnly(dateTo) : '...'}
+              </Typography>
+            </Box>
+          </Stack>
         </Grid>
-        
+
         <Grid item xs={12} md={6}>
-          <Box sx={{ border: '1px solid #e2e8f0', borderRadius: 1, overflow: 'hidden' }}>
+          <Box sx={{ border: '1px solid #e2e8f0', borderRadius: 2, overflow: 'hidden' }}>
             <Box sx={{ display: 'flex', borderBottom: '1px solid #e2e8f0', p: 1.5, bgcolor: '#f8fafc' }}>
-              <Typography variant="body2" sx={{ flexGrow: 1, color: '#334155', fontWeight: 500 }}>{t('dashboard.account_statement.info.debit_turnover')}</Typography>
-              <Typography variant="body2" sx={{ color: '#ef4444' }}>{formatCurrency(debitTurnover, selectedAccount.currency, i18n.language)}</Typography>
+              <Typography variant="body2" sx={{ flexGrow: 1, color: '#475569' }}>{t('dashboard.account_statement.info.debit_turnover')}</Typography>
+              <Typography variant="body2" sx={{ color: '#ef4444', fontWeight: 700 }}>{formatCurrency(debitTurnover, selectedAccount.currency, i18n.language)}</Typography>
             </Box>
             <Box sx={{ display: 'flex', p: 1.5, bgcolor: '#f8fafc' }}>
-              <Typography variant="body2" sx={{ flexGrow: 1, color: '#334155', fontWeight: 500 }}>{t('dashboard.account_statement.info.credit_turnover')}</Typography>
-              <Typography variant="body2" sx={{ color: '#22c55e' }}>+{formatCurrency(creditTurnover, selectedAccount.currency, i18n.language)}</Typography>
+              <Typography variant="body2" sx={{ flexGrow: 1, color: '#475569' }}>{t('dashboard.account_statement.info.credit_turnover')}</Typography>
+              <Typography variant="body2" sx={{ color: '#22c55e', fontWeight: 700 }}>+{formatCurrency(creditTurnover, selectedAccount.currency, i18n.language)}</Typography>
             </Box>
           </Box>
         </Grid>
       </Grid>
 
-      {transactions.length === 0 ? (
-        <Paper elevation={0} sx={{ p: 6, borderRadius: 2, border: '1px solid #e2e8f0', textAlign: 'center' }}>
-          <Typography variant="body2" sx={{ color: '#334155' }}>
-            {t('dashboard.account_statement.no_transactions')}
-          </Typography>
-        </Paper>
-      ) : (
-        <TableContainer component={Paper} elevation={0} sx={{ borderRadius: 2, border: '1px solid #e2e8f0' }}>
-          <Table>
-            <TableHead>
+      {/* Таблица */}
+      <TableContainer component={Paper} elevation={0} sx={{ borderRadius: 2, border: '1px solid #e2e8f0', overflowX: 'auto' }}>
+        <Table sx={{ minWidth: 600 }}>
+          <TableHead sx={{ bgcolor: '#f8fafc' }}>
+            <TableRow>
+              <TableCell sx={{ fontWeight: 600, color: '#64748b' }}>{t('transactions.details.date')}</TableCell>
+              <TableCell sx={{ fontWeight: 600, color: '#64748b' }}>{t('transactions.details.description')}</TableCell>
+              <TableCell sx={{ fontWeight: 600, color: '#64748b' }}>{t('transactions.details.status')}</TableCell>
+              <TableCell align="right" sx={{ fontWeight: 600, color: '#64748b' }}>{t('transactions.details.amount')}</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {transactions.length === 0 ? (
               <TableRow>
-                <TableCell>{t('transactions.details.date')}</TableCell>
-                <TableCell>{t('transactions.details.description')}</TableCell>
-                <TableCell>{t('transactions.details.status')}</TableCell>
-                <TableCell align="right">{t('transactions.details.amount')}</TableCell>
+                <TableCell colSpan={4} align="center" sx={{ py: 4, color: '#64748b' }}>
+                  {t('dashboard.account_statement.no_transactions')}
+                </TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {transactions.map(tx => (
-                <TableRow 
-                  key={tx.id} 
-                  sx={{ cursor: 'pointer', '&:hover': { bgcolor: '#f8fafc' } }}
-                  onClick={() => handleTxClick(tx)}
+            ) : (
+              transactions.map(tx => (
+                <TableRow
+                  key={tx.id}
+                  hover
+                  sx={{ cursor: 'pointer' }}
+                  onClick={() => { setSelectedTx(tx); setDialogOpen(true); }}
                 >
-                  <TableCell>{formatDate(tx.date)}</TableCell>
+                  <TableCell sx={{ whiteSpace: 'nowrap' }}>{formatDateTime(tx.date)}</TableCell>
                   <TableCell>{translateBackendMessage(tx.description) || t(`transactions.types.${tx.type}`)}</TableCell>
                   <TableCell>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      {tx.status === 'processing' ? (
-                        <HourglassEmptyIcon sx={{ fontSize: 16, mr: 1, color: '#ea580c' }} />
-                      ) : tx.status === 'declined' ? (
-                        <CancelIcon sx={{ fontSize: 16, mr: 1, color: '#dc2626' }} />
-                      ) : (
-                        <CheckCircleIcon sx={{ fontSize: 16, mr: 1, color: '#16a34a' }} />
-                      )}
-                      <Typography variant="body2" sx={{ color: tx.status === 'processing' ? '#ea580c' : tx.status === 'declined' ? '#dc2626' : '#16a34a', fontWeight: 500, textTransform: 'capitalize' }}>
-                        {t(`transactions.status.${tx.status}`)}
-                      </Typography>
-                    </Box>
+                    <Chip
+                      label={t(`transactions.status.${tx.status}`)}
+                      size="small"
+                      variant="outlined"
+                      sx={{
+                        fontWeight: 600,
+                        textTransform: 'capitalize',
+                        color: tx.status === 'completed' ? '#16a34a' : tx.status === 'processing' ? '#ea580c' : '#dc2626',
+                        borderColor: 'currentColor',
+                        bgcolor: 'transparent'
+                      }}
+                    />
                   </TableCell>
                   <TableCell align="right">
-                    {(() => {
-                      const isOutgoing = tx.amount < 0;
-                      const totalImpact = isOutgoing ? (tx.amount - (tx.fee || 0)) : tx.amount;
-                      return (
-                        <Typography variant="body2" sx={{ color: totalImpact < 0 ? '#ef4444' : '#22c55e', fontWeight: 600 }}>
-                          {totalImpact > 0 ? '+' : ''}{formatCurrency(totalImpact, selectedAccount.currency, i18n.language)}
-                        </Typography>
-                      );
-                    })()}
+                    <Typography variant="body2" sx={{ color: tx.amount < 0 ? '#ef4444' : '#22c55e', fontWeight: 700 }}>
+                      {tx.amount > 0 ? '+' : ''}{formatCurrency(tx.amount, selectedAccount.currency, i18n.language)}
+                    </Typography>
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      )}
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
 
-      <TransactionDetailsDialog 
-        open={dialogOpen} 
-        onClose={() => setDialogOpen(false)} 
-        transaction={selectedTx} 
+      <TransactionDetailsDialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        transaction={selectedTx}
       />
     </Box>
   );

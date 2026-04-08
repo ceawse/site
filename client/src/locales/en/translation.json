@@ -9,8 +9,6 @@
     "ERR_AUTH_INVALID_CREDENTIALS": "Invalid email or password.",
     "ERR_AUTH_INVALID_PASSWORD": "Current password is incorrect.",
     "ERR_DB_ERROR": "A database error occurred.",
-    "MSG_METHOD_CASH": "Cash transfer",
-    "ERR_USER_BLOCKED": "Your account is blocked. Reason: {{reason}}",
     "ERR_USER_NOT_FOUND": "User not found.",
     "ERR_PROFILE_UPDATE_FAILED": "Failed to update profile.",
     "ERR_PASSWORD_UPDATE_FAILED": "Failed to change password.",
@@ -34,6 +32,7 @@
     "ERR_SETTINGS_UPDATE_FAILED": "Failed to update system settings.",
     "ERR_MESSAGE_SEND_FAILED": "Failed to send message.",
     "ERR_MESSAGE_UPDATE_FAILED": "Failed to update message.",
+    "ERR_USER_BLOCKED": "Your account is blocked. Reason: {{reason}}",
     "MSG_PROFILE_UPDATED": "Profile updated successfully.",
     "MSG_DOCS_UPLOADED": "Documents uploaded successfully.",
     "MSG_PASSWORD_UPDATED": "Password changed successfully.",
@@ -57,6 +56,7 @@
     "MSG_METHOD_CRYPTO": "Cryptocurrency",
     "MSG_METHOD_BANK": "Bank Transfer",
     "MSG_METHOD_CARD": "Credit/Debit Card",
+    "MSG_METHOD_CASH": "Cash Transfer",
     "MSG_DEPOSIT_VIA": "Deposit via {{method}}",
     "MSG_TRANSFER_TO": "Transfer to {{beneficiary}}: {{desc}}",
     "MSG_TRANSFER_TO_NETWORK": "Transfer to network: {{network}}",
@@ -114,10 +114,7 @@
     "terms_title": "Terms & Conditions",
     "privacy_title": "Privacy Policy",
     "cookies_title": "Cookie Policy",
-    "last_updated": "Last Updated: March 2024",
-    "privacy_content": "<p>AlpenStark Bank is deeply committed to safeguarding the privacy of its site visitors, users, and customers. As such, we ensure that their personal information and confidential data are stored securely. This notice is applicable to AlpenStark Bank, a trading name of ALJ Holding SA, a Switzerland company having its registered office at Avenue Industrielle 12, 1227 Carouge GE, Switzerland. This Privacy Policy is designed to help you comprehend the data we gather, the reasons for its collection, and how AlpenStark Bank utilizes your information. The data collected is employed to understand our customers' behavior and their eligibility for AlpenStark Bank's products and services, enabling us to offer an enhanced service to our clientele.</p><p>From the moment you access the AlpenStark Bank website or services, you signify your agreement to our Privacy Policy. It is your responsibility to read, understand, and consent to the terms outlined in this document and to the use of your data as described herein. For any inquiries or concerns regarding our Privacy Policy, please contact us via our customer support channels (e.g., live chat, if available, on https://alpenstark.com/) and kindly refrain from using our website or services until your concerns are addressed.</p><h3>1. Information We Collect from You</h3><p>We gather your personal information and Confidential Information to provide you with improved and more relevant services. When you register for your AlpenStark Bank Account, you furnish us with personal information, which may include, but is not limited to, your name, email address, date of birth, credit/debit card details, and bank account information.</p><h3>1.1. Registration Information</h3><p>We collect information when you establish your AlpenStark Bank account. Depending on your intended use of the account, we may request that you provide some or all of the following: Credit or Debit card number, bank account number, relevant expiration dates, phone number, date of birth, ID document number, photographs of your ID, a photograph of the individual registering, video recording of the individual registering, phone number, industry type, the purpose of your Account, and transaction information. Similar documentation may be requested from the individual representative of a registering legal entity. We may also ask for additional information as part of our verification and ongoing due diligence processes.</p><h3>1.2. Additional Information</h3><p>We might request further details or ask you to answer additional questions to verify your information. We may also acquire supplementary information about you from third parties, including third-party partners. This encompasses information regarding your behavior, bank accounts, or payment methods issued by third-party financial institutions that are linked to your AlpenStark Bank products. We also collect data concerning which sections of our site you visited, your browser details, your location, and the frequency of your site usage.</p><h3>1.3. Transaction Information</h3><p>Information about your transactions is collected and reviewed, including but not limited to: date, time, amount, devices associated with the transaction, IP address of both sender and receiver, sender's name and registration details, receiver's name and registration details, messages sent or received with the payment, device information used to facilitate the payment, and the payment instrument utilized.</p><h3>1.4. Merchant Information and Confidentiality</h3><p>We gather, utilize, and may disclose data pertaining to our merchant accounts. When a merchant registers for a AlpenStark Bank Account, they are obliged to provide information about their business to enable us to perform relevant credit and risk assessments. This involves collecting information about the merchant's key controllers, directors, partners, and shareholders, as well as confidential information. AlpenStark Bank will use your confidential information solely for the evaluation purposes stated in the Terms and Conditions and this Privacy Policy, and not for any other commercial or operational purpose, nor in connection with any similar project it undertakes, nor in any manner detrimental to you, your affiliates, or your respective representatives. In addition to these specific duties, AlpenStark Bank shall protect and safeguard your confidential information with at least the same degree of care it employs to protect its own confidential information.</p><p>By accepting the Terms and Conditions and this Privacy Policy, you also agree that you shall not use or disclose AlpenStark Bank's confidential information in any manner other than how AlpenStark Bank uses or discloses Your confidential information. This information is used to verify our merchants and their key controllers. This includes validating certain data provided by our merchants and reviewing their eligibility to use our products and services. Third-party partners may be engaged to validate the information you provide during account registration. AlpenStark Bank reserves the right to periodically review merchant accounts. This may entail requesting a credit reference from a credit or fraud prevention agency for any merchant account. As part of this review, AlpenStark Bank reserves the right to close an account based on the information obtained. For different types of merchant accounts, we may collect information about a merchant's business operations and online presence to assess a merchant's size, customer base, and anticipated transactional activity.</p><h3>1.5. Maintaining Updated Information</h3><p>In addition to the information supplied upon your account registration, we also collect information we receive from you as a consequence of your use of our services. This enables us to periodically verify your identity and also to analyze your behavior to provide you with superior customer service. The information collected includes, but is not limited to: Log-in details, location information, device information, transaction information, third-party information, identity information, and cookies.</p><h3>2. Usage of Personal Information and Duration</h3><p>Registration information is utilized to verify your identity. This includes validating certain data provided by you and assessing your eligibility to use our products and services. We use the information we collect about you to deliver the products we offer, to inform you about changes to our products, and to enhance our products. Transactional information is retained to ensure our service levels are maintained and also for regulatory compliance. This includes checks related to Anti-Money Laundering (AML), Know Your Client (KYC), Politically Exposed Persons (PEP) policies, and any other checks AlpenStark Bank is obligated to conduct based on the venue and category of the services provided. Unless otherwise specified in this Privacy Policy or if a regulatory or legal requirement exists, AlpenStark Bank will delete Your personal information when Your relationship with AlpenStark Bank concludes.</p><h3>2.1. Internal Use</h3><p>We reserve the right to obtain and use your personal information and confidential information. By Browse our site, you provide your explicit or implied consent for us to collect, retain, and use your information. The examples below define some instances in which we may use your information:</p><ul><li>to develop a more user-friendly site with tailored usability.</li><li>to provide you with customized information regarding our products and services;</li><li>to analyze customer support interactions to improve our services;</li><li>to offer you special features and promotions based on your requirements; and,</li><li>to ensure your continued eligibility for our products and services.</li></ul><p>This information is shared only with our internal stakeholders on a need-to-know basis, adhering to strict data security regulations which we uphold.</p><h3>2.2. Third Party Use</h3><p>We may share your personal information or Confidential Information with trusted third parties to enhance our services, as permitted by data protection legislation, or in the limited circumstances detailed below. These third parties are restricted by law or by contract from using the information for secondary purposes beyond those for which the information is shared. We may share your information with trusted third parties when:</p><ul><li>providing you with special features or services upon your request (including secure banking portals or similar functionalities);</li><li>responding to a subpoena, warrant, court order, or as otherwise required by law;</li><li>conducting or co-operating in investigations of fraud or other illegal activity where we believe it is reasonable and appropriate to do so;</li><li>interacting with our approved business service partners who are bound by contractual and legal regulations concerning how they are permitted to handle your data; and,</li><li>gathering your IP address, browser type, and access times to improve our site.</li></ul><p>In the event of a merger with another company or any rebranding, the new company or brand would gain access to the personal information you provided. The current Privacy Policy would continue to apply, unless amended or otherwise stated.</p><h3>3. Information Disclosure</h3><p>You consent to our collection, use, and disclosure of the personal information and Confidential Information you have provided, as outlined below. We may disclose your information:</p><ul><li>To other members within the group structure in which AlpenStark Bank is established for the purposes described in this Privacy Policy, including cross-border transfers outside of the EEA, wherever members of the group are located. In the event of a cross-border data transfer, AlpenStark Bank is committed to providing appropriate protection for your information and meeting the highest standards of data protection required.</li><li>To trusted third-party partners to validate the information you provided upon registration of your account. We may also provide other relevant data necessary to confirm your eligibility for the use of specific products and services offered by us.</li><li>To third-party service and technology providers for the purposes of understanding our customers' behavior, improving our services, and verifying your identity. This may involve the transfer of your information cross-border, outside of the EEA. It will only be transferred to third parties who have agreed to protect and handle your data with the same standards expected at AlpenStark Bank.</li><li>As we deem necessary or appropriate under applicable law in order to: respond to police or government requests both within and outside your country of residence; comply with legal processes; enforce our terms and conditions; protect our operations and those within our group structure; pursue or limit damages that we may sustain; and protect the rights, privacy, or safety of AlpenStark Bank or members within our group structure.</li></ul><h3>4. Cookies</h3><p>We use cookies on our site to collect and store certain information when you access AlpenStark Bank. Cookies are small text files that may enable us to learn some additional information about you. The information provided by cookies may indicate if you have previously visited our site, if you are using the same computer, if you have previously contacted us for support, if you prefer a specific browser, or if you have particular preferences when using AlpenStark Bank services.</p><h3>5. Your Rights</h3><p>It is your right to have access to all the personal information we hold about you and concerning your use of our site and services. Where applicable, you may have certain rights under data protection legislation, including the right to access, correct, update, or request deletion of your personal information; object to or restrict its processing; request the transfer of certain of your personal information to another service provider (so-called data portability); or to withdraw any consent you have previously given.</p><h3>6. Legal Basis for Processing</h3><p>We will process your personal information only when we have one of the following legitimate grounds:</p><ul><li>On the basis of your consent, for example, to send you marketing messages to the extent that consent is required by law;</li><li>Where necessary to enter into a contract with you and to perform our obligations under that contract;</li><li>Where we have a legitimate interest, subject to such processing not overriding your own rights and freedoms;</li><li>Where we have a legal obligation to collect your personal information or otherwise need your Personal Information to protect your vital interests or those of another person; or</li><li>Exceptionally, when necessary in the public interest, for example, when law enforcement agencies request information to investigate a crime.</li></ul><h3>7. Contacting Us</h3><p>To contact us regarding any questions you may have about our Privacy Policy, please reach out to our customer support team via our designated channels (e.g., chat on our website) or contact your Account Manager, if applicable.</p><h3>8. Definitions</h3><p>Please refer to our Terms and Conditions for the definitions of capitalized terms referred to in this Privacy Policy.</p><h3>9. Updates and Amendments</h3><p>We reserve the right to amend this Privacy Policy at any time and for any reason. Any variation will not diminish your rights under this Privacy Policy without your explicit consent. All changes will be posted on our site, and you may be asked to re-confirm your consent to the terms of this Privacy Policy. If the amendments are significant, we may notify you directly. For reference purposes, we will retain prior versions of our Privacy Policy.</p>",
-    "terms_content": "<h3>1. PREAMBLE</h3><p>1.1. This User Agreement for AlpenStark Bank services (hereinafter – the 'Agreement') is a contract between the Client (referred to as 'You') on one side and AlpenStark Bank, legal name ALJ Holding SA, a Switzerland company having its registered office at Avenue Industrielle 12, 1227 Carouge GE, Switzerland.</p><h3>2. ABOUT AlpenStark</h3><p>2.1. AlpenStark is a trading name of ALJ Holding SA.</p><p>2.2. AlpenStark is an electronic wallet service that allows you to keep and exchange virtual currencies, accept payments, transfer money, pay for various services.</p><p>2.3. AlpenStark support many virtual currencies: AlpenStark USD, AlpenStark EUR, AlpenStark RUB, AlpenStark BTC, AlpenStark ETH, AlpenStark LTC, AlpenStark BCH, AlpenStark USDT.</p><h3>3. SCOPE OF THIS AGREEMENT</h3><p>3.1. This Agreement governs your use of all AlpenStark services, the opening, use and closure of your AlpenStark Account and other related payment services as referred to herein. Together with our AML / KYC and Privacy Policy and any other terms and conditions referred to in this Agreement, they constitute the agreement between you and us.</p><p>3.2. For the use of additional services you may have to accept additional terms and conditions as notified to you when you are ordering or using such services.</p><p>3.3. Before you can use any AlpenStark Services you are required to:</p><ul><li>3.3.1. Read this Agreement and tick the box confirming that you accept all of the terms and conditions contained in this Agreement and the agreements on the 'User Agreements' page including 'Liability of the Customer', 'Other provisions', 'Order of interaction in a controversial and extreme situations', 'Other provisions and risks related to force majeure', 'Annex No1 to the public offer for access to AlpenStark System services', 'Return policy', 'How to close an account';</li><li>3.3.2. Provide us with such information, documentation, and photographs and as we may reasonably request to comply with our regulatory obligations and in accordance with our AML / KYC policy.</li></ul><h3>4. OPENING OF ACCOUNT</h3><p>4.1. Your AlpenStark Account is an e-wallet which enables you to send and receive payments.</p><p>4.2. In order to use our services you must first open a AlpenStark Account by registering your details on our Website and provide required documents and information prompted.</p><p>4.3. If you are an individual, you must be 14 years or older to use our services and by opening a AlpenStark Account you declare that you are 14 years or older.</p><p>4.4. You may only open a AlpenStark Account if it is legal to do so in your country of residence. By opening a AlpenStark Account you represent and warrant to us that your opening of a AlpenStark Account does not violate any laws or regulations applicable to you. You shall pay us the amount of any losses we incur in connection with your breach of this section.</p><p>4.5. We are required by law to carry out all necessary security and customer due diligence checks on you (including any parties involved in your transaction for example, your recipient) in order to provide any AlpenStark Services to you. You agree to comply with any request from us for further information and provide such information in a format acceptable to us. In addition, you agree that we may make, directly or through any third party, any inquiries we consider necessary to validate the information you provided to us, including checking commercial databases or credit reports. You authorise us to obtain one or more of your credit reports, from time to time, to establish, update, or renew your AlpenStark Account with us or in the event of a dispute relating to this Agreement and activity under your AlpenStark Account.</p><p>4.6. All information you provide to us must be complete, accurate and truthful at all times. You must update this information whenever it changes. We cannot be responsible for any financial loss arising out of your failure to do so. We may ask you at any time to confirm the accuracy of your information and/or provide additional supporting documents.</p><h3>5. CLOSURE OF ACCOUNT</h3><p>5.1. You may close your AlpenStark Account at any time by contacting the Support Team on the web-page https://alpenstark.com/en/dashboard/contacts or applying for the account closure in the SUPPORT section of your account. You should state the reason for such closure.</p><p>5.2. If your AlpenStark Account holds a balance at the time of its closure, we will ask you to withdraw your money within 30 days to your card, during which your AlpenStark Account will be accessible for the purpose of withdrawing the remaining balance only. After the expiry of this period you will not be able to access your AlpenStark Account but you may withdraw any remaining money by contacting Support Team and requesting that the money is sent to you in a manner that is reasonably acceptable for us.</p><p>5.3. If you want to access your AlpenStark Transaction History after the closure of your AlpenStark Account, you will need to contact the Support Team and request the information. You may do so for a period of 1 year from the date of closure of your AlpenStark Account.</p><p>5.4. We reserve the right to carry out any necessary money laundering, terrorism financing, fraud or other illegal activity checks before authorising any withdrawal of your money, including in relation to returning any money to you after you have closed your AlpenStark Account.</p><h3>6. VERIFICATION OF IDENTITY</h3><p>6.1. You agree to cooperate with all requests made by us in connection with your AlpenStark Account, to identify or authenticate your identity or validate your funding sources or AlpenStark Transactions.</p><p>6.2. This may include, but not limited to, asking you for further information that will allow us to reasonably identify you, including requiring you to take steps to confirm ownership of your phone number or payment instruments or verifying your information against third party databases or through other sources.</p><p>6.3. We reserve the right to close, suspend, or limit access to your AlpenStark Account in the event we are unable to obtain, verify such information or you do not comply with our requests under the Clause of this Agreement.</p><p>6.4. For the account personalization we request an identity document – national ID card, internal passport, international passport, driving license. We also accept residence permit. Identity documents of unrecognized states are not accepted. The Support Team may require a photo of a User's identity document next to his / her face to ensure the authenticity of documents.</p><p>6.5. We need a document proving a User's address for the account personalization as well. A document must contain a User's name, full current residential address, date of issue within the last 90 days, a bar code / QR code or stamp. A bank account / bank card statement, utility bills (water / gas / electricity), phone / internet / television bills are accepted if they meet all the requirements. We accept address / residence certificates.</p><p>6.6. Video verification might also be needed in case of doubting the authenticity of documents. For the video verification we ask a User to provide us with his / her Skype login and time convenient for the call. At the stated time the Support Team contacts the User.</p><p>6.7. When all documents satisfy all the requirements a User's account status is changed from registered to verified.</p><p>6.8. The Support Team may deny the account in personalization due to AlpenStark internal policy. We have a list of countries whose representatives cannot pass the personalization process.</p><p>6.9. Account personalization is unavailable for Users under 14 years old.</p><h3>7. AlpenStark SERVICES</h3><p>7.1. AlpenStark Wallet: AlpenStark Wallet allows you to top up/add money to your account, keep money in your account, to pay for, transfer electronic money around the world, make payments, accept payments on your website, use AlpenStark Exchange.</p><p>7.2. AlpenStark Transfers: AlpenStark Transfers allow you to send electronic money to your AlpenStark Account or from your AlpenStark Account to the AlpenStark Account of another AlpenStark User, to other payment systems, bank cards and mobile phone accounts.</p><p>7.3. AlpenStark Payments: AlpenStark Payments allow you to make payments for services and goods to an external website connected to AlpenStark System from your account or another payment system.</p><p>7.4. AlpenStark Mass Payments: AlpenStark Mass Payments is a service allowing to disseminate mass payments automatically to other AlpenStark Accounts, cards and various payment systems in many countries around the world.</p><p>7.5. AlpenStark Merchants: AlpenStark Merchants is a service allowing any company having an Internet website to accept payments from AlpenStark Accounts and other payment system, which will make it possible for the clients to pay online for various goods and services.</p><p>7.6. AlpenStark Exchange: AlpenStark Exchange allows you by using electronic money in one currency to purchase electronic money in another currency using our Exchange Rates.</p><p>7.7. AlpenStark Stock Market Exchange: AlpenStark Stock Market Exchange allows you to sell or purchase electronic money from another AlpenStark User.</p><h3>8. WITHDRAWING MONEY</h3><p>8.1. You can request a withdrawal of all or part of the money held in your AlpenStark Account at any time.</p><p>8.2. Your money may be withdrawn to your bank card by selecting the corresponding method (to the bank card) in the section 'Transfer' of your AlpenStark account.</p><p>8.3. If you do not want to go through the verification procedure on our website immediately after the successful payment, the withdrawal to the card will be made automatically after 36 hours after the payment.</p><p>8.4. Please note that the refund to the card can take from 1 to 30 working days, depending on the bank that issued your card.</p><h3>9. TOP-UP OF ACCOUNT</h3><p>9.1. In order to top up your AlpenStark Account, you will need to perform a top-up via your bank card or any other method we make available to you from time to time.</p><h3>10. RESTRICTIONS TO USE SERVICES</h3><p>10.1. It is not permitted to use AlpenStark Services for any illegal purposes, including, but not limited to fraud and money laundering, funding of terrorist organizations.</p><p>10.2. It is not permitted to use the AlpenStark Services for any activity connected with the following categories of goods and services:</p><ul><li>10.2.1. Prescription drugs;</li><li>10.2.2. Narcotic, psychotropic and hallucinogenic drugs and other controlled substances;</li><li>10.2.3. Tobacco and smoking products;</li><li>10.2.4. Precious stones and metals and articles thereof;</li><li>10.2.5. Used cosmetics;</li><li>10.2.6. Malicious software;</li><li>10.2.7. Weapons, firearms and ammunition;</li><li>10.2.8. Dangerous and perishable goods;</li><li>10.2.9. Personal data of individuals;</li><li>10.2.10. Unlawful gambling activities;</li><li>10.2.11. Unlawful sexually oriented materials or services;</li><li>10.2.12. Counterfeit products;</li><li>10.2.13. Any other products prohibited by law.</li></ul><p>10.3. AlpenStark will report any suspicious activity and cooperate with any relevant law enforcement agency or regulator.</p><p>10.4. Failure to comply with the Clause 10 of this Agreement constitutes a material breach of the terms upon which you are permitted to use the AlpenStark Services, and may result in our taking all or any of the following actions:</p><ul><li>10.4.1. Immediate, temporary or permanent withdrawal of your right to use our website;</li><li>10.4.2. Immediate, temporary or permanent removal of any posting or material uploaded by you to our website;</li><li>10.4.3. Issue of a warning to you;</li><li>10.4.4. Legal proceedings against you for reimbursement of all costs on an indemnity basis (including, but not limited to, reasonable administrative and legal costs) resulting from the breach;</li><li>10.4.5. Further legal action against you; and/or,</li><li>10.4.6. Disclosure of such information to law enforcement authorities as we reasonably feel is necessary.</li></ul><p>10.4.7. We exclude liability for actions taken in response to breaches of the Clause 10. The responses described are not limited, and we may take any other action we reasonably deem appropriate.</p><h3>11. AlpenStark TRANSACTION LIMITS</h3><p>11.1. We reserve the right to impose at our sole discretion AlpenStark Transaction Limits, based on criteria determined by us and that does not have to be disclosed.</p><p>11.2. You may be able to view some of these AlpenStark Transaction Limits by logging onto the AlpenStark Account.</p><h3>12. NO WARRANTY</h3><p>12.1. The AlpenStark Services are provided on an 'as is,' 'as available' basis and without any representation or warranty, whether express, implied or statutory. We, and the officers, directors, agents, joint venturers, employees and suppliers of AlpenStark, make no representation or warranty of any kind whatsoever for the services or the content, materials, information and functions made accessible by the AlpenStark Services used on or accessed through the AlpenStark Services, or for any breach of security associated with the transmission of sensitive information through the AlpenStark Services.</p><h3>13. GENERAL LIABILITY</h3><p>13.1. You shall solely responsible for the use of the AlpenStark Services in compliance with this Agreement and the requirements of the applicable law.</p><p>13.2. You shall be solely responsible for taking all measures to ensure the security of transactions carried out through the AlpenStark Account in accordance with this Agreement and applicable law.</p><p>13.3. You shall be solely liable for all losses arising from your use of anonymous proxy servers, anonymous SOCKS servers, anonymous networks (e.i. 'tor') or another kind of technologies and/or tools that allow anonymous use of AlpenStark Services which is strictly prohibited under this Agreement.</p><p>13.4. You shall be solely liable for all losses due to malware ('backdoors', 'worms', 'Trojan horses', 'virus', 'rootkits', malicious 'payloads', as well as any other malware) and your lack of knowledge of PC.</p><p>13.5. It is your responsibility: (i) to use the AlpenStark Services only through legitimate service providers (Internet operators and mobile operators) and methods of communication; (ii) to install the following software on your PC, mobile phone or another device through which you use the AlpenStark Services: updated anti-virus software (the last update should be done before you log-in into AlpenStark Account), updated versions of Firefox, Opera, Internet Explorer, Google Chrome or another web-browser (or web-application), updated version of the operating system; (iii) to comply with applicable legislation, including anti-money laundering and counter- terrorism financial legislation, personal data protection, tax, banking legislation and currency exchange regulations.</p><p>13.6. It is your responsibility to ensure that you log onto the AlpenStark Account regularly and regularly review the AlpenStark Transaction History, and to promptly report any questions, apparent errors, or unauthorised AlpenStark Transactions. Failure to contact us in a timely manner may result in loss of money or important rights.</p><p>13.7. It is your responsibility to ensure that your contact information stored on your AlpenStark profile is up to date.</p><p>13.8. If you fail to notify us without undue delay of any loss of your password or other event that could reasonably be expected to have compromised the security of your AlpenStark Account after you have gained knowledge of such event in which case you shall remain liable for losses incurred until you notify us.</p><p>13.9. In the case of any incorrect or misdirected payment, we shall take reasonable measures to assist you with tracing and recovering such payments.</p><p>13.10. We do not warrant that the AlpenStark Services will be uninterrupted or error free. We shall not be liable for any service interruptions or impairments of intermediary services on which we rely for the performance of our obligations hereunder, including, but not limited to, system failures or other interruptions that may affect the receipt, processing, acceptance, completion or settlement of AlpenStark Transactions or the AlpenStark Services.</p><p>13.11. We shall not be liable for any indirect or consequential losses including but not limited to loss of profit, loss of business and loss of reputation. We shall not be liable for any losses arising from our compliance with legal and regulatory requirements.</p><p>13.12. Our obligation under this Agreement is limited to providing you with an online e-wallet and related payment services and we are not responsible for the quality, performance, or any consequential results of the products and/or services purchased using the AlpenStark Services.</p><p>13.13. We shall not be liable for the assessment or payment of any taxes, duties or other charges that arise from your use of the AlpenStark Account or services provided in this Agreement.</p><p>13.14. Reimbursement. You agree to defend, reimburse or compensate us and hold us harmless from any claim, demand, expenses or costs (including legal fees, fines or penalties) that we incur or suffer due to or arising out of your breach of this Agreement, breach of any applicable law or regulation and/or use of the services. This provision shall survive termination of the relationship between you and us.</p><h3>14. AMENDMENT TO THE TERMS</h3><p>14.1. We may unilaterally amend this Agreement at any time by posting a revised version (including the Rates) on our website.</p><p>14.2. The revised version will be effective at the time we post it.</p><p>14.3. A Client's use of AlpenStark Services after any amendments come into force shall be considered as such Client's unconditional acceptance of such amendments.</p><h3>15. TERMINATION AND SUSPENSION</h3><p>15.1. AlpenStark in its sole discretion may terminate this Agreement or any payment service associated with it at any time, by giving you two months' prior notice. The termination of this Agreement will not affect any of our rights or your obligations arising under this Agreement.</p><p>15.2. Each AlpenStark Account that remains inactive during 36 months will be automatically closed and this Agreement will be terminated. Fees relating to ongoing management of inactive accounts will also continue to be charged following closure of your AlpenStark Account. This provision shall survive termination of the relationship between you and us.</p><p>15.3. You may terminate this Agreement at any time by providing us with one month's prior notice, such notice to be provided via email to the Support Team on the page https://alpenstark.com/en/dashboard/contacts or at the SUPPORT section of your account.</p><p>15.4. We may at any time suspend or terminate your AlpenStark Account without notice if:</p><ul><li>15.4.1. You commit a material breach of any term of this Agreement and (if such breach is remediable) fail to remedy that breach within a period of 30 days after being notified in writing to do so;</li><li>15.4.2. You repeatedly breaches any of the terms of this Agreement in such a manner as to reasonably justify the opinion that its conduct is inconsistent with it having the intention or ability to give effect to the terms of this Agreement;</li><li>15.4.3. You are subject to a bankruptcy, insolvency, winding up or other similar event;</li><li>15.4.4. The result of laws, payment scheme rules, regulatory authority rules or guidance or any change in or any introduction thereof (or change in the interpretation or application thereof) means that it is unlawful or contrary to any such law, rules, order or regulations for either of the parties to perform or give effect to any of its obligations hereunder and such obligation cannot be readily severed from this Agreement;</li><li>15.4.5. We have reason to believe that you are in any way involved in any fraudulent activity, money laundering, terrorism financing or other criminal activity;</li><li>15.4.6. We reasonably suspect your AlpenStark Account have been used or is being used without your authorisation or fraudulently; and we shall notify you either prior to the suspension or, if prior notification is not possible under the circumstances, promptly after the suspension unless we are prohibited by law to notify you.</li></ul><p>15.5. Termination of this Agreement requires the closing of your AlpenStark Account in accordance with Clause 7. AlpenStark will deal with your remaining balance in accordance with this Agreement.</p><h3>16. COMPLAINTS</h3><p>16.1. Any complaints about us or the services we provide should be addressed to us in the first instance by contacting the Support Team. We send you a complaint acknowledgement by post or by email within 48 hours of receiving your complaint in accordance with our complaints procedure.</p><p>16.2. We endeavour to provide you with an answer or resolution to your complaint within 30 days. Should this not be possible due to unforeseen circumstances or lack of information, we will contact you.</p><h3>17. MISCELLANEOUS</h3><p>17.1. In order to use other services of AlpenStark, you may be requested to accept other Agreements and/or terms and conditions, either with us or with a third party.</p><p>17.2. No person other than you shall have any rights under this Agreement.</p><p>17.3. Your AlpenStark Account is personal to you and you may not assign any rights under this Agreement to any third party.</p><p>17.4. Your AlpenStark Account is operated in Switzerland and this Agreement shall be governed by and interpreted in accordance with the laws of Switzerland. Any dispute under this Agreement or otherwise in connection with your AlpenStark Account shall be brought exclusively in the courts of Switzerland.</p><p>17.5. If any part of this Agreement is found by a court of competent jurisdiction to be invalid, unlawful or unenforceable then such part shall be severed from the remainder of the Agreement, which shall continue to be valid and enforceable to the fullest extent permitted by law.</p><p>17.6. The definitions set out Schedule 1 apply to this Agreement.</p><h3>Schedule 1 – Definitions</h3><p>“Account” or “AlpenStark Account” means an e-wallet in AlpenStark System which enables the AlpenStark User to send and receive payments.</p><p>“AlpenStark Exchange” means a service that allows you by using electronic money in one currency to purchase electronic money in another currency using our Exchange Rates.</p><p>“AlpenStark Mass Payments” means a service that allows you to disseminate mass payments to other AlpenStark Accounts, cards and various payment systems in many countries of the world automatically.</p><p>“AlpenStark Merchant” means a service allowing any company having own website on the Internet to conclude a contract for 'accepting payments' from AlpenStark, which will make it possible to the clients to pay online for various goods and services.</p><p>“AlpenStark Payment System”, “AlpenStark System” or “AlpenStark PS” or “PS” means a web- based Platform, operated by us, which end-users may use as a gateway in order to enroll and gain access to their AlpenStark Account.</p><p>“AlpenStark Payments” means a service that allows you to make payments for services and goods to an external website connected to AlpenStark System from your account or another payment system.</p><p>“AlpenStark Services” mean payment system services including AlpenStark Wallet, AlpenStark Transfers, AlpenStark Payments, AlpenStark Mass Payments, AlpenStark Merchant, AlpenStark Exchange and any other services.</p><p>“AlpenStark Stock Market Exchange” means a service that allows you to sell or purchase electronic money from another AlpenStark User.</p><p>“AlpenStark Transaction” means any transaction made by AlpenStark User through AlpenStark System.</p><p>“AlpenStark Transfers” means a service of instant electronic payments all over the world.</p><p>“AlpenStark User” or “Client” means a natural or legal person which is an acceptable client of the AlpenStark Payment System.</p>",
-    "cookies_content": "<p>AlpenStark Bank, legal name ALJ Holding SA, a Switzerland company having its registered office at Avenue Industrielle 12, 1227 Carouge GE, Switzerland, is committed to protecting your privacy and ensuring transparency in how we use cookies on our website.</p><h3>1. Essential Operational Cookies</h3><p>To ensure our website operates correctly, we utilize these essential cookies. These cookies are fundamental to the functionality of our Site and cannot be disabled within our systems. They are typically activated in response to your actions, such as configuring your privacy choices, signing in, or completing online forms.</p><h3>2. Performance and Analytics Cookies (AlpenStark Bank Policy)</h3><p>These cookies enable us to monitor visitor numbers and traffic origins, which helps us gauge and enhance our website's performance. All data collected by our performance cookies is aggregated and therefore remains anonymous.</p><h3>3. Advertising and Targeting Cookies</h3><p>These cookies may also allow us to note the pages you have viewed and the links you have followed on our Site. This helps us to understand your interests and subsequently display advertising that is more relevant to you. While we do not store information that directly identifies you personally through these cookies, they function by uniquely identifying your browser and internet-connected device. If you choose not to allow these cookies, the advertising you encounter will likely be less specifically targeted to your interests.</p>"
+    "last_updated": "Last Updated: March 2024"
   },
   "navbar": {
     "crypto": "Crypto",
@@ -323,6 +320,7 @@
       "subtitle_details": "Enter Top Up Details",
       "subtitle_crypto": "Cryptocurrency Payment Details",
       "subtitle_bank": "Bank Transfer Details",
+      "subtitle_card": "Card Payment Details",
       "select_type": "Select account type to top up",
       "fiat_account": "FIAT ACCOUNT",
       "crypto_account": "CRYPTOCURRENCY ACCOUNT",
@@ -343,6 +341,7 @@
       "bic_swift": "BIC/SWIFT",
       "reference": "Reference",
       "card_instruction": "Our support team will review your request and contact you within 24 hours with payment instructions.",
+      "cash_instruction": "For cash deposits, please contact our support team to get the address of the nearest collection point or pickup instructions.",
       "card_request_summary": "You have requested to top up your account with {{amount}} {{currency}} using {{method}}.",
       "redirecting": "Redirecting to secure card payment gateway...",
       "amount_to_deposit": "Amount to deposit: {{amount}} {{currency}}",
@@ -389,7 +388,7 @@
       "promo": {
         "title": "Apply for a personal loan.",
         "subtitle": "Rates as low as 3.6% APR.",
-        "desc": "This rate is available on loans between $2,500 and $35,000. Other loan amounts are available at alternative rates. Your rate depends on your personal circumstances, loan amount and term and may differ from this Representative APR.",
+        "desc": "This rate is available on loans between $2,500 and $35,000. Other loan amounts are available at alternative rates.",
         "benefit_1": "Get your free, personalised quote",
         "benefit_2": "Get your money within a day!"
       },
@@ -414,7 +413,7 @@
       "quote_button": "Get my personalised quote",
       "upload_title": "Upload bank statement for last 3 months",
       "drag_drop": "Drag & drop files here or click to browse",
-      "accepted_formats": "Accepted formats: PDF, JPG, PNG, GIF (max 5MB per file)",
+      "accepted_formats": "Accepted formats: PDF, JPG, PNG, GIF (max 5MB)",
       "max_files": "Maximum 3 files allowed",
       "notification_success": "Thank you! Your quote request has been submitted.",
       "years_short": "y",
@@ -432,16 +431,16 @@
     },
     "verification": {
       "title": "Identity Verification",
-      "subtitle": "To comply with regulatory requirements, we need to verify your identity. Please upload the required documents below.",
+      "subtitle": "To comply with regulatory requirements, we need to verify your identity.",
       "id_verification": "Identity Document Verification",
       "bank_verification": "Bank Account Verification",
       "doc_type_label": "Document Type",
       "passport": "Passport",
       "id_card": "ID Card",
       "bank_statement": "Bank Statement",
-      "upload_instruction_passport": "Please upload a clear photo of your passport's main page showing your photo and personal details.",
-      "upload_instruction_id": "Please upload a clear photo of your ID card's front and back sides showing your photo and personal details.",
-      "bank_instruction": "Please upload your bank account statements for the last 3 months. Accepted formats: PDF, JPG, PNG, GIF (max 5MB per file). Maximum 3 files allowed.",
+      "upload_instruction_passport": "Please upload a clear photo of your passport's main page.",
+      "upload_instruction_id": "Please upload a clear photo of your ID card's front and back sides.",
+      "bank_instruction": "Please upload your bank account statements for the last 3 months.",
       "status": {
         "verified": "Verified",
         "approved": "Approved",
@@ -471,7 +470,7 @@
       "address_info": "Address Information",
       "notifications": "Notification Preferences",
       "show_notifications": "Show notifications for new messages from AlpenStark",
-      "notification_desc": "When enabled, you will receive browser notifications and in-app alerts when AlpenStark sends you new messages.",
+      "notification_desc": "You will receive browser notifications and in-app alerts.",
       "notification": {
         "success": "Profile updated successfully",
         "failed": "Update failed"
@@ -512,7 +511,7 @@
     },
     "withdraw_accounts": {
       "title": "Withdraw Accounts",
-      "subtitle": "For convenience, you can add your external bank account information to save and easily withdraw funds from AlpenStark Bank.",
+      "subtitle": "You can add your external bank account information for easy withdrawals.",
       "table": {
         "bank_name": "Bank Name",
         "swift_bic": "SWIFT/BIC",
@@ -562,7 +561,7 @@
       },
       "notification": {
         "success": "Crypto wallet created successfully",
-        "failed": "Failed to create wallet. Make sure it does not already exist."
+        "failed": "Failed to create wallet."
       },
       "landing": {
         "hero_title": "Cryptocurrency — simple and secure",
@@ -570,7 +569,7 @@
         "create_first": "Create First Wallet",
         "benefits_title": "Benefits of Cryptocurrency",
         "benefit_1_title": "Lightning-fast Transactions",
-        "benefit_1_desc": "Send and receive funds worldwide in minutes, without waiting during traditional bank hours or verification periods.",
+        "benefit_1_desc": "Send and receive funds worldwide in minutes, without waiting for traditional banking hours or clearing periods.",
         "benefit_2_title": "Enhanced Security",
         "benefit_2_desc": "Blockchain technology provides unmatched security and transparency for all transactions.",
         "benefit_3_title": "Global Reach",
@@ -622,7 +621,7 @@
       "amount_label": "Amount",
       "from_account": "From Account",
       "to_currency": "To Currency",
-      "insufficient_balance": "{{currency}} account has insufficient balance. Please add funds to exchange.",
+      "insufficient_balance": "{{currency}} account has insufficient balance.",
       "placeholder_amount": "0.00",
       "exchange_button": "Exchange",
       "success_msg": "Exchange initiated successfully",
@@ -637,7 +636,7 @@
         "date_to": "Date To",
         "button": "Filter"
       },
-      "no_transactions": "No cryptocurrency transactions found for the selected period.",
+      "no_transactions": "No cryptocurrency transactions found.",
       "table": {
         "date": "Date",
         "account": "Account",
@@ -684,7 +683,7 @@
   "admin": {
     "panel_title": "Admin Panel",
     "is_blocked": "Blocked account",
-    "blocked_reason": "Причина блокировки",
+    "blocked_reason": "Reason for blocking",
     "sidebar": {
       "dashboard": "Dashboard",
       "users": "Users",
@@ -716,20 +715,20 @@
     "backup": {
       "title": "Backup & Restore",
       "export_title": "Export Database",
-      "export_description": "Download the current SQLite database. This includes all users, accounts, transactions, and settings.",
+      "export_description": "Download the current SQLite database. This includes all users, accounts, transactions and settings.",
       "export_button": "Download Backup (.sqlite)",
       "import_title": "Import Database",
       "import_description": "Upload a SQLite database file to restore data.",
-      "import_warning": "WARNING: Importing a database will completely overwrite all current data. This action cannot be undone.",
+      "import_warning": "WARNING: This will completely overwrite all current data. This action cannot be undone.",
       "import_button": "Select & Import File",
       "confirm_title": "Confirm Import",
-      "confirm_text": "Are you sure you want to import this database? All current data will be deleted and replaced by the uploaded file.",
+      "confirm_text": "Are you sure you want to import this database? All current data will be lost and replaced by the file contents.",
       "confirm_button": "Yes, Import & Overwrite",
       "notification": {
         "export_success": "Database exported successfully.",
         "export_error": "Failed to export database.",
         "import_success": "Database imported successfully. Reloading...",
-        "import_error": "Failed to import database. Please ensure it is a valid file."
+        "import_error": "Failed to import database. Please ensure the file is valid."
       }
     },
     "dashboard": {
@@ -804,7 +803,7 @@
         "impact_title": "Balance Change Calculation:",
         "impact_desc_deposit": "For deposits, only the Amount is added to balance.",
         "impact_desc_transfer": "For transfers, both Amount and Fee are deducted from balance.",
-        "note": "Note: Changing the amount or fee will automatically adjust the user's account balance if the transaction is still processing.",
+        "note": "Note: Changes will automatically adjust the account balance.",
         "save": "Save Changes",
         "cancel": "Cancel"
       },
@@ -819,13 +818,13 @@
     "settings": {
       "title": "System Settings",
       "crypto_wallets": "Crypto Wallet Addresses",
-      "bank_details": "Bank Details (for FIAT Top Up)",
+      "bank_details": "Bank Details (for FIAT top up)",
       "beneficiary": "Beneficiary Name",
       "iban": "IBAN",
       "bic_swift": "BIC / SWIFT",
       "general_contacts": "General Contact Information",
-      "contact_email": "Company Support Email",
-      "contact_address": "Company Physical Address",
+      "contact_email": "Support Email",
+      "contact_address": "Physical Address",
       "save_all": "Save All Settings",
       "notification": {
         "success": "Settings updated successfully",
@@ -833,13 +832,13 @@
       }
     },
     "user_detail": {
-      "is_blocked": "Block Account",
-      "blocked_reason": "Reason for blocking",
       "title": "Edit User: {{name}}",
       "profile_data": "Profile Data",
       "role_label": "Role",
-      "verified_status": "Verified Status",
-      "verification_status_label": "Verification Status",
+      "is_blocked": "Block Account",
+      "blocked_reason": "Reason for blocking",
+      "verified_status": "Verified Status (Switch)",
+      "verification_status_label": "Verification Status (Select)",
       "verification_doc": "Verification Document ({{type}}):",
       "view_doc": "View Doc {{index}}",
       "save_profile": "Save Profile",
@@ -855,8 +854,9 @@
       "initial_balance": "Initial Balance",
       "create_account": "Create Account",
       "prompts": {
-        "amount": "Enter amount to deposit (positive) or withdraw (negative):",
-        "description": "Enter description for this transaction:",
+        "amount": "Enter amount (positive to deposit, negative to withdraw):",
+        "description": "Enter description:",
+        "comment": "Comment",
         "incoming": "Incoming Transfer",
         "outgoing": "Outgoing Transfer"
       },
@@ -865,7 +865,7 @@
         "user_saved": "User saved successfully",
         "user_save_error": "Error saving user",
         "balance_updated": "Balance updated successfully",
-        "transaction_created": "Transaction created and awaiting approval",
+        "transaction_created": "Transaction created and pending approval",
         "balance_error": "Error updating balance",
         "account_created": "Account created successfully",
         "account_error": "Error creating account"
@@ -885,6 +885,183 @@
         "send": "Send",
         "failed": "Failed to send reply"
       }
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "9.5 minutes average response time",
+      "title": "About us",
+      "description": "Financial services form the backbone of every enterprise. They must work flawlessly to support your operations. We strive to be your dependable partner. Our technology provides intuitive tools backed by attentive support."
+    },
+    "quote": {
+      "text": "\"Conventional banks frequently let down business owners. We created AlpenStark to close that gap with personalized service and advanced solutions.\"",
+      "author": "Founder"
+    },
+    "story": {
+      "title": "Our story",
+      "p1": "After fifteen years working within traditional banking, I saw firsthand how mainstream banks failed independent business owners, freelancers, and growing companies time and time again. Capable people were being turned away or lost in bureaucracy simply because they didn't fit a narrow profile.",
+      "p2": "This is why I established AlpenStark—to build a financial institution that genuinely supports people with real goals. We designed a platform for those who need banking that adapts to them, not the other way around. By combining modern tech with real human support, we've removed the friction. Today, I'm proud to serve over 100,000 customers worldwide. Every client matters, and your success is our success."
+    },
+    "contact": {
+      "title": "Speak with a real person",
+      "description": "Our support and sales professionals are here to address any questions you have. Whether it's a technical issue or a quick question, we provide the level of service we'd want to receive ourselves!",
+      "formTitle": "Send us a message",
+      "formDescription": "Complete the form below or email us at support@alpenstark.com. Our team will respond as quickly as possible.",
+      "firstName": "First name *",
+      "lastName": "Last name *",
+      "email": "Email *",
+      "message": "Message",
+      "button": "Send",
+      "success": "Your message has been sent successfully!",
+      "error": "An error occurred while sending your message. Please try again."
+    }
+  },
+  "transactions": {
+    "types": {
+      "deposit": "Deposit",
+      "transfer": "Transfer",
+      "exchange": "Exchange",
+      "withdrawal": "Withdrawal",
+      "withdraw": "Withdrawal",
+      "account_opening": "Account Opening"
+    },
+    "status": {
+      "processing": "Processing",
+      "completed": "Completed",
+      "declined": "Declined",
+      "failed": "Failed"
+    },
+    "details": {
+      "title": "Transaction Details",
+      "amount": "Amount",
+      "fee": "Fee",
+      "date": "Date",
+      "status": "Status",
+      "description": "Description",
+      "id": "Transaction ID",
+      "outgoing": "Outgoing",
+      "incoming": "Incoming",
+      "from": "From",
+      "to": "To",
+      "total_payment": "Total Payment",
+      "purpose": "Purpose of Payment",
+      "internal_account": "Internal Account",
+      "not_specified": "Not Specified"
+    }
+  },
+  "crypto": {
+    "hero": {
+      "subtitle": "$1bn+ daily crypto trading volume",
+      "title": "Trade digital assets with a licensed Swiss bank",
+      "description": "The leading Swiss cryptocurrency institution with institutional-grade protection. Start trading with full regulatory compliance and expert support.",
+      "button": "Become a client"
+    },
+    "features": {
+      "title": "Trade cryptocurrency with total assurance",
+      "item1": "Exchange Bitcoin, Ethereum, stablecoins and fiat currencies with ease.",
+      "item2": "Trade efficiently with transparent and competitive fees.",
+      "item3": "View your assets and trade anytime, day or night.",
+      "item4": "Institutional-grade security following Swiss standards."
+    },
+    "why": {
+      "title": "Why choose AlpenStark?",
+      "description": "AlpenStark provides professional services for investors focused on long-term capital accumulation. Our platform combines advanced technology with personalized client service.",
+      "button": "Open an account"
+    },
+    "stats": {
+      "item1": "Operating since 2007",
+      "item2": "Personal account management and expert advice",
+      "item3": "Serving clients in over 150 countries",
+      "item4": "Over $1bn assets under management",
+      "item5": "Swiss licensed and strong regulatory framework",
+      "item6": "Processed over $327bn in transactions"
+    }
+  },
+  "digitalBanking": {
+    "hero": {
+      "badge": "Over 100,000 satisfied users",
+      "title": "Manage your finances on your own schedule",
+      "description": "Take full control of your financial life. Access your funds securely and conveniently from anywhere at any time.",
+      "button": "Register Now",
+      "feature1Title": "SECURE",
+      "feature1Desc": "Your data and privacy are protected",
+      "feature2Title": "CONVENIENT",
+      "feature2Desc": "24/7 access worldwide"
+    },
+    "section1": {
+      "title": "Manage your money with ease and precision",
+      "description": "Monitor your financial health and track activity across accounts, cards, and investments through our digital platform. Check balances, view transactions, process payments, open fixed-term deposits, and much more."
+    },
+    "section2": {
+      "title": "Full transaction transparency",
+      "description": "Get access to complete data for every payment made. Download receipts, cancel pending transfers, or reuse payment details. Enjoy full control over your operations."
+    },
+    "section3": {
+      "title": "Fast and intelligent payment processing",
+      "description": "Send payments to over 1,200 institutions or transfer funds between your accounts, to Swiss banks, and abroad. Fast, reliable, and secure transfers around the clock.",
+      "button": "Get Started"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Looking for answers? Contact us, but first check the answers below — your question may have already been addressed.",
+      "q1": "What features does online banking offer?",
+      "a1": "Online banking allows you to check balances, transaction history, transfer funds, pay bills, create recurring payments, manage fixed-term deposits, export statements, edit your profile, and contact support. All tools for full control in one place.",
+      "q2": "Is registration mandatory?",
+      "a2": "Definitely. Registering for online banking gives you 24/7 access to your accounts, advanced security options, and the ability to manage your money when it's convenient for you. It's free and takes just a couple of minutes.",
+      "q3": "What should I do if I don't remember my password?",
+      "a3": "Simply click \"Forgot Password\" on the login screen. A secure reset link will be sent to your email. Follow the instructions to create a new password.",
+      "q4": "How secure is online banking?",
+      "a4": "Very secure. Our online banking uses institutional-grade protection: 256-bit SSL encryption, multi-factor login, and constant fraud monitoring. Your information is protected according to the standards of leading Swiss banks.",
+      "q5": "What types of transfers are available?",
+      "a5": "Instant transfers between your own accounts, transfers to other Swiss and international accounts, setting up recurring payments, and scheduling future payments. Every transfer is protected and confirmed in real-time.",
+      "q6": "Can I chat with support?",
+      "a6": "Absolutely. After logging in, you can write to our support team via secure chat. Online help is available during business hours.",
+      "q7": "Is bill payment supported?",
+      "a7": "Yes, you can pay any Swiss or international bill directly from online banking. Schedule one-time or automatic payments and track their history.",
+      "q8": "Can I track the status of bill payments?",
+      "a8": "Of course. Monitor all payments in real-time — see pending, completed, and processing transactions, as well as confirmation details. You will also receive notifications."
+    }
+  },
+  "currencyExchange": {
+    "hero": {
+      "badge": "Excellent 4.5 out of 5 on Trustpilot",
+      "title": "Intelligent Currency Conversion",
+      "description": "Easily convert currencies with attractive rates and instant execution. Access 20+ currencies and digital assets through a single secure interface.",
+      "widget": {
+        "sell": "You Sell",
+        "rate": "Rate",
+        "buy": "You Receive",
+        "button": "Open Account",
+        "adding": "We are constantly adding new currencies to the list"
+      }
+    },
+    "section1": {
+      "title": "Global Currency Reach",
+      "description": "Access global financial markets through our full-featured currency exchange platform. Trade 20+ currencies and leading cryptocurrencies with enterprise-grade protection.",
+      "button": "Open Account"
+    },
+    "section2": {
+      "title": "Steps to Convert",
+      "step1": "Select your source and target currencies from our wide selection",
+      "step2": "Enter the amount you wish to convert",
+      "step3": "Check the exchange rate and transaction summary",
+      "step4": "Confirm the conversion and receive funds instantly"
+    },
+    "section3": {
+      "title": "Real-Time Market Rates",
+      "description": "Enjoy transparent pricing with market rates updating every second. Our powerful trading infrastructure ensures the most favorable exchange rates.",
+      "button": "Start Trading"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "How often are exchange rates updated?",
+      "a1": "Our platform provides real-time exchange rates that are constantly updated during market hours. This ensures optimal pricing.",
+      "q2": "What fees apply to currency conversion?",
+      "a2": "We offer a transparent fee structure with competitive spreads included in our exchange rates. All fees are displayed upfront.",
+      "q3": "How quickly are conversions completed?",
+      "a3": "All currency conversions on our platform are executed instantly. Your funds become available immediately after confirmation.",
+      "q4": "Are there limits on the exchange amount?",
+      "a4": "Conversion limits depend on your account verification level and the selected currency pair. Higher verification levels unlock increased limits."
     }
   },
   "countries": {
@@ -926,13 +1103,13 @@
     "China": "China",
     "Colombia": "Colombia",
     "Comoros": "Comoros",
-    "Congo (Congo-Brazzaville)": "Congo (Congo-Brazzaville)",
+    "Congo (Congo-Brazzaville)": "Congo",
     "Costa Rica": "Costa Rica",
     "Croatia": "Croatia",
     "Cuba": "Cuba",
     "Cyprus": "Cyprus",
-    "Czechia (Czech Republic)": "Czechia (Czech Republic)",
-    "Democratic Republic of the Congo": "Democratic Republic of the Congo",
+    "Czechia (Czech Republic)": "Czechia",
+    "Democratic Republic of the Congo": "DR Congo",
     "Denmark": "Denmark",
     "Djibouti": "Djibouti",
     "Dominica": "Dominica",
@@ -960,7 +1137,7 @@
     "Guinea-Bissau": "Guinea-Bissau",
     "Guyana": "Guyana",
     "Haiti": "Haiti",
-    "Holy See": "Holy See",
+    "Holy See": "Vatican City",
     "Honduras": "Honduras",
     "Hungary": "Hungary",
     "Iceland": "Iceland",
@@ -1006,7 +1183,7 @@
     "Montenegro": "Montenegro",
     "Morocco": "Morocco",
     "Mozambique": "Mozambique",
-    "Myanmar (formerly Burma)": "Myanmar (formerly Burma)",
+    "Myanmar (formerly Burma)": "Myanmar",
     "Namibia": "Namibia",
     "Nauru": "Nauru",
     "Nepal": "Nepal",
@@ -1021,7 +1198,7 @@
     "Oman": "Oman",
     "Pakistan": "Pakistan",
     "Palau": "Palau",
-    "Palestine State": "Palestine State",
+    "Palestine State": "Palestine",
     "Panama": "Panama",
     "Papua New Guinea": "Papua New Guinea",
     "Paraguay": "Paraguay",
@@ -1074,7 +1251,7 @@
     "Ukraine": "Ukraine",
     "United Arab Emirates": "United Arab Emirates",
     "United Kingdom": "United Kingdom",
-    "United States of America": "United States of America",
+    "United States of America": "United States",
     "Uruguay": "Uruguay",
     "Uzbekistan": "Uzbekistan",
     "Vanuatu": "Vanuatu",
@@ -1083,182 +1260,5 @@
     "Yemen": "Yemen",
     "Zambia": "Zambia",
     "Zimbabwe": "Zimbabwe"
-  },
-  "transactions": {
-    "types": {
-      "deposit": "Deposit",
-      "transfer": "Transfer",
-      "exchange": "Exchange",
-      "withdrawal": "Withdrawal",
-      "withdraw": "Withdraw",
-      "account_opening": "Account Opening"
-    },
-    "status": {
-      "processing": "Processing",
-      "completed": "Completed",
-      "declined": "Declined",
-      "failed": "Failed"
-    },
-    "details": {
-      "title": "Transaction Details",
-      "amount": "Amount",
-      "fee": "Fee",
-      "date": "Date",
-      "status": "Status",
-      "description": "Description",
-      "id": "Transaction ID",
-      "outgoing": "Outgoing",
-      "incoming": "Incoming",
-      "from": "From",
-      "to": "To",
-      "total_payment": "Total Payment",
-      "purpose": "Purpose of Payment",
-      "internal_account": "Internal Account",
-      "not_specified": "Not specified"
-    }
-  },
-  "crypto": {
-    "hero": {
-      "subtitle": "Handling $1bn+ in crypto volume daily",
-      "title": "Trade digital assets with a licensed Swiss bank",
-      "description": "Premier Swiss cryptocurrency institution with professional-grade protection. Begin trading with complete regulatory adherence and expert assistance.",
-      "button": "Become a client"
-    },
-    "features": {
-      "title": "Trade crypto with complete assurance",
-      "item1": "Exchange Bitcoin, Ethereum, stablecoins, and fiat currencies with ease.",
-      "item2": "Trade efficiently with clear, market-leading fee structures.",
-      "item3": "View your holdings and trade any time, day or night, on your schedule.",
-      "item4": "Professional-grade safeguards with Swiss regulatory standards and verification."
-    },
-    "why": {
-      "title": "Why choose AlpenStark?",
-      "description": "AlpenStark provides professional-grade digital asset services for discerning investors focused on long-term wealth building. Our platform merges advanced technology, regulatory compliance, and personalized client care to open new possibilities in the dynamic crypto market.",
-      "button": "Open Account"
-    },
-    "stats": {
-      "item1": "Operating since 2007",
-      "item2": "Dedicated account management and specialized advice",
-      "item3": "Serving clients in 150+ countries",
-      "item4": "Over $1 billion in managed assets",
-      "item5": "Swiss-licensed with robust regulatory framework",
-      "item6": "Over $327 billion in processed transactions"
-    }
-  },
-  "digitalBanking": {
-    "hero": {
-      "badge": "Over 100,000 satisfied users",
-      "title": "Bank on your own schedule",
-      "description": "Take full command of your financial life. Access and manage your funds safely and conveniently, anytime, from anywhere.",
-      "button": "Register Now",
-      "feature1Title": "SECURE",
-      "feature1Desc": "Your data and privacy are guarded",
-      "feature2Title": "CONVENIENT",
-      "feature2Desc": "Round-the-clock access worldwide"
-    },
-    "section1": {
-      "title": "Manage your money with ease and precision",
-      "description": "Stay on top of your financial health and track all account activity, cards, and investments via our digital platform. Check balances, review transactions, process payments, set up Fixed Term Deposits, initiate transfers and more—all safely and conveniently."
-    },
-    "section2": {
-      "title": "Full transaction transparency",
-      "description": "Access comprehensive details for every payment you make. Download receipts, cancel pending transfers, or reuse payment details for repeat transactions. Enjoy complete visibility and control over your banking operations."
-    },
-    "section3": {
-      "title": "Fast, intelligent payment processing",
-      "description": "Send payments to over 1,200 institutions or move funds between your accounts or to banks in Switzerland and abroad. Rapid, reliable, and protected transfers available around the clock.",
-      "button": "Start Now"
-    },
-    "faq": {
-      "title": "Common questions answered",
-      "subtitle": "Looking for answers? Feel free to reach out, but first check below—your question might already be covered.",
-      "q1": "What features does Online Banking offer?",
-      "a1": "Online Banking lets you check balances, browse transaction history, move funds between accounts, settle bills, create standing orders, handle Fixed Term Deposits, export statements, edit your profile, and reach support. All the tools for full account control in one place.",
-      "q2": "Is registration necessary?",
-      "a2": "Definitely. Signing up for Online Banking gives you around-the-clock account access, advanced security options, and the flexibility to handle your money whenever it suits you. It's free and only takes a few minutes.",
-      "q3": "What if I can't remember my password?",
-      "a3": "Simply tap 'Forgot Password' on the sign-in screen. A secure reset link will be sent to your registered email. Follow the steps to set a new password. Our support team is available if you need further assistance.",
-      "q4": "How safe is Online Banking?",
-      "a4": "Very safe. Our Online Banking employs institutional-grade protection: 256-bit SSL encryption, multi-factor login, and ongoing fraud monitoring. Your information is secured to the same standards used by leading Swiss banks.",
-      "q5": "What types of transfers are available?",
-      "a5": "Move money between your own accounts instantly, send to other Swiss or international bank accounts, arrange recurring transfers, or schedule future payments. Every transfer is secured and confirmed in real time.",
-      "q6": "Can I chat with support while logged in?",
-      "a6": "Absolutely. Once signed in, you can message our support team directly through secure chat. Live assistance is also available during business hours for immediate help.",
-      "q7": "Is bill payment supported?",
-      "a7": "Yes, you can pay any Swiss or international bill straight from Online Banking. Schedule one-off or automatic payments and monitor your full payment history from a single dashboard.",
-      "q8": "Can I track the status of my bill payments?",
-      "a8": "Of course. Monitor all payments live—see pending, completed, and in-progress transactions along with confirmation details and expected arrival. You'll also get alerts when payments go through."
-    }
-  },
-  "currencyExchange": {
-    "hero": {
-      "badge": "Excellent 4.5 out of 5 Trustpilot",
-      "title": "Intelligent Currency Conversion",
-      "description": "Convert currencies effortlessly with attractive rates and immediate execution. Access 20+ currencies and digital assets through one secure interface.",
-      "widget": {
-        "sell": "You sell",
-        "rate": "Rate",
-        "buy": "You buy",
-        "button": "Open Account",
-        "adding": "We are constantly adding new currencies to the list"
-      }
-    },
-    "section1": {
-      "title": "International Currency Coverage",
-      "description": "Access global financial markets through our full-featured currency exchange platform. Trade 20+ currencies and leading cryptocurrencies with enterprise-level protection.",
-      "button": "Open Account"
-    },
-    "section2": {
-      "title": "Conversion Steps",
-      "step1": "Pick your source and destination currencies from our broad selection",
-      "step2": "Specify the sum you want to convert",
-      "step3": "Check the exchange rate and transaction summary",
-      "step4": "Approve your conversion and get funds immediately"
-    },
-    "section3": {
-      "title": "Live Market Rates",
-      "description": "Enjoy clear pricing with market rates refreshed every second. Our powerful trading infrastructure delivers the most favorable exchange rates with tight spreads.",
-      "button": "Start Trading"
-    },
-    "faq": {
-      "title": "Frequently Asked Questions",
-      "q1": "How often are exchange rates refreshed?",
-      "a1": "Our platform delivers real-time exchange rates that refresh constantly throughout market hours. This guarantees optimal pricing and empowers you to make well-informed trading choices based on live market data.",
-      "q2": "What fees apply to currency conversions?",
-      "a2": "We offer clear fee structures with competitive spreads incorporated into our exchange rates. All charges are displayed upfront before you confirm, ensuring full pricing clarity without unexpected costs.",
-      "q3": "How fast are conversions completed?",
-      "a3": "All currency conversions are executed instantly on our platform. Your funds become available right after confirmation.",
-      "q4": "Do exchange amount limits apply?",
-      "a4": "Conversion limits depend on your account verification level and chosen currency pair. Higher verification tiers unlock increased transaction limits."
-    }
-  },
-  "about": {
-    "hero": {
-      "badge": "9.5 minutes average response time",
-      "title": "About us",
-      "description": "Financial services form the backbone of every enterprise. They need to work flawlessly to keep your operations running. We strive to be your dependable partner for this critical business function. Our technology provides streamlined, intuitive financial tools backed by attentive personal support."
-    },
-    "quote": {
-      "text": "\"Conventional banks frequently let down business owners. We created AlpenStark to close that gap through tailored service and forward-thinking solutions.\"",
-      "author": "Founder"
-    },
-    "story": {
-      "title": "Our story",
-      "p1": "After fifteen years working within traditional banking—both as an entrepreneur and financial expert—I saw firsthand how mainstream banks repeatedly failed independent business owners, freelancers, and emerging companies. Again and again, capable individuals with promising ventures were rejected or lost in red tape simply because they didn't match the narrow requirements of conventional banking. This frustration was personal—I faced it myself when launching my first business.",
-      "p2": "This is why I established AlpenStark—to build a financial institution that genuinely supports people with real goals. We designed our platform for entrepreneurs, self-employed professionals, small business operators, and individuals who need banking that conforms to them, not the reverse. By combining modern technology with authentic human assistance, we've removed the obstacles traditional banks create. Today, I'm honored that we support over 100,000 clients globally, from first-time founders to established companies going international. Each client is important, every journey matters, and your achievements are ours."
-    },
-    "contact": {
-      "title": "Speak with a real person",
-      "description": "Our support and sales professionals are here to address any questions you have. Whether it's a technical matter or a quick inquiry, we deliver the service standard we'd want for ourselves!",
-      "formTitle": "Send us a message",
-      "formDescription": "Complete the form below or email us at support@alpenstark.com. Our team will respond as quickly as possible.",
-      "firstName": "First name *",
-      "lastName": "Last name *",
-      "email": "Email *",
-      "message": "Message",
-      "button": "Send",
-      "success": "Your message has been sent successfully!",
-      "error": "An error occurred while sending your message. Please try again."
-    }
   }
 }

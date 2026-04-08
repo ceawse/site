@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
+import {
   Box, Typography, Paper, Grid, TextField, Button, Select, MenuItem, InputAdornment,
   Stepper, Step, StepLabel, ToggleButtonGroup, ToggleButton, Divider, InputLabel, FormControl, Alert,
   Checkbox, FormControlLabel, TableContainer, Table, TableHead, TableRow, TableCell, TableBody
@@ -14,7 +14,7 @@ import CurrencyIcon from '../../components/CurrencyIcon';
 const AccountTopUp = () => {
   const { t } = useTranslation();
   const steps = [t('dashboard.top_up.steps.enter_details'), t('dashboard.top_up.steps.payment_info'), t('dashboard.top_up.steps.confirmation')];
-  
+
   const [accountType, setAccountType] = useState('fiat');
   const [activeStep, setActiveStep] = useState(0);
   const [accounts, setAccounts] = useState([]);
@@ -53,7 +53,7 @@ const AccountTopUp = () => {
 
     if (selected) {
       if (selected.type === 'fiat') {
-        if (!['USD', 'EUR', 'GBP'].includes(newCurrency)) newCurrency = 'USD';
+        if (!['USD', 'EUR', 'GBP', 'CHF'].includes(newCurrency)) newCurrency = 'USD';
       } else {
         if (selected.currency === 'BTC') {
           newCurrency = 'BTC';
@@ -115,7 +115,7 @@ const AccountTopUp = () => {
     }
   };
 
-  const isCrypto = accountType === 'crypto' || ['USDT', 'ETH', 'BTC'].includes(formData.currency);
+  const isCrypto = accountType === 'crypto' || ['USDT', 'ETH', 'BTC', 'SOL'].some(c => formData.currency.includes(c));
   const isBank = !isCrypto && formData.method === 'bank';
   const isCash = !isCrypto && formData.method === 'cash';
 
@@ -142,8 +142,8 @@ const AccountTopUp = () => {
         await api.post('/topup', {
           account_id: formData.accountId,
           amount: parseFloat(formData.amount),
-          currency: formData.currency, // Use the selected payment currency
-          method: (accountType === 'crypto' || ['USDT', 'ETH', 'BTC'].includes(formData.currency)) ? 'crypto_transfer' : formData.method
+          currency: formData.currency,
+          method: isCrypto ? 'crypto_transfer' : formData.method
         });
         setSuccess(true);
         setActiveStep(2);
@@ -165,7 +165,7 @@ const AccountTopUp = () => {
       <Typography variant="h5" fontWeight={600} gutterBottom sx={{ color: '#1e293b', mb: 3 }}>
         {t('dashboard.top_up.title')}
       </Typography>
-      
+
       <Paper elevation={0} sx={{ p: { xs: 2, sm: 6 }, borderRadius: 2, border: '1px solid #e2e8f0', mb: 4, maxWidth: 800, mx: 'auto' }}>
         <Stepper activeStep={activeStep} alternativeLabel sx={{ mb: 6 }}>
           {steps.map((label) => (
@@ -177,7 +177,13 @@ const AccountTopUp = () => {
 
         {!success && (
           <Typography variant="h6" fontWeight={600} gutterBottom sx={{ color: '#1e293b', mb: 3 }}>
-            {activeStep === 0 ? t('dashboard.top_up.subtitle_details') : accountType === 'crypto' ? t('dashboard.top_up.subtitle_crypto') : t('dashboard.top_up.subtitle_bank')}
+            {activeStep === 0
+              ? t('dashboard.top_up.subtitle_details')
+              : (isCrypto
+                  ? t('dashboard.top_up.subtitle_crypto')
+                  : (isBank ? t('dashboard.top_up.subtitle_bank') : t('dashboard.top_up.subtitle_card'))
+                )
+            }
           </Typography>
         )}
 
@@ -230,9 +236,9 @@ const AccountTopUp = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              
+
               <Grid item xs={12} sm={8}>
-                <TextField 
+                <TextField
                   label={t('dashboard.top_up.amount_label')}
                   fullWidth
                   type="number"
@@ -247,7 +253,7 @@ const AccountTopUp = () => {
                   }}
                 />
               </Grid>
-              
+
               <Grid item xs={12} sm={4}>
                 <FormControl fullWidth sx={{ minWidth: 120 }}>
                   <InputLabel sx={{ bgcolor: 'white', px: 0.5 }}>{t('dashboard.top_up.currency_label')}</InputLabel>
@@ -267,12 +273,12 @@ const AccountTopUp = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              
+
               {accountType === 'fiat' && (
                 <Grid item xs={12}>
                   <FormControl fullWidth sx={{ minWidth: 250 }}>
                     <InputLabel sx={{ bgcolor: 'white', px: 0.5 }}>{t('dashboard.top_up.payment_method_label')}</InputLabel>
-                    <Select 
+                    <Select
                       value={formData.method}
                       onChange={(e) => setFormData({ ...formData, method: e.target.value })}
                       sx={{ borderRadius: 2 }}
@@ -295,7 +301,7 @@ const AccountTopUp = () => {
                 <Alert severity="info" sx={{ mb: 4 }}>
                   {t('dashboard.top_up.crypto_instruction', { amount: formData.amount, currency: formData.currency })}
                 </Alert>
-                
+
                 <TableContainer component={Paper} variant="outlined" sx={{ mb: 4, overflowX: 'auto' }}>
                   <Table size="small">
                     <TableHead>
@@ -318,13 +324,18 @@ const AccountTopUp = () => {
             ) : (
               <>
                 <Alert severity="info" sx={{ mb: 4, bgcolor: '#e0f2fe', color: '#0369a1', '& .MuiAlert-icon': { color: '#0ea5e9' } }}>
-                  {t('dashboard.top_up.card_instruction')}
+                  {isBank
+                    ? t('dashboard.top_up.bank_instruction')
+                    : (isCash ? t('dashboard.top_up.cash_instruction') : t('dashboard.top_up.card_instruction'))
+                  }
                 </Alert>
                 <Typography variant="body1" sx={{ color: '#334155', mb: 4 }}>
                   {t('dashboard.top_up.card_request_summary', {
                     amount: formData.amount,
                     currency: formData.currency,
-                    method: isBank ? t('dashboard.top_up.bank_transfer') : t('dashboard.top_up.card_payment')
+                    method: isBank
+                      ? t('dashboard.top_up.bank_transfer')
+                      : (isCash ? t('dashboard.top_up.cash_transfer') : t('dashboard.top_up.card_payment'))
                   })}
                 </Typography>
               </>
@@ -369,17 +380,17 @@ const AccountTopUp = () => {
           <>
             <Divider sx={{ mb: 4 }} />
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Button 
-                onClick={handleBack} 
-                variant="outlined" 
+              <Button
+                onClick={handleBack}
+                variant="outlined"
                 disabled={activeStep === 0}
                 sx={{ textTransform: 'none', px: 4, visibility: activeStep === 0 ? 'hidden' : 'visible' }}
               >
                 {t('auth.back')}
               </Button>
-              <Button 
-                onClick={handleNext} 
-                variant="contained" 
+              <Button
+                onClick={handleNext}
+                variant="contained"
                 disabled={loading || (activeStep === 0 && (!formData.amount || !formData.accountId))}
                 sx={{ textTransform: 'none', px: 4 }}
               >

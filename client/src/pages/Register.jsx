@@ -12,10 +12,9 @@ import { useAuth } from '../context/AuthContext';
 import { translateBackendMessage } from '../utils/i18n-helper';
 
 const Register = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { login } = useAuth();
   const steps = [t('auth.step_account'), t('auth.step_personal')];
-  
   const [activeStep, setActiveStep] = useState(0);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -24,6 +23,9 @@ const Register = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  // Определение системного языка для календаря
+  const calendarLang = i18n.language === 'gb' ? 'en-US' : i18n.language;
 
   // Step 1
   const [phone, setPhone] = useState('');
@@ -57,7 +59,6 @@ const Register = () => {
         zip,
         country
       };
-      
       const data = await api.post('/auth/register', payload);
       login(data.token, data.user);
       navigate('/dashboard');
@@ -87,11 +88,11 @@ const Register = () => {
 
   return (
     <Container maxWidth="sm" sx={{ py: { xs: 8, md: 15 } }}>
-      <Paper elevation={3} sx={{ p: 5, borderRadius: 4 }}>
+      <Paper elevation={3} sx={{ p: { xs: 3, sm: 5 }, borderRadius: 4 }}>
         <Typography variant="h4" fontWeight={700} color="primary" align="center" gutterBottom>
           {t('common.open_account')}
         </Typography>
-        
+
         <Stepper activeStep={activeStep} sx={{ mb: 4, mt: 2 }}>
           {steps.map((label) => (
             <Step key={label}>
@@ -100,10 +101,13 @@ const Register = () => {
           ))}
         </Stepper>
 
-        {error && <Typography color="error" variant="body2" align="center" sx={{ mb: 2 }}>{error}</Typography>}
+        {error && (
+          <Box sx={{ mb: 2, p: 1.5, bgcolor: '#fef2f2', border: '1px solid #fee2e2', borderRadius: 2 }}>
+            <Typography color="error" variant="body2" align="center">{error}</Typography>
+          </Box>
+        )}
 
-        <Box component="form" onSubmit={handleNext} sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-          
+        <Box component="form" onSubmit={handleNext} sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
           {activeStep === 0 && (
             <>
               <TextField
@@ -113,6 +117,7 @@ const Register = () => {
                 fullWidth
                 required
                 variant="outlined"
+                size="small"
               />
               <TextField
                 label={t('auth.email')}
@@ -122,6 +127,7 @@ const Register = () => {
                 fullWidth
                 required
                 variant="outlined"
+                size="small"
               />
               <TextField
                 label={t('auth.password')}
@@ -131,16 +137,12 @@ const Register = () => {
                 fullWidth
                 required
                 variant="outlined"
+                size="small"
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      <IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} edge="end" size="small">
+                        {showPassword ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
                       </IconButton>
                     </InputAdornment>
                   )
@@ -158,6 +160,7 @@ const Register = () => {
                   onChange={e => setFirstName(e.target.value)}
                   fullWidth
                   required
+                  size="small"
                 />
                 <TextField
                   label={t('auth.last_name')}
@@ -165,25 +168,34 @@ const Register = () => {
                   onChange={e => setLastName(e.target.value)}
                   fullWidth
                   required
+                  size="small"
                 />
               </Box>
+
               <TextField
                 label={t('auth.dob')}
                 type="date"
                 InputLabelProps={{ shrink: true }}
-                inputProps={{ max: new Date().toISOString().split('T')[0] }}
+                inputProps={{
+                  max: new Date().toISOString().split('T')[0],
+                  lang: calendarLang
+                }}
                 value={dob}
                 onChange={e => setDob(e.target.value)}
                 fullWidth
                 required
+                size="small"
               />
+
               <TextField
                 label={t('auth.address')}
                 value={address}
                 onChange={e => setAddress(e.target.value)}
                 fullWidth
                 required
+                size="small"
               />
+
               <Box sx={{ display: 'flex', gap: 2 }}>
                 <TextField
                   label={t('auth.city')}
@@ -191,6 +203,7 @@ const Register = () => {
                   onChange={e => setCity(e.target.value)}
                   fullWidth
                   required
+                  size="small"
                 />
                 <TextField
                   label={t('auth.region')}
@@ -198,8 +211,10 @@ const Register = () => {
                   onChange={e => setRegion(e.target.value)}
                   fullWidth
                   required
+                  size="small"
                 />
               </Box>
+
               <Box sx={{ display: 'flex', gap: 2 }}>
                 <TextField
                   label={t('auth.postal_code')}
@@ -208,8 +223,9 @@ const Register = () => {
                   fullWidth
                   required
                   variant="outlined"
+                  size="small"
                 />
-                <FormControl fullWidth required sx={{ minWidth: 200 }}>
+                <FormControl fullWidth required size="small">
                   <InputLabel sx={{ bgcolor: 'white', px: 0.5 }}>{t('auth.country')}</InputLabel>
                   <Select
                     value={country}
@@ -226,35 +242,36 @@ const Register = () => {
             </>
           )}
 
-          <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
+          <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
             {activeStep === 1 && (
-              <Button 
-                variant="outlined" 
+              <Button
+                variant="outlined"
                 onClick={handleBack}
                 fullWidth
-                sx={{ py: 1.5, borderRadius: 2 }}
+                sx={{ py: 1.2, borderRadius: 2, textTransform: 'none', fontWeight: 600 }}
               >
                 {t('auth.back')}
               </Button>
             )}
-            <Button 
-              type="submit" 
-              variant="contained" 
+            <Button
+              type="submit"
+              variant="contained"
               fullWidth
-              sx={{ 
-                bgcolor: '#4F46E5', 
+              sx={{
+                bgcolor: '#4F46E5',
                 color: 'white',
-                py: 1.5,
+                py: 1.2,
                 fontWeight: 600,
                 borderRadius: 2,
+                textTransform: 'none',
                 '&:hover': { bgcolor: '#4338CA' }
               }}
             >
               {activeStep === 0 ? t('auth.next') : t('auth.register_button')}
             </Button>
           </Box>
-          
-          <Box sx={{ textAlign: 'center', mt: 2 }}>
+
+          <Box sx={{ textAlign: 'center', mt: 1 }}>
             <Typography variant="body2" sx={{ color: '#64748b' }}>
               {t('auth.already_have_account')}{' '}
               <Box component="span" onClick={() => navigate('/login')} sx={{ color: '#3b82f6', cursor: 'pointer', fontWeight: 600 }}>

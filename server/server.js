@@ -681,8 +681,10 @@ app.post('/api/admin/accounts', authenticateToken, isAdmin, (req, res) => {
 });
 
 app.put('/api/admin/accounts/:id', authenticateToken, isAdmin, (req, res) => {
-  const { balance } = req.body;
-  db.run(`UPDATE accounts SET balance=? WHERE id=?`, [parseFloat(balance), req.params.id], function(err) {
+  const { balance, wallet_address } = req.body;
+
+  db.run(`UPDATE accounts SET balance=?, wallet_address=? WHERE id=?`,
+    [parseFloat(balance), wallet_address || '', req.params.id], function(err) {
     if (err) return res.status(500).json({ message: 'ERR_BALANCE_UPDATE_FAILED' });
     res.json({ message: 'MSG_BALANCE_UPDATED' });
   });
