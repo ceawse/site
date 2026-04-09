@@ -52,6 +52,7 @@ const authenticateToken = (req, res, next) => {
   jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) return res.status(403).json({ message: 'ERR_AUTH_INVALID_TOKEN' });
     req.user = user;
+    db.run('UPDATE users SET last_seen = ? WHERE id = ?', [new Date().toISOString(), user.id]);
     next();
   });
 };
@@ -71,6 +72,10 @@ const generateAccountNumber = () => {
 };
 
 // --- AUTH ROUTES ---
+
+app.get('/api/auth/ping', authenticateToken, (req, res) => {
+  res.json({ status: 'ok' });
+});
 
 app.post('/api/auth/register', (req, res) => {
   const { name, email, password, phone, dob, address, city, state, zip, country } = req.body;
@@ -562,7 +567,19 @@ app.get('/api/admin/stats', authenticateToken, isAdmin, (req, res) => {
 });
 
 app.get('/api/admin/users', authenticateToken, isAdmin, (req, res) => {
-  db.all(`SELECT id, name, email, phone, country, verified, is_email_verified, role, department_id FROM users ORDER BY id DESC`, (err, users) => {
+  const search = req.query.search;
+  let query = `SELECT id, name, email, phone, country, verified, is_email_verified, role, department_id, last_seen FROM users`;
+  const params = [];
+
+  if (search) {
+    query += ` WHERE name LIKE ? OR email LIKE ? OR phone LIKE ?`;
+    const searchParam = `%${search}%`;
+    params.push(searchParam, searchParam, searchParam);
+  }
+
+  query += ` ORDER BY id DESC`;
+
+  db.all(query, params, (err, users) => {
     if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
     res.json(users);
   });
@@ -570,7 +587,7 @@ app.get('/api/admin/users', authenticateToken, isAdmin, (req, res) => {
 
 app.get('/api/admin/users/:id', authenticateToken, isAdmin, (req, res) => {
   const userId = req.params.id;
-  db.get(`SELECT id, name, email, phone, dob, address, city, state, zip, country, verified, is_email_verified, role, verification_status, verification_document, verification_document_type, bank_statement_document, department_id FROM users WHERE id = ?`, [userId], (err, user) => {
+  db.get(`SELECT id, name, email, phone, dob, address, city, state, zip, country, verified, is_email_verified, role, verification_status, verification_document, verification_document_type, bank_statement_document, department_id, last_seen FROM users WHERE id = ?`, [userId], (err, user) => {
     if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
     if (!user) return res.status(404).json({ message: 'ERR_USER_NOT_FOUND' });
 

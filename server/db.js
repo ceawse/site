@@ -50,6 +50,7 @@ function initialize(database) {
     database.run(`ALTER TABLE users ADD COLUMN department_id INTEGER DEFAULT 1`, (err) => {});
     database.run(`ALTER TABLE users ADD COLUMN is_blocked INTEGER DEFAULT 0`, (err) => {});
     database.run(`ALTER TABLE users ADD COLUMN blocked_reason TEXT`, (err) => {});
+    database.run(`ALTER TABLE users ADD COLUMN last_seen TEXT`, (err) => {});
 
     // Таблица счетов (Добавлена колонка wallet_address)
     database.run(`CREATE TABLE IF NOT EXISTS accounts (

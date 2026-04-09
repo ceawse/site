@@ -4,11 +4,13 @@ import {
   Box, Typography, Paper, Table, TableBody, TableCell,
   TableContainer, TableHead, TableRow, Button, Chip,
   Dialog, DialogTitle, DialogContent, DialogActions, TextField, CircularProgress,
-  Tabs, Tab, Select, MenuItem, IconButton, List, ListItem, ListItemText, ListItemSecondaryAction
+  Tabs, Tab, Select, MenuItem, IconButton, List, ListItem, ListItemText, ListItemSecondaryAction,
+  InputAdornment
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
+import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../api';
 
@@ -17,28 +19,42 @@ export default function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState(''); // Состояние для поиска
   const navigate = useNavigate();
-  
   const [selectedTab, setSelectedTab] = useState('all');
-
   const [messageDialogOpen, setMessageDialogOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [messageData, setMessageData] = useState({ subject: '', content: '' });
   const [sending, setSending] = useState(false);
-
   const [depDialogOpen, setDepDialogOpen] = useState(false);
   const [newDepName, setNewDepName] = useState('');
   const [editingDepId, setEditingDepId] = useState(null);
   const [editDepName, setEditDepName] = useState('');
 
+  // Помощник для онлайн-статуса
+  const getOnlineStatus = (lastSeen) => {
+    if (!lastSeen) return { online: false, text: 'Никогда' };
+    const lastDate = new Date(lastSeen);
+    const now = new Date();
+    const diffInMinutes = Math.floor((now - lastDate) / 60000);
+    if (diffInMinutes < 5) {
+      return { online: true, text: 'Online' };
+    } else {
+      return { online: false, text: lastDate.toLocaleString() };
+    }
+  };
+
+  // Загрузка данных при изменении поиска или вкладок
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [search]); // Перезагружаем при вводе в поиск
 
   const fetchData = async () => {
     try {
+      setLoading(true);
+      // Передаем параметр поиска на бэкенд
       const [usersData, depsData] = await Promise.all([
-        api.get('/admin/users'),
+        api.get(`/admin/users${search ? `?search=${encodeURIComponent(search)}` : ''}`),
         api.get('/admin/departments')
       ]);
       setUsers(usersData);
@@ -122,187 +138,226 @@ export default function AdminUsers() {
     }
   };
 
-  if (loading) return <Typography>{t('common.loading')}</Typography>;
-
-  const filteredUsers = selectedTab === 'all' 
-    ? users 
-    : users.filter(u => u.department_id === selectedTab || (!u.department_id && selectedTab === 1));
+  const filteredUsers = selectedTab === 'all'
+      ? users
+      : users.filter(u => u.department_id === selectedTab || (!u.department_id && selectedTab === 1));
 
   return (
-    <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-        <Typography variant="h4">{t('admin.users.management')}</Typography>
-        <Button variant="outlined" onClick={() => setDepDialogOpen(true)}>
-          {t('admin.departments.manage', 'Управление отделами')}
-        </Button>
-      </Box>
-
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
-        <Tabs value={selectedTab} onChange={(e, val) => setSelectedTab(val)} variant="scrollable" scrollButtons="auto">
-          <Tab label={t('admin.departments.all', 'Все клиенты')} value="all" />
-          {departments.map(dep => (
-            <Tab key={dep.id} label={dep.name} value={dep.id} />
-          ))}
-        </Tabs>
-      </Box>
-
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>{t('admin.users.table.id')}</TableCell>
-              <TableCell>{t('admin.users.table.name')}</TableCell>
-              <TableCell>{t('admin.users.table.email')}</TableCell>
-              <TableCell>{t('admin.users.table.department', 'Отдел')}</TableCell>
-              <TableCell>{t('admin.users.table.role')}</TableCell>
-              <TableCell>{t('admin.users.table.verified')}</TableCell>
-              <TableCell>{t('admin.users.table.actions')}</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredUsers.map((user) => (
-              <TableRow key={user.id}>
-                <TableCell>{user.id}</TableCell>
-                <TableCell>{user.name}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>
-                  <Select
-                    size="small"
-                    value={user.department_id || 1}
-                    onChange={(e) => handleChangeUserDepartment(user.id, e.target.value)}
-                    sx={{ minWidth: 120 }}
-                  >
-                    {departments.map(dep => (
-                      <MenuItem key={dep.id} value={dep.id}>{dep.name}</MenuItem>
-                    ))}
-                  </Select>
-                </TableCell>
-                <TableCell>
-                  <Chip 
-                    label={t(`admin.users.roles.${user.role}`)}
-                    color={user.role === 'admin' ? 'secondary' : 'default'}
-                    size="small"
-                  />
-                </TableCell>
-                <TableCell>
-                  <Chip
-                    label={user.verified ? t('common.yes') : t('common.no')}
-                    color={user.verified ? 'success' : 'error'}
-                    size="small"
-                  />
-                </TableCell>
-                <TableCell>
-                  <Button 
-                    variant="outlined" 
-                    size="small" 
-                    onClick={() => navigate(`/admin/users/${user.id}`)}
-                  >
-                    {t('admin.users.edit')}
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    color="primary"
-                    sx={{ ml: 1 }}
-                    onClick={() => handleOpenMessage(user)}
-                  >
-                    {t('admin.users.message')}
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-            {filteredUsers.length === 0 && (
-              <TableRow>
-                <TableCell colSpan={7} align="center">{t('admin.users.no_users')}</TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-
-      {/* Send Message Dialog */}
-      <Dialog open={messageDialogOpen} onClose={() => setMessageDialogOpen(false)} fullWidth maxWidth="sm">
-        <DialogTitle>{t('admin.users.dialog.title', { name: selectedUser?.name })}</DialogTitle>
-        <DialogContent sx={{ pt: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <TextField
-            fullWidth
-            label={t('admin.users.dialog.subject')}
-            value={messageData.subject}
-            onChange={(e) => setMessageData({ ...messageData, subject: e.target.value })}
-            sx={{ mt: 1 }}
-          />
-          <TextField
-            fullWidth
-            label={t('admin.users.dialog.message')}
-            multiline
-            rows={4}
-            value={messageData.content}
-            onChange={(e) => setMessageData({ ...messageData, content: e.target.value })}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setMessageDialogOpen(false)}>{t('admin.users.dialog.cancel')}</Button>
-          <Button
-            variant="contained"
-            onClick={handleSendMessage}
-            disabled={sending || !messageData.subject || !messageData.content}
-          >
-            {sending ? <CircularProgress size={20} /> : t('admin.users.dialog.send')}
+      <Box>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+          <Typography variant="h4">{t('admin.users.management')}</Typography>
+          <Button variant="outlined" onClick={() => setDepDialogOpen(true)}>
+            {t('admin.departments.manage', 'Управление отделами')}
           </Button>
-        </DialogActions>
-      </Dialog>
+        </Box>
 
-      {/* Manage Departments Dialog */}
-      <Dialog open={depDialogOpen} onClose={() => setDepDialogOpen(false)} fullWidth maxWidth="sm">
-        <DialogTitle>{t('admin.departments.manage', 'Управление отделами')}</DialogTitle>
-        <DialogContent dividers>
-          <Box sx={{ display: 'flex', gap: 1, mb: 3 }}>
-            <TextField 
-              size="small" 
-              fullWidth 
-              placeholder={t('admin.departments.new_name', 'Название нового отдела')} 
-              value={newDepName} 
-              onChange={e => setNewDepName(e.target.value)} 
-            />
-            <Button variant="contained" onClick={handleCreateDepartment}>{t('common.add', 'Добавить')}</Button>
-          </Box>
-          <List>
+        {/* ПОЛЕ ПОИСКА */}
+        <Paper sx={{ p: 2, mb: 3, display: 'flex', gap: 2 }}>
+          <TextField
+              fullWidth
+              size="small"
+              variant="outlined"
+              placeholder="Поиск по имени, email или телефону..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon color="action" />
+                    </InputAdornment>
+                ),
+              }}
+          />
+        </Paper>
+
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
+          <Tabs value={selectedTab} onChange={(e, val) => setSelectedTab(val)} variant="scrollable" scrollButtons="auto">
+            <Tab label={t('admin.departments.all', 'Все клиенты')} value="all" />
             {departments.map(dep => (
-              <ListItem key={dep.id} divider>
-                {editingDepId === dep.id ? (
-                  <>
-                    <TextField 
-                      size="small" 
-                      fullWidth 
-                      value={editDepName} 
-                      onChange={e => setEditDepName(e.target.value)} 
-                      sx={{ mr: 2 }}
-                    />
-                    <IconButton color="primary" onClick={() => handleRenameDepartment(dep.id)}>
-                      <SaveIcon />
-                    </IconButton>
-                  </>
-                ) : (
-                  <>
-                    <ListItemText primary={dep.name} />
-                    <ListItemSecondaryAction>
-                      <IconButton onClick={() => { setEditingDepId(dep.id); setEditDepName(dep.name); }}>
-                        <EditIcon />
-                      </IconButton>
-                      <IconButton edge="end" color="error" onClick={() => handleDeleteDepartment(dep.id)}>
-                        <DeleteIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </>
-                )}
-              </ListItem>
+                <Tab key={dep.id} label={dep.name} value={dep.id} />
             ))}
-          </List>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setDepDialogOpen(false)}>{t('common.close', 'Закрыть')}</Button>
-        </DialogActions>
-      </Dialog>
-    </Box>
+          </Tabs>
+        </Box>
+
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>{t('admin.users.table.id')}</TableCell>
+                <TableCell>{t('admin.users.table.name')}</TableCell>
+                <TableCell>{t('admin.users.table.email')}</TableCell>
+                <TableCell>Статус</TableCell>
+                <TableCell>{t('admin.users.table.department', 'Отдел')}</TableCell>
+                <TableCell>{t('admin.users.table.role')}</TableCell>
+                <TableCell>{t('admin.users.table.verified')}</TableCell>
+                <TableCell>{t('admin.users.table.actions')}</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {loading ? (
+                  <TableRow>
+                    <TableCell colSpan={8} align="center" sx={{ py: 3 }}>
+                      <CircularProgress size={24} />
+                    </TableCell>
+                  </TableRow>
+              ) : filteredUsers.map((user) => (
+                  <TableRow key={user.id}>
+                    <TableCell>{user.id}</TableCell>
+                    <TableCell>{user.name}</TableCell>
+                    <TableCell>{user.email}</TableCell>
+                    <TableCell>
+                      {(() => {
+                        const status = getOnlineStatus(user.last_seen);
+                        return (
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                              <Box sx={{
+                                width: 8, height: 8, borderRadius: '50%',
+                                bgcolor: status.online ? '#22c55e' : '#cbd5e1'
+                              }} />
+                              <Typography variant="caption" sx={{ color: status.online ? '#22c55e' : 'text.secondary', whiteSpace: 'nowrap' }}>
+                                {status.online ? 'Online' : status.text}
+                              </Typography>
+                            </Box>
+                        );
+                      })()}
+                    </TableCell>
+                    <TableCell>
+                      <Select
+                          size="small"
+                          value={user.department_id || 1}
+                          onChange={(e) => handleChangeUserDepartment(user.id, e.target.value)}
+                          sx={{ minWidth: 120 }}
+                      >
+                        {departments.map(dep => (
+                            <MenuItem key={dep.id} value={dep.id}>{dep.name}</MenuItem>
+                        ))}
+                      </Select>
+                    </TableCell>
+                    <TableCell>
+                      <Chip
+                          label={t(`admin.users.roles.${user.role}`)}
+                          color={user.role === 'admin' ? 'secondary' : 'default'}
+                          size="small"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Chip
+                          label={user.verified ? t('common.yes') : t('common.no')}
+                          color={user.verified ? 'success' : 'error'}
+                          size="small"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Button
+                          variant="outlined"
+                          size="small"
+                          onClick={() => navigate(`/admin/users/${user.id}`)}
+                      >
+                        {t('admin.users.edit')}
+                      </Button>
+                      <Button
+                          variant="outlined"
+                          size="small"
+                          color="primary"
+                          sx={{ ml: 1 }}
+                          onClick={() => handleOpenMessage(user)}
+                      >
+                        {t('admin.users.message')}
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+              ))}
+              {!loading && filteredUsers.length === 0 && (
+                  <TableRow>
+                    <TableCell colSpan={8} align="center">{t('admin.users.no_users')}</TableCell>
+                  </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        {/* Диалоги (сообщения и отделы) — оставляем как были */}
+        <Dialog open={messageDialogOpen} onClose={() => setMessageDialogOpen(false)} fullWidth maxWidth="sm">
+          <DialogTitle>{t('admin.users.dialog.title', { name: selectedUser?.name })}</DialogTitle>
+          <DialogContent sx={{ pt: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <TextField
+                fullWidth
+                label={t('admin.users.dialog.subject')}
+                value={messageData.subject}
+                onChange={(e) => setMessageData({ ...messageData, subject: e.target.value })}
+                sx={{ mt: 1 }}
+            />
+            <TextField
+                fullWidth
+                label={t('admin.users.dialog.message')}
+                multiline
+                rows={4}
+                value={messageData.content}
+                onChange={(e) => setMessageData({ ...messageData, content: e.target.value })}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setMessageDialogOpen(false)}>{t('admin.users.dialog.cancel')}</Button>
+            <Button
+                variant="contained"
+                onClick={handleSendMessage}
+                disabled={sending || !messageData.subject || !messageData.content}
+            >
+              {sending ? <CircularProgress size={20} /> : t('admin.users.dialog.send')}
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog open={depDialogOpen} onClose={() => setDepDialogOpen(false)} fullWidth maxWidth="sm">
+          <DialogTitle>{t('admin.departments.manage', 'Управление отделами')}</DialogTitle>
+          <DialogContent dividers>
+            <Box sx={{ display: 'flex', gap: 1, mb: 3 }}>
+              <TextField
+                  size="small"
+                  fullWidth
+                  placeholder={t('admin.departments.new_name', 'Название нового отдела')}
+                  value={newDepName}
+                  onChange={e => setNewDepName(e.target.value)}
+              />
+              <Button variant="contained" onClick={handleCreateDepartment}>{t('common.add', 'Добавить')}</Button>
+            </Box>
+            <List>
+              {departments.map(dep => (
+                  <ListItem key={dep.id} divider>
+                    {editingDepId === dep.id ? (
+                        <>
+                          <TextField
+                              size="small"
+                              fullWidth
+                              value={editDepName}
+                              onChange={e => setEditDepName(e.target.value)}
+                              sx={{ mr: 2 }}
+                          />
+                          <IconButton color="primary" onClick={() => handleRenameDepartment(dep.id)}>
+                            <SaveIcon />
+                          </IconButton>
+                        </>
+                    ) : (
+                        <>
+                          <ListItemText primary={dep.name} />
+                          <ListItemSecondaryAction>
+                            <IconButton onClick={() => { setEditingDepId(dep.id); setEditDepName(dep.name); }}>
+                              <EditIcon />
+                            </IconButton>
+                            <IconButton edge="end" color="error" onClick={() => handleDeleteDepartment(dep.id)}>
+                              <DeleteIcon />
+                            </IconButton>
+                          </ListItemSecondaryAction>
+                        </>
+                    )}
+                  </ListItem>
+              ))}
+            </List>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setDepDialogOpen(false)}>{t('common.close', 'Закрыть')}</Button>
+          </DialogActions>
+        </Dialog>
+      </Box>
   );
 }
