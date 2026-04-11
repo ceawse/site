@@ -14,7 +14,6 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import SaveIcon from '@mui/icons-material/Save';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import ImageIcon from '@mui/icons-material/Image';
-
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 export default function AdminUserDetail() {
@@ -22,7 +21,6 @@ export default function AdminUserDetail() {
   const { showNotification } = useNotification();
   const { id } = useParams();
   const navigate = useNavigate();
-
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [blockDialogOpen, setBlockDialogOpen] = useState(false);
@@ -31,7 +29,6 @@ export default function AdminUserDetail() {
   const [newAccType, setNewAccType] = useState('fiat');
   const [newAccCurrency, setNewAccCurrency] = useState('USD');
   const [newAccBalance, setNewAccBalance] = useState('0');
-
   const [walletAddresses, setWalletAddresses] = useState({});
 
   useEffect(() => {
@@ -42,7 +39,6 @@ export default function AdminUserDetail() {
     try {
       const data = await api.get(`/admin/users/${id}`);
       setUser(data);
-
       const addresses = {};
       if (data.accounts) {
         data.accounts.forEach(acc => {
@@ -93,6 +89,7 @@ export default function AdminUserDetail() {
     }
   };
 
+  // ЛОГИКА БЛОКИРОВКИ
   const handleBlockAction = async () => {
     const updatedUser = { ...user, is_blocked: 1, blocked_reason: tempReason };
     try {
@@ -105,6 +102,7 @@ export default function AdminUserDetail() {
     }
   };
 
+  // ЛОГИКА РАЗБЛОКИРОВКИ
   const handleUnblockAction = async () => {
     const updatedUser = { ...user, is_blocked: 0, blocked_reason: '' };
     try {
@@ -161,7 +159,6 @@ export default function AdminUserDetail() {
     if (!filesString) return null;
     const files = filesString.split(',').filter(f => f.trim() !== '');
     if (files.length === 0) return null;
-
     return (
       <Box sx={{ mb: 2 }}>
         <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1.5, color: '#475569' }}>
@@ -172,7 +169,6 @@ export default function AdminUserDetail() {
             const cleanPath = filePath.replace('server/', '');
             const fileName = cleanPath.split(/[/\\]/).pop();
             const isPdf = fileName.toLowerCase().endsWith('.pdf');
-
             return (
               <Grid item xs={12} key={idx}>
                 <Link
@@ -213,12 +209,10 @@ export default function AdminUserDetail() {
       <Typography variant="h5" fontWeight={700} gutterBottom>
         Правка пользователя: {user.name}
       </Typography>
-
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper sx={{ p: 3, borderRadius: 2 }}>
             <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>Данные профиля</Typography>
-
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={12} md={3}>
                 <TextField fullWidth size="small" label="Имя" name="name" value={user.name || ''} onChange={handleUserChange} />
@@ -227,7 +221,6 @@ export default function AdminUserDetail() {
                 <TextField fullWidth size="small" label="Email" name="email" value={user.email || ''} onChange={handleUserChange} />
               </Grid>
 
-              {/* Блок блокировки */}
               <Grid item xs={12} md={6}>
                 <Box sx={{
                   p: 1, px: 2, borderRadius: 1, border: '1px solid',
@@ -237,9 +230,14 @@ export default function AdminUserDetail() {
                 }}>
                   <Typography variant="body2" sx={{ color: user.is_blocked ? '#991b1b' : '#166534', display: 'flex', alignItems: 'center', gap: 1, fontWeight: 600 }}>
                     {user.is_blocked ? <BlockIcon fontSize="small"/> : <CheckCircleOutlineIcon fontSize="small"/>}
-                    {user.is_blocked ? `Заблокирован: ${user.blocked_reason}` : "Аккаунт активен"}
+                    {user.is_blocked ? `Заблокирован: ${user.blocked_reason || 'Без причины'}` : "Аккаунт активен"}
                   </Typography>
-                  <Button size="small" variant="contained" color={user.is_blocked ? "success" : "error"} onClick={() => user.is_blocked ? handleUnblockAction() : setBlockDialogOpen(true)}>
+                  <Button
+                    size="small"
+                    variant="contained"
+                    color={user.is_blocked ? "success" : "error"}
+                    onClick={() => user.is_blocked ? handleUnblockAction() : setBlockDialogOpen(true)}
+                  >
                     {user.is_blocked ? "Разблокировать" : "Заблокировать"}
                   </Button>
                 </Box>
@@ -254,21 +252,18 @@ export default function AdminUserDetail() {
                   </Select>
                 </FormControl>
               </Grid>
-
               <Grid item xs={12} md={3}>
                 <FormControlLabel
                   control={<Switch name="verified" checked={!!user.verified} onChange={handleUserChange} size="small" />}
                   label="Статус верификации"
                 />
               </Grid>
-
               <Grid item xs={12} md={3}>
                 <FormControlLabel
                   control={<Switch name="is_email_verified" checked={!!user.is_email_verified} onChange={handleUserChange} size="small" />}
                   label="Email Verified"
                 />
               </Grid>
-
               <Grid item xs={12} md={3}>
                 <FormControl fullWidth size="small">
                   <InputLabel>Статус док-тов</InputLabel>
@@ -280,11 +275,9 @@ export default function AdminUserDetail() {
                   </Select>
                 </FormControl>
               </Grid>
-
               <Grid item xs={12} md={3}>
                 <TextField fullWidth size="small" label="Номер телефона" name="phone" value={user.phone || ''} onChange={handleUserChange} />
               </Grid>
-
               <Grid item xs={12} md={3}>
                 <FormControl fullWidth size="small">
                   <InputLabel>Страна</InputLabel>
@@ -293,7 +286,6 @@ export default function AdminUserDetail() {
                   </Select>
                 </FormControl>
               </Grid>
-
               <Grid item xs={12} md={6}>
                 <Stack direction="row" spacing={2}>
                   <Button variant="contained" sx={{ bgcolor: '#4F46E5' }} onClick={handleSaveUser}>Сохранить профиль</Button>
@@ -309,7 +301,6 @@ export default function AdminUserDetail() {
             <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 1 }}>
               <InsertDriveFileIcon color="primary" /> Документы для верификации
             </Typography>
-
             {!user.verification_document && !user.bank_statement_document ? (
                <Typography variant="body2" color="text.secondary">Пользователь еще не загрузил ни одного документа.</Typography>
             ) : (
@@ -335,7 +326,6 @@ export default function AdminUserDetail() {
                     <Typography variant="subtitle2" fontWeight={700}>{acc.currency} ({acc.type})</Typography>
                     <Typography variant="caption" color="textSecondary" sx={{ display: 'block', mb: 1 }}>{acc.account_number}</Typography>
                     <Typography variant="body2" sx={{ mb: 2 }}>Баланс: <strong>{acc.balance}</strong></Typography>
-
                     {acc.type === 'crypto' && (
                       <Box sx={{ mb: 2 }}>
                         <TextField
@@ -355,8 +345,7 @@ export default function AdminUserDetail() {
                         />
                       </Box>
                     )}
-
-                    <Button size="small" variant="outlined" fullWidth onClick={() => handleUpdateBalance(acc.id, acc.currency)}>Изменить</Button>
+                    <Button size="small" variant="outlined" fullWidth onClick={() => handleUpdateBalance(acc.id, acc.currency)}>Изменить баланс</Button>
                   </Box>
                 </Grid>
               ))}

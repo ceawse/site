@@ -22,8 +22,11 @@ import ChatIcon from '@mui/icons-material/Chat';
 import SettingsIcon from '@mui/icons-material/Settings';
 import StorageIcon from '@mui/icons-material/Storage';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 import { api } from '../../api';
 import { useAuth } from '../../context/AuthContext';
+
 import AdminDashboard from './AdminDashboard';
 import AdminUsers from './AdminUsers';
 import AdminUserDetail from './AdminUserDetail';
@@ -40,42 +43,52 @@ export default function AdminLayout() {
   const navigate = useNavigate();
   const location = useLocation();
   const { user: authUser, logout } = useAuth();
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [adminUser, setAdminUser] = useState(authUser);
 
-  const lastCounts = useRef(null);
+  const [notification, setNotification] = useState({ open: false, message: '' });
+  const lastEventId = useRef(null);
   const audioRef = useRef(new Audio('/notification.mp3'));
 
   useEffect(() => {
-    const checkNotifications = async () => {
-      try {
-        const counts = await api.get('/admin/notification-counts');
+      let isFirstLoad = true;
 
-        if (lastCounts.current) {
-          const hasNewEvent =
-            counts.messages > lastCounts.current.messages ||
-            counts.transactions > lastCounts.current.transactions ||
-            counts.verifications > lastCounts.current.verifications;
+      const checkNotifications = async () => {
+        try {
+          const response = await api.get('/admin/notification-counts');
+          const { latestEvent } = response;
 
-          if (hasNewEvent) {
-            console.log("[ADMIN] New activity! Playing sound...");
-            audioRef.current.currentTime = 0;
-            audioRef.current.play().catch(e => {
-              console.log("Audio play failed. Click anywhere on the page to enable sound notifications.");
-            });
+          if (latestEvent) {
+            if (isFirstLoad) {
+              lastEventId.current = latestEvent.id;
+              isFirstLoad = false;
+              return;
+            }
+
+            if (latestEvent.id !== lastEventId.current) {
+              console.log("[ADMIN] Новая активность:", latestEvent.text);
+
+              audioRef.current.currentTime = 0;
+              audioRef.current.play().catch(e => {});
+
+              setNotification({ open: true, message: latestEvent.text });
+              lastEventId.current = latestEvent.id;
+
+              setTimeout(() => {
+                setNotification(prev => ({ ...prev, open: false }));
+              }, 8000);
+            }
           }
+        } catch (err) {
+          console.error("Ошибка при проверке уведомлений:", err);
         }
-        lastCounts.current = counts;
-      } catch (err) {
-        console.error("Failed to check notifications:", err);
-      }
-    };
+      };
 
-    const interval = setInterval(checkNotifications, 10000);
-    checkNotifications();
-
-    return () => clearInterval(interval);
-  }, []);
+      const interval = setInterval(checkNotifications, 10000);
+      checkNotifications();
+      return () => clearInterval(interval);
+    }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -142,6 +155,7 @@ export default function AdminLayout() {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          bgcolor: '#1e293b'
         }}
       >
         <Toolbar>
@@ -205,6 +219,52 @@ export default function AdminLayout() {
           <Route path="/backup" element={<AdminBackup />} />
         </Routes>
       </Box>
+
+      <Box sx={{ position: 'fixed', bottom: 30, right: 30, zIndex: 9999 }}>
+        {notification.open && (
+          <Paper
+            elevation={10}
+            sx={{
+              p: 2.5,
+              bgcolor: '#0f172a',
+              color: 'white',
+              borderRadius: 3,
+              minWidth: 280,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 1.5,
+              border: '1px solid rgba(255,255,255,0.1)',
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3)',
+              animation: 'slideInRight 0.5s ease-out'
+            }}
+          >
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+               <Typography variant="subtitle2" fontWeight={700} sx={{ color: '#818cf8' }}>
+                 Системное уведомление
+               </Typography>
+               <Typography
+                 variant="caption"
+                 onClick={() => setNotification({ ...notification, open: false })}
+                 sx={{ cursor: 'pointer', opacity: 0.6, '&:hover': { opacity: 1 } }}
+               >
+                 Закрыть
+               </Typography>
+            </Box>
+            <Typography variant="body2" sx={{ lineHeight: 1.5 }}>
+              {notification.message}
+            </Typography>
+          </Paper>
+        )}
+      </Box>
+
+      <style>
+        {`
+          @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+          }
+        `}
+      </style>
     </Box>
   );
 }

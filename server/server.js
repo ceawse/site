@@ -587,7 +587,7 @@ app.get('/api/admin/users', authenticateToken, isAdmin, (req, res) => {
 
 app.get('/api/admin/users/:id', authenticateToken, isAdmin, (req, res) => {
   const userId = req.params.id;
-  db.get(`SELECT id, name, email, phone, dob, address, city, state, zip, country, verified, is_email_verified, role, verification_status, verification_document, verification_document_type, bank_statement_document, department_id, last_seen FROM users WHERE id = ?`, [userId], (err, user) => {
+  db.get(`SELECT id, name, email, phone, dob, address, city, state, zip, country, verified, is_email_verified, role, verification_status, verification_document, verification_document_type, bank_statement_document, department_id, last_seen, is_blocked, blocked_reason FROM users WHERE id = ?`, [userId], (err, user) => {
     if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
     if (!user) return res.status(404).json({ message: 'ERR_USER_NOT_FOUND' });
 
@@ -1034,16 +1034,53 @@ app.post('/api/admin/backup/import', authenticateToken, isAdmin, upload.single('
 });
 
 app.get('/api/admin/notification-counts', authenticateToken, isAdmin, (req, res) => {
-  const data = {};
-  db.get("SELECT COUNT(*) as count FROM messages WHERE sender_role = 'user' AND status = 'unread'", (err, row) => {
-    data.messages = row ? row.count : 0;
-    db.get("SELECT COUNT(*) as count FROM transactions WHERE status = 'processing'", (err, row) => {
-      data.transactions = row ? row.count : 0;
-      db.get("SELECT COUNT(*) as count FROM users WHERE verification_status = 'pending'", (err, row) => {
-        data.verifications = row ? row.count : 0;
-        res.json(data);
+  const data = {
+    counts: { messages: 0, transactions: 0, verifications: 0, loans: 0 },
+    latestEvent: null
+  };
+
+  db.serialize(() => {
+    db.get("SELECT COUNT(*) as count, MAX(id) as lastId, subject, (SELECT name FROM users WHERE id = messages.user_id) as userName FROM messages WHERE sender_role = 'user' AND status = 'unread'", (err, row) => {
+      if (row) {
+        data.counts.messages = row.count;
+        if (row.count > 0) data.latestEvent = { id: 'msg_' + row.lastId, text: `Новое сообщение от ${row.userName}: ${row.subject}` };
+      }
+
+      db.get("SELECT COUNT(*) as count, MAX(id) as lastId, amount, currency, (SELECT email FROM users WHERE id = transactions.user_id) as userEmail FROM transactions WHERE status = 'processing'", (err, row) => {
+        if (row) {
+          data.counts.transactions = row.count;
+          if (row.count > 0 && (!data.latestEvent || 'msg_' === data.latestEvent.id.substring(0,4))) {
+             data.latestEvent = { id: 'tx_' + row.lastId, text: `Новая транзакция: ${row.userEmail} (${row.amount} ${row.currency})` };
+          }
+        }
+
+        db.get("SELECT COUNT(*) as count, MAX(id) as lastId, name FROM users WHERE verification_status = 'pending'", (err, row) => {
+          if (row) {
+            data.counts.verifications = row.count;
+            if (row.count > 0) {
+               data.latestEvent = { id: 'ver_' + row.lastId, text: `Пользователь ${row.name} загрузил документы` };
+            }
+          }
+
+          db.get("SELECT COUNT(*) as count, MAX(id) as lastId, amount, (SELECT name FROM users WHERE id = loans.user_id) as userName FROM loans WHERE status = 'pending'", (err, row) => {
+            if (row) {
+              data.counts.loans = row.count;
+              if (row.count > 0) {
+                 data.latestEvent = { id: 'loan_' + row.lastId, text: `Заявка на кредит: ${row.userName} ($${row.amount})` };
+              }
+            }
+            res.json(data);
+          });
+        });
       });
     });
+  });
+});
+
+app.delete('/api/admin/messages/:id', authenticateToken, isAdmin, (req, res) => {
+  db.run('DELETE FROM messages WHERE id = ?', [req.params.id], function(err) {
+    if (err) return res.status(500).json({ message: 'ERR_DB_ERROR' });
+    res.json({ message: 'MSG_MESSAGE_DELETED' });
   });
 });
 

@@ -15,6 +15,7 @@ const AdminMessages = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const [replyDialogOpen, setReplyDialogOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [replyData, setReplyData] = useState({ subject: '', content: '' });
@@ -40,8 +41,8 @@ const AdminMessages = () => {
 
   const handleOpenReply = (msg) => {
     setSelectedUser({ id: msg.user_id, name: msg.user_name, email: msg.user_email });
-    setReplyData({ 
-      subject: msg.subject.startsWith('Re:') ? msg.subject : `Re: ${msg.subject}`, 
+    setReplyData({
+      subject: msg.subject.startsWith('Re:') ? msg.subject : `Re: ${msg.subject}`,
       content: '',
       thread_id: msg.thread_id
     });
@@ -50,10 +51,8 @@ const AdminMessages = () => {
 
   const handleReplySubmit = async () => {
     if (!replyData.content) return;
-
     try {
       setSubmitting(true);
-      
       const payload = new FormData();
       payload.append('user_id', selectedUser.id);
       payload.append('subject', replyData.subject);
@@ -84,6 +83,17 @@ const AdminMessages = () => {
     }
   };
 
+  const handleDeleteMessage = async (id) => {
+    if (!window.confirm('Вы уверены, что хотите окончательно удалить это сообщение?')) return;
+    try {
+      await api.delete(`/admin/messages/${id}`);
+      setMessages(messages.filter(m => m.id !== id));
+    } catch (err) {
+      console.error('Error deleting message', err);
+      alert('Не удалось удалить сообщение');
+    }
+  };
+
   const formatDate = (dateStr) => {
     if (!dateStr) return '';
     const date = new Date(dateStr);
@@ -91,7 +101,7 @@ const AdminMessages = () => {
   };
 
   return (
-    <Box>
+    <Box sx={{ pb: 4 }}>
       <Typography variant="h5" fontWeight={600} gutterBottom sx={{ mb: 3 }}>
         {t('admin.messages.title')}
       </Typography>
@@ -109,10 +119,10 @@ const AdminMessages = () => {
           <List disablePadding>
             {messages.map((msg, idx) => (
               <React.Fragment key={msg.id}>
-                <ListItem 
-                  alignItems="flex-start" 
-                  sx={{ 
-                    p: 3, 
+                <ListItem
+                  alignItems="flex-start"
+                  sx={{
+                    p: 3,
                     bgcolor: msg.sender_role === 'user' ? '#f8fafc' : 'transparent',
                     '&:hover': { bgcolor: '#f1f5f9' }
                   }}
@@ -127,7 +137,7 @@ const AdminMessages = () => {
                     secondaryTypographyProps={{ component: 'div' }}
                     primary={
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
                           <Typography variant="subtitle1" fontWeight={700}>
                             {msg.sender_role === 'user' ? msg.user_name : t('admin.messages.admin_label', { name: msg.user_name })}
                           </Typography>
@@ -143,33 +153,46 @@ const AdminMessages = () => {
                             : {msg.subject}
                           </Typography>
                         </Box>
-                        <Typography variant="caption" color="text.secondary">
+                        <Typography variant="caption" color="text.secondary" sx={{ whiteSpace: 'nowrap', ml: 2 }}>
                           {formatDate(msg.date)}
                         </Typography>
                       </Box>
                     }
                     secondary={
                       <Box>
-                        <Typography variant="body2" color="text.secondary" sx={{ whiteSpace: 'pre-wrap', mb: 2 }}>
+                        <Typography variant="body2" color="text.secondary" sx={{ whiteSpace: 'pre-wrap', mb: 3, fontSize: '0.95rem', lineHeight: 1.6 }}>
                           {msg.content}
                         </Typography>
+
                         {msg.attachment && (
                           <Box sx={{ mb: 2 }}>
                             <a href={`/api/${msg.attachment}`} target="_blank" rel="noopener noreferrer" style={{ color: '#4F46E5', textDecoration: 'underline', fontSize: '0.875rem' }}>
-                              {t('common.view_attachment', 'Посмотреть вложение')}
+                              Просмотреть вложение
                             </a>
                           </Box>
                         )}
-                        {msg.sender_role === 'user' && (
-                          <Button 
-                            variant="outlined" 
-                            size="small" 
-                            onClick={() => handleOpenReply(msg)}
+
+                        <Box sx={{ display: 'flex', gap: 2 }}>
+                          {msg.sender_role === 'user' && (
+                            <Button
+                              variant="contained"
+                              size="small"
+                              onClick={() => handleOpenReply(msg)}
+                              sx={{ textTransform: 'none', px: 3, bgcolor: '#4F46E5' }}
+                            >
+                              {t('admin.messages.reply_button')}
+                            </Button>
+                          )}
+                          <Button
+                            variant="outlined"
+                            size="small"
+                            color="error"
+                            onClick={() => handleDeleteMessage(msg.id)}
                             sx={{ textTransform: 'none' }}
                           >
-                            {t('admin.messages.reply_button')}
+                            Удалить
                           </Button>
-                        )}
+                        </Box>
                       </Box>
                     }
                   />
@@ -181,11 +204,17 @@ const AdminMessages = () => {
         )}
       </Paper>
 
-      {/* Reply Dialog */}
-      <Dialog open={replyDialogOpen} onClose={() => setReplyDialogOpen(false)} fullWidth maxWidth="sm">
-        <DialogTitle>{t('admin.messages.dialog.title', { name: selectedUser?.name })}</DialogTitle>
-        <DialogContent>
-          <Box sx={{ pt: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <Dialog
+        open={replyDialogOpen}
+        onClose={() => setReplyDialogOpen(false)}
+        fullWidth
+        maxWidth="md"
+      >
+        <DialogTitle sx={{ fontWeight: 700, bgcolor: '#f8fafc' }}>
+          {t('admin.messages.dialog.title', { name: selectedUser?.name })}
+        </DialogTitle>
+        <DialogContent sx={{ mt: 2 }}>
+          <Box sx={{ pt: 1, display: 'flex', flexDirection: 'column', gap: 3 }}>
             <TextField
               fullWidth
               label={t('admin.messages.dialog.subject')}
@@ -196,22 +225,33 @@ const AdminMessages = () => {
               fullWidth
               label={t('admin.messages.dialog.message')}
               multiline
-              rows={4}
+              rows={12}
               value={replyData.content}
               onChange={(e) => setReplyData({ ...replyData, content: e.target.value })}
+              placeholder="Введите текст сообщения..."
             />
-            <Button variant="outlined" component="label" fullWidth sx={{ textTransform: 'none' }}>
-              {replyAttachment ? replyAttachment.name : t('common.upload_file', 'Загрузить файл')}
-              <input type="file" hidden onChange={(e) => setReplyAttachment(e.target.files[0])} />
-            </Button>
+            <Box>
+              <Button
+                variant="outlined"
+                component="label"
+                fullWidth
+                sx={{ py: 1.5, borderStyle: 'dashed' }}
+              >
+                {replyAttachment ? replyAttachment.name : 'Прикрепить файл'}
+                <input type="file" hidden onChange={(e) => setReplyAttachment(e.target.files[0])} />
+              </Button>
+            </Box>
           </Box>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={() => { setReplyDialogOpen(false); setReplyAttachment(null); }}>{t('admin.messages.dialog.cancel')}</Button>
+        <DialogActions sx={{ p: 3, bgcolor: '#f8fafc' }}>
+          <Button onClick={() => { setReplyDialogOpen(false); setReplyAttachment(null); }}>
+            {t('admin.messages.dialog.cancel')}
+          </Button>
           <Button
             variant="contained"
             onClick={handleReplySubmit}
             disabled={submitting || !replyData.content}
+            sx={{ px: 4, py: 1, bgcolor: '#4F46E5', fontWeight: 700 }}
           >
             {submitting ? <CircularProgress size={20} /> : t('admin.messages.dialog.send')}
           </Button>

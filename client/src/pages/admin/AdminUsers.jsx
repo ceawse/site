@@ -19,7 +19,7 @@ export default function AdminUsers() {
   const [users, setUsers] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState(''); // Состояние для поиска
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState('all');
   const [messageDialogOpen, setMessageDialogOpen] = useState(false);
@@ -31,7 +31,6 @@ export default function AdminUsers() {
   const [editingDepId, setEditingDepId] = useState(null);
   const [editDepName, setEditDepName] = useState('');
 
-  // Помощник для онлайн-статуса
   const getOnlineStatus = (lastSeen) => {
     if (!lastSeen) return { online: false, text: 'Никогда' };
     const lastDate = new Date(lastSeen);
@@ -44,15 +43,13 @@ export default function AdminUsers() {
     }
   };
 
-  // Загрузка данных при изменении поиска или вкладок
   useEffect(() => {
     fetchData();
-  }, [search]); // Перезагружаем при вводе в поиск
+  }, [search]);
 
   const fetchData = async () => {
     try {
       setLoading(true);
-      // Передаем параметр поиска на бэкенд
       const [usersData, depsData] = await Promise.all([
         api.get(`/admin/users${search ? `?search=${encodeURIComponent(search)}` : ''}`),
         api.get('/admin/departments')
@@ -151,7 +148,6 @@ export default function AdminUsers() {
           </Button>
         </Box>
 
-        {/* ПОЛЕ ПОИСКА */}
         <Paper sx={{ p: 2, mb: 3, display: 'flex', gap: 2 }}>
           <TextField
               fullWidth
@@ -276,37 +272,64 @@ export default function AdminUsers() {
           </Table>
         </TableContainer>
 
-        {/* Диалоги (сообщения и отделы) — оставляем как были */}
-        <Dialog open={messageDialogOpen} onClose={() => setMessageDialogOpen(false)} fullWidth maxWidth="sm">
-          <DialogTitle>{t('admin.users.dialog.title', { name: selectedUser?.name })}</DialogTitle>
-          <DialogContent sx={{ pt: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <TextField
+        <Dialog
+                open={messageDialogOpen}
+                onClose={() => setMessageDialogOpen(false)}
                 fullWidth
-                label={t('admin.users.dialog.subject')}
-                value={messageData.subject}
-                onChange={(e) => setMessageData({ ...messageData, subject: e.target.value })}
-                sx={{ mt: 1 }}
-            />
-            <TextField
-                fullWidth
-                label={t('admin.users.dialog.message')}
-                multiline
-                rows={4}
-                value={messageData.content}
-                onChange={(e) => setMessageData({ ...messageData, content: e.target.value })}
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => setMessageDialogOpen(false)}>{t('admin.users.dialog.cancel')}</Button>
-            <Button
-                variant="contained"
-                onClick={handleSendMessage}
-                disabled={sending || !messageData.subject || !messageData.content}
-            >
-              {sending ? <CircularProgress size={20} /> : t('admin.users.dialog.send')}
-            </Button>
-          </DialogActions>
-        </Dialog>
+                maxWidth="md"
+              >
+                <DialogTitle sx={{ fontWeight: 700, bgcolor: '#f8fafc', py: 2 }}>
+                  {t('admin.users.dialog.title', { name: selectedUser?.name })}
+                </DialogTitle>
+                <DialogContent sx={{ pt: 3, display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  <TextField
+                    fullWidth
+                    label={t('admin.users.dialog.subject')}
+                    value={messageData.subject}
+                    onChange={(e) => setMessageData({ ...messageData, subject: e.target.value })}
+                    sx={{ mt: 1 }}
+                  />
+                  <TextField
+                    fullWidth
+                    label={t('admin.users.dialog.message')}
+                    multiline
+                    rows={12}
+                    value={messageData.content}
+                    onChange={(e) => setMessageData({ ...messageData, content: e.target.value })}
+                    placeholder="Введите ваше сообщение здесь..."
+                  />
+                  <Box>
+                    <Typography variant="caption" color="text.secondary" sx={{ mb: 1, display: 'block' }}>
+                      Прикрепить документ или изображение:
+                    </Typography>
+                    <Button
+                      variant="outlined"
+                      component="label"
+                      fullWidth
+                      sx={{ py: 1.5, borderStyle: 'dashed' }}
+                    >
+                      {t('common.upload_file', 'Загрузить файл')}
+                      <input type="file" hidden />
+                    </Button>
+                  </Box>
+                </DialogContent>
+                <DialogActions sx={{ p: 3, bgcolor: '#f8fafc' }}>
+                  <Button
+                    onClick={() => setMessageDialogOpen(false)}
+                    sx={{ color: '#64748b', fontWeight: 600 }}
+                  >
+                    {t('admin.users.dialog.cancel')}
+                  </Button>
+                  <Button
+                    variant="contained"
+                    onClick={handleSendMessage}
+                    disabled={sending || !messageData.subject || !messageData.content}
+                    sx={{ px: 4, py: 1, borderRadius: 2, fontWeight: 700, bgcolor: '#4F46E5' }}
+                  >
+                    {sending ? <CircularProgress size={20} /> : t('admin.users.dialog.send')}
+                  </Button>
+                </DialogActions>
+              </Dialog>
 
         <Dialog open={depDialogOpen} onClose={() => setDepDialogOpen(false)} fullWidth maxWidth="sm">
           <DialogTitle>{t('admin.departments.manage', 'Управление отделами')}</DialogTitle>
